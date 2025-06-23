@@ -3,17 +3,11 @@ import PropTypes from 'prop-types';
 
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import IPCarousel from './components/IPCarousel';
-import PatentCard from './components/PatentCard';
-import PatentabilityCard from './components/PatentabilityCard';
-import CopyrightRegistrationCard from './components/CopyrightRegistrationCard';
-import TrademarkRegistrationCard from './components/TrademarkRegistrationCard';
-import GeographicalIndicationCard from './components/GeographicalIndicationCard';
-import PlantVarietyCertificateCard from './components/PlantVarietyCertificateCard';
-import TechPackageDevelopmentCard from './components/TechPackageDevelopmentCard';
-import InnovationContestParticipationCard from './components/InnovationContestParticipationCard ';
-import IntellectualPropertyTrainingCard from './components/IntellectualPropertyTrainingCard';
-import AboutUsCard from './components/AboutUsCard';
+import SCCarousel from './components/SCCarousel';
+import CongressCountdown from './components/CongressCountdown';
+import CongressTriptych from './components/CongressTriptych';
+import SponsorsCarousel from './components/SponsorsCarousel';
+import SpeakersCarousel from './components/SpeakersCarousel';
 
 
 // Grilla responsive para las tarjetas
@@ -31,45 +25,38 @@ ResponsiveGrid.propTypes = {
 
 const App = () => {
   return (
-    <Router basename={import.meta.env.PROD ? '/_protect' : '/'}>
+    <Router basename={import.meta.env.PROD ? '/_events' : '/'}>
       <div className="flex flex-col min-h-screen">
         <Navbar />
-        <IPCarousel />
+        <SCCarousel />
+        <CongressCountdown />
         
 
-        <main className="flex-grow">
-          <Routes>
-            {/* Ruta principal (inicio) */}
-            <Route
-              path="/"
-              element={
-                <section id="patent-cards">
-                  <ResponsiveGrid>
-                    <PatentCard />
-                    <PatentabilityCard />
-                    <CopyrightRegistrationCard />
-                    <TrademarkRegistrationCard />
-                    <GeographicalIndicationCard />
-                    <PlantVarietyCertificateCard />
-                    <TechPackageDevelopmentCard />
-                    <InnovationContestParticipationCard />
-                    <IntellectualPropertyTrainingCard />
-                  </ResponsiveGrid>
-                </section>
-              }
-            />
-
-            {/* Ruta /nosotros */}
-            <Route
-              path="/aboutus"
-              element={
-                <section className="px-4 sm:px-6 lg:px-8 py-12">
-                  <AboutUsCard />
-                </section>
-              }
-            />
-          </Routes>
-        </main>
+       <main className="flex-grow">
+  <Routes>
+    <Route
+      path="/"
+      element={
+        <>
+          {/* Tríptico fuera del grid, ocupa todo el ancho */}
+          <section className="px-4 sm:px-6 lg:px-8 py-12">
+            <CongressTriptych />
+          </section>
+          
+          {/* Otras cards dentro del grid si las tienes */}
+          <section id="patent-cards">
+            <ResponsiveGrid>
+      
+              {/* Otras cards aquí */}
+            </ResponsiveGrid>
+            <SpeakersCarousel />
+            <SponsorsCarousel />
+          </section>
+        </>
+      }
+    />
+  </Routes>
+</main>
 
         <Footer />
       </div>
