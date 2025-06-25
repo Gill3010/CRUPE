@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import SCCarousel from './components/SCCarousel';
-import CongressCountdown from './components/CongressCountdown';
+
 import CongressTriptych from './components/CongressTriptych';
 import SponsorsCarousel from './components/SponsorsCarousel';
 import SpeakersCarousel from './components/SpeakersCarousel';
+import EventBannerWithCountdown from './components/EventBannerWithCountdown';
 
 
 // Grilla responsive para las tarjetas
@@ -28,9 +28,8 @@ const App = () => {
     <Router basename={import.meta.env.PROD ? '/_events' : '/'}>
       <div className="flex flex-col min-h-screen">
         <Navbar />
-        <SCCarousel />
-        <CongressCountdown />
-        
+       <EventBannerWithCountdown />
+        <SpeakersCarousel />
 
        <main className="flex-grow">
   <Routes>
@@ -49,7 +48,6 @@ const App = () => {
       
               {/* Otras cards aquí */}
             </ResponsiveGrid>
-            <SpeakersCarousel />
             <SponsorsCarousel />
           </section>
         </>

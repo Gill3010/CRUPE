@@ -21,7 +21,7 @@ const CongressTriptych = () => {
       <div className="bg-white/90 backdrop-blur-sm shadow-2xl shadow-blue-500/20 rounded-2xl overflow-visible md:min-h-[800px] border border-white/20" data-aos="fade-up" data-aos-delay="200">
         <div className="flex flex-col md:flex-row min-h-full">
 
-          {/* Panel Izquierdo */}
+          {/* Panel Izquierdo - REORGANIZADO */}
           <div className="w-full md:w-1/3 bg-gradient-to-br from-blue-500 via-blue-600 to-indigo-700 text-white p-6 md:p-8 relative hover:shadow-2xl hover:shadow-blue-400/40 hover:scale-[1.02] transition-all duration-300 border-r border-white/10" data-aos="fade-up" data-aos-delay="300">
             <div className="absolute top-0 right-0 w-0 h-0 border-l-[20px] border-l-transparent border-r-[20px] border-r-blue-700 border-b-[30px] border-b-transparent opacity-80"></div>
             <div className="text-center mb-8">
@@ -31,22 +31,27 @@ const CongressTriptych = () => {
               <div className="w-20 h-1 bg-gradient-to-r from-yellow-400 to-yellow-300 mx-auto mb-4 rounded-full shadow-lg"></div>
             </div>
             <div className="space-y-6 text-sm md:text-base leading-relaxed">
+              <p className="backdrop-blur-sm bg-gradient-to-r from-yellow-400/20 to-yellow-300/20 rounded-xl p-4 border border-yellow-300/30">
+                <span className="font-black text-yellow-300">🤖 Tema central:</span> "Las <span className="font-bold">TIC e Inteligencia Artificial</span> en la Investigación Cualitativa"
+              </p>
+              <div className="backdrop-blur-sm bg-white/10 rounded-xl p-4 border border-white/20">
+                <h4 className="font-black text-yellow-300 mb-3 flex items-center">
+                  <span className="mr-2">🎯</span> Objetivo General
+                </h4>
+                <p className="leading-relaxed">
+                  Promover el intercambio de experiencias en investigación, docencia y desarrollo tecnológico, 
+                  con énfasis en la transformación educativa mediante TIC e IA.
+                </p>
+              </div>
               <p className="backdrop-blur-sm bg-white/10 rounded-xl p-4 border border-white/20">
                 📚 Los invitamos a interactuar y dialogar en el III Encuentro de Investigaciones Cualitativas. 
                 Dirigido a especialistas en investigación cualitativa, metodología científica, educadores, 
                 pedagogos, líderes de proyectos, científicos de la educación y tomadores de decisiones.
               </p>
-              <p className="backdrop-blur-sm bg-white/10 rounded-xl p-4 border border-white/20">
-                🌍 Modalidad híbrida (presencial y virtual) en la Universidad Nacional de Educación "Enrique Guzmán y Valle, Escuela de Posgrado (calle Los Agrícolas N° 280, Urbanización Las Acacias, La Molina)", 
-                Chosica-Lima, Perú los días <span className="font-black text-yellow-300">25, 26 y 27 de septiembre de 2025</span>.
-              </p>
-              <p className="backdrop-blur-sm bg-gradient-to-r from-yellow-400/20 to-yellow-300/20 rounded-xl p-4 border border-yellow-300/30">
-                <span className="font-black text-yellow-300">🤖 Tema central:</span> "Las <span className="font-bold">TIC e Inteligencia Artificial</span> en la Investigación Cualitativa"
-              </p>
             </div>
           </div>
 
-          {/* Panel Central */}
+          {/* Panel Central - REORGANIZADO */}
           <div className="w-full md:w-1/3 bg-gradient-to-br from-white to-gray-50 backdrop-blur-sm p-6 md:p-8 border-x border-gray-200/50 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300" data-aos="fade-up" data-aos-delay="400">
             <div className="text-center mb-8">
               <div className="text-4xl mb-4">📋</div>
@@ -57,11 +62,10 @@ const CongressTriptych = () => {
             <div className="space-y-6 text-sm md:text-base text-gray-700">
               <div className="border-l-4 border-green-500 pl-4 bg-gradient-to-r from-green-50 to-emerald-50 rounded-r-xl p-4 shadow-lg">
                 <h4 className="font-black text-green-700 mb-3 flex items-center">
-                  <span className="mr-2">🎯</span> Objetivo General
+                  <span className="mr-2">🌍</span> Modalidad Híbrida
                 </h4>
                 <p className="leading-relaxed">
-                  Promover el intercambio de experiencias en investigación, docencia y desarrollo tecnológico, 
-                  con énfasis en la transformación educativa mediante TIC e IA.
+                  Modalidad híbrida (presencial y virtual) en la Universidad Nacional de Educación "Enrique Guzmán y Valle, Escuela de Posgrado (calle Los Agrícolas N° 280, Urbanización Las Acacias, La Molina)", Lima, Perú los días <span className="font-black text-green-700">25, 26 y 27 de septiembre de 2025</span>.
                 </p>
               </div>
               <div className="border-l-4 border-purple-500 pl-4 bg-gradient-to-r from-purple-50 to-indigo-50 rounded-r-xl p-4 shadow-lg">
@@ -90,7 +94,7 @@ const CongressTriptych = () => {
             </div>
           </div>
 
-          {/* Panel Derecho */}
+          {/* Panel Derecho - SIN CAMBIOS */}
           <div className="w-full md:w-1/3 bg-gradient-to-br from-purple-500 via-purple-600 to-indigo-700 text-white p-6 md:p-8 relative hover:shadow-2xl hover:shadow-purple-400/40 hover:scale-[1.02] transition-all duration-300 border-l border-white/10" data-aos="fade-up" data-aos-delay="500">
             <div className="absolute top-0 left-0 w-0 h-0 border-r-[20px] border-r-transparent border-l-[20px] border-l-purple-700 border-b-[30px] border-b-transparent opacity-80"></div>
             <div className="text-center mb-8">

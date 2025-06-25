@@ -1,9 +1,19 @@
 
 import  { useState, useEffect } from 'react';
-import { Menu, X, Microscope, Cpu, FlaskConical, Calendar, Phone, ChevronDown } from 'lucide-react';
+
+import {
+  Menu,
+  X,
+  Calendar,
+  ChevronDown,
+  Presentation,
+  Activity, 
+  Brain,        
+  Network,      
+} from 'lucide-react';
 
 // NAVBAR COMPONENT - Ahora con colores más contrastantes
-const IPNavbar = () => {
+const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
@@ -25,9 +35,9 @@ const IPNavbar = () => {
   };
 
   const schedule = [
-    { name: 'Día 1', href: '#uno', icon: Microscope },
-    { name: 'Día 2', href: '#dos', icon: FlaskConical },
-    { name: 'Día 3', href: '#tres', icon: Cpu },
+    { name: 'Día 1', href: '#uno', icon: Activity },
+    { name: 'Día 2', href: '#dos', icon: Brain },
+    { name: 'Día 3', href: '#tres', icon: Network },
     { name: 'Actividades', href: '#actividades', icon: Calendar }
   ];
 
@@ -50,7 +60,7 @@ const IPNavbar = () => {
           <div className="flex items-center space-x-3">
             <div className="relative">
               <div className="w-10 h-10 bg-gradient-to-br from-amber-500 via-yellow-600 to-orange-700 rounded-lg flex items-center justify-center shadow-lg">
-                <Microscope className="w-6 h-6 text-white" />
+                <Presentation className="w-6 h-6 text-white" />
               </div>
               <div className="absolute -top-1 -right-1 w-3 h-3 bg-gradient-to-r from-yellow-400 to-amber-500 rounded-full animate-pulse" />
             </div>
@@ -138,10 +148,11 @@ const IPNavbar = () => {
               href="#"
               className="relative px-6 py-2 bg-gradient-to-r from-amber-600 via-yellow-600 to-orange-700 text-white rounded-full font-semibold hover:from-amber-500 hover:via-yellow-500 hover:to-orange-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-amber-500/25"
             >
-              <span className="relative z-10 flex items-center space-x-2">
-                <Phone className="w-4 h-4" />
-                <span>Contactar</span>
-              </span>
+              
+<span className="relative z-10 flex items-center space-x-2">
+  <span className="text-base">🚀</span>
+  <span>¡INSCRÍBETE YA!</span>
+</span>
               <div className="absolute inset-0 bg-gradient-to-r from-amber-400 to-yellow-400 rounded-full opacity-0 hover:opacity-20 transition-opacity duration-300" />
             </a>
           </div>
@@ -222,8 +233,11 @@ const IPNavbar = () => {
                   className="flex items-center justify-center space-x-2 w-full px-6 py-3 bg-gradient-to-r from-amber-600 via-yellow-600 to-orange-700 text-white rounded-lg font-semibold hover:from-amber-500 hover:via-yellow-500 hover:to-orange-600 transition-all duration-300 transform hover:scale-105"
                   onClick={() => setIsOpen(false)}
                 >
-                  <Phone className="w-4 h-4" />
-                  <span>Contactar</span>
+                 
+                 <span className="relative z-10 flex items-center space-x-2">
+  <span className="text-base">🚀</span>
+  <span>¡INSCRÍBETE YA!</span>
+</span>
                 </a>
               </div>
             </div>
@@ -234,4 +248,4 @@ const IPNavbar = () => {
   );
 };
 
-export default IPNavbar;
+export default Navbar;

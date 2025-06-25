@@ -1,4 +1,4 @@
-import { Mail, Phone, Globe } from 'lucide-react';
+import { Mail, Phone, MapPin } from 'lucide-react';
 import {
   FaLinkedin,
   FaInstagram,
@@ -71,7 +71,7 @@ const Footer = () => {
             </li>
             <li className="flex items-center gap-3 hover:text-amber-300 transition duration-300">
               <div className="p-1 rounded bg-orange-500/20 border border-orange-400/30">
-                <Globe size={16} className="text-orange-300" />
+                <MapPin size={16} className="text-orange-300" />
               </div>
               <span>Ciudad de Panamá, Panamá</span>
             </li>
