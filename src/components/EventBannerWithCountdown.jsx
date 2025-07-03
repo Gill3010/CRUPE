@@ -127,7 +127,7 @@ const EventBannerWithCountdown = () => {
         📍 <span className="bg-gradient-to-r from-amber-400 via-yellow-400 to-orange-400 bg-clip-text text-transparent">Ubicación:</span>
       </span><br />
       <span className="text-base md:text-lg font-medium">
-        Universidad Nacional Enrique Guzmán y Valle — Escuela de Posgrado (calle Los Agrícolas n.º 280, urb. Las Acacias, La Molina), Lima, Perú
+        Universidad Nacional Enrique Guzmán y Valle — Escuela de Posgrado (calle Los Agrícolas n.º 280, urb. Las Acacias, La Molina), Lima, Perú 🇵🇪
       </span>
     </div>
 
@@ -183,7 +183,7 @@ const EventBannerWithCountdown = () => {
 
 {/* Botón de inscripción */}
 <a
-  href="/inscripcion"
+  href="/_events/inscripcion"
   data-aos="fade-up"
   data-aos-delay="700"
   className="px-8 py-3 bg-white/25 backdrop-blur-sm border-2 border-white/40 text-white rounded-full hover:bg-white/35 transition-all duration-300 font-semibold text-lg transform hover:scale-105 shadow-lg hover:shadow-xl"
