@@ -10,6 +10,7 @@ import SponsorsCarousel from './components/SponsorsCarousel';
 import SpeakersCarousel from './components/SpeakersCarousel';
 import EventBannerWithCountdown from './components/EventBannerWithCountdown';
 import OrganizingCommittee from './components/OrganizingCommittee';
+import VideoShowcase from './components/VideoShowcase'; // ✅ NUEVO COMPONENTE
 
 // Importación dinámica para EventCalendar (code splitting)
 const EventCalendar = lazy(() => import('./components/EventCalendar'));
@@ -79,6 +80,7 @@ const AppContent = () => {
             element={
               <>
                 <SpeakersCarousel />
+
                 <section className="px-4 sm:px-6 lg:px-8 py-12">
                   <CongressTriptych />
                 </section>
@@ -87,6 +89,12 @@ const AppContent = () => {
                   <ResponsiveGrid>
                     {/* Cards adicionales si las tienes */}
                   </ResponsiveGrid>
+
+                  {/* ✅ VideoShowcase agregado arriba del carrusel de sponsors */}
+                  <div className="mt-16">
+                    <VideoShowcase />
+                  </div>
+
                   <SponsorsCarousel />
                 </section>
               </>
