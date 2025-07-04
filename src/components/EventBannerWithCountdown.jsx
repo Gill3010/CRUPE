@@ -182,14 +182,14 @@ const EventBannerWithCountdown = () => {
 </div>
 
 {/* Botón de inscripción */}
-<a
-  href="/_events/inscripcion"
-  data-aos="fade-up"
-  data-aos-delay="700"
-  className="px-8 py-3 bg-white/25 backdrop-blur-sm border-2 border-white/40 text-white rounded-full hover:bg-white/35 transition-all duration-300 font-semibold text-lg transform hover:scale-105 shadow-lg hover:shadow-xl"
->
-  🚀 ¡INSCRÍBETE YA!
-</a>
+<div data-aos="fade-up" data-aos-delay="700">
+  <a
+    href="/_events/inscripcion"
+    className="px-8 py-3 bg-white/25 backdrop-blur-sm border-2 border-white/40 text-white rounded-full hover:bg-white/35 transition-all duration-300 font-semibold text-lg transform hover:scale-105 shadow-lg hover:shadow-xl"
+  >
+    🚀 ¡INSCRÍBETE YA!
+  </a>
+</div>
 
       
       </div>

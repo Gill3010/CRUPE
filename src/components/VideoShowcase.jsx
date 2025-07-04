@@ -73,6 +73,8 @@ const VideoCard = ({ video }) => (
   <div
     className="group relative bg-white/10 backdrop-blur-xl rounded-2xl overflow-hidden border border-white/20 shadow-2xl cursor-pointer flex-shrink-0 w-80 transition-all duration-700 ease-out hover:scale-105 hover:shadow-3xl hover:border-white/40"
     onClick={() => setSelectedVideo(video)}
+    data-aos="zoom-in"
+    data-aos-delay="200"
   >
     <div className="relative">
       <img 
@@ -117,7 +119,7 @@ const VideoCard = ({ video }) => (
 
   const VideoModal = ({ video, onClose }) => (
     <div className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-      <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-6 max-w-4xl w-full max-h-[90vh] overflow-auto">
+      <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-6 max-w-4xl w-full max-h-[90vh] overflow-auto" data-aos="fade-up" data-aos-duration="400">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-white text-2xl font-bold">{video.title}</h2>
           <button
@@ -163,7 +165,7 @@ const VideoCard = ({ video }) => (
   };
 
   return (
-    <div className="min-h-[70vh] bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 relative overflow-hidden">
+    <div className="min-h-[70vh] bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 relative overflow-hidden" data-aos="fade-in">
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_70%)]" />
         <div className="absolute inset-0 bg-[conic-gradient(from_0deg_at_50%_50%,rgba(59,130,246,0.1),transparent_30%,rgba(147,51,234,0.1),transparent_70%)]" />
@@ -172,19 +174,19 @@ const VideoCard = ({ video }) => (
       <div className="relative z-10 p-8">
         {/* Header */}
         <div data-aos="fade-up" className="text-center mb-12">
-          <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl mb-6 shadow-2xl">
+          <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl mb-6 shadow-2xl" data-aos="zoom-in" data-aos-delay="100">
             <span className="text-3xl">🎬</span>
           </div>
-          <h1 className="text-5xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent mb-4">
+          <h1 className="text-5xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent mb-4" data-aos="fade-up" data-aos-delay="200">
             Perú: Cuna del III Encuentro y su Cultura Milenaria
           </h1>
-          <p className="text-xl text-white/70 max-w-2xl mx-auto">
+          <p className="text-xl text-white/70 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="300">
             Explora la diversidad que acoge nuestra jornada
           </p>
         </div>
 
         {/* Videos Scroll */}
-        <div data-aos="fade-up" className="relative">
+        <div data-aos="fade-up" data-aos-delay="400" className="relative">
           <div
             ref={scrollContainerRef}
             className="flex gap-6 overflow-x-auto scrollbar-hide pb-4 snap-x snap-mandatory"
@@ -198,19 +200,23 @@ const VideoCard = ({ video }) => (
           <button
             onClick={() => scrollHorizontal('left')}
             className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/20 backdrop-blur-sm rounded-full p-3 text-white hover:bg-white/30 transition-colors"
+            data-aos="fade-right"
+            data-aos-delay="600"
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
           <button
             onClick={() => scrollHorizontal('right')}
             className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/20 backdrop-blur-sm rounded-full p-3 text-white hover:bg-white/30 transition-colors"
+            data-aos="fade-left"
+            data-aos-delay="600"
           >
             <ChevronRight className="w-5 h-5" />
           </button>
         </div>
 
         {/* Indicators */}
-        <div data-aos="fade-up" className="flex justify-center mt-8 gap-2">
+        <div data-aos="fade-up" data-aos-delay="500" className="flex justify-center mt-8 gap-2">
           {videos.map((_, index) => (
             <div
               key={index}
