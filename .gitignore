@@ -24,3 +24,4 @@ dist-ssr
 *.sw?
 dist.zip
 public/assets/*.mp4 # opcional, si no quieres subir los videos
+dist.zip
