@@ -10,12 +10,11 @@ import SponsorsCarousel from './components/SponsorsCarousel';
 import SpeakersCarousel from './components/SpeakersCarousel';
 import EventBannerWithCountdown from './components/EventBannerWithCountdown';
 import OrganizingCommittee from './components/OrganizingCommittee';
-import VideoShowcase from './components/VideoShowcase'; // ✅ NUEVO COMPONENTE
+import VideoShowcase from './components/VideoShowcase';
+import VideoGalleryEnterview from './components/VideoGalleryEnterview';
 
-// Importación dinámica para EventCalendar (code splitting)
 const EventCalendar = lazy(() => import('./components/EventCalendar'));
 
-// Componente de grilla responsive
 const ResponsiveGrid = ({ children }) => {
   return (
     <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 px-4 sm:px-6 lg:px-8 py-12">
@@ -28,12 +27,11 @@ ResponsiveGrid.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-// Botón para volver a la página principal
 const RedirectToEventsButton = () => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate('/', { replace: true }); // Ruta principal
+    navigate('/', { replace: true });
   };
 
   return (
@@ -49,13 +47,17 @@ const RedirectToEventsButton = () => {
 
 const AppContent = () => {
   const location = useLocation();
-
-  // Rutas donde no mostrar Navbar, Footer ni Banner
-  const noLayoutRoutes = ['/inscripcion', '/cronograma'];
+  const noLayoutRoutes = ['/inscripcion', '/cronograma', '/comision-organizadora'];
 
   if (noLayoutRoutes.includes(location.pathname)) {
+    const isOrganizing = location.pathname === '/comision-organizadora';
+
     return (
-      <section className="px-4 sm:px-6 lg:px-8 py-12 max-w-5xl mx-auto">
+      <section
+        className={`px-4 sm:px-6 lg:px-8 py-12 ${
+          isOrganizing ? '' : 'max-w-5xl mx-auto'
+        }`}
+      >
         <RedirectToEventsButton />
         {location.pathname === '/inscripcion' && <CongressForm />}
         {location.pathname === '/cronograma' && (
@@ -63,6 +65,7 @@ const AppContent = () => {
             <EventCalendar />
           </Suspense>
         )}
+        {isOrganizing && <OrganizingCommittee />}
       </section>
     );
   }
@@ -70,11 +73,10 @@ const AppContent = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-      <EventBannerWithCountdown />
+      {location.pathname === '/' && <EventBannerWithCountdown />}
 
       <main className="flex-grow">
         <Routes>
-          {/* Página principal */}
           <Route
             path="/"
             element={
@@ -90,23 +92,14 @@ const AppContent = () => {
                     {/* Cards adicionales si las tienes */}
                   </ResponsiveGrid>
 
-                  {/* ✅ VideoShowcase agregado arriba del carrusel de sponsors */}
                   <div className="mt-16">
                     <VideoShowcase />
+                    <VideoGalleryEnterview />
                   </div>
 
                   <SponsorsCarousel />
                 </section>
               </>
-            }
-          />
-
-          <Route
-            path="/comision-organizadora"
-            element={
-              <section className="px-4 sm:px-6 lg:px-8 py-12">
-                <OrganizingCommittee />
-              </section>
             }
           />
         </Routes>

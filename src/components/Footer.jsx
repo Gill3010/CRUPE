@@ -21,7 +21,7 @@ const Footer = () => {
         {/* Marca del Encuentro */}
         <div className="space-y-4">
           <h2 className="text-3xl font-extrabold tracking-tight bg-gradient-to-r from-amber-400 via-yellow-400 to-orange-400 bg-clip-text text-transparent drop-shadow-xl">
-            Encuentro Cualitativo 2025
+            III Encuentro Cualitativo 2025
           </h2>
           <p className="text-sm text-gray-300 leading-relaxed">
             Un espacio de reflexión académica sobre el impacto de las TIC y la Inteligencia Artificial en las metodologías cualitativas.
@@ -33,10 +33,10 @@ const Footer = () => {
         <div>
           <h3 className="text-lg font-semibold mb-4 border-b border-amber-400/30 pb-1 text-amber-300">Navegación</h3>
           <ul className="space-y-2 text-gray-300 text-sm">
-            <li><a href="#" className="hover:text-amber-300 transition duration-300 hover:translate-x-1">Inicio</a></li>
-            <li><a href="#" className="hover:text-amber-300 transition duration-300 hover:translate-x-1">Programa</a></li>
-            <li><a href="#" className="hover:text-amber-300 transition duration-300 hover:translate-x-1">Ponentes</a></li>
-            <li><a href="#" className="hover:text-amber-300 transition duration-300 hover:translate-x-1">Inscripciones</a></li>
+            <li><a href="https://relaticpanama.org/_events" className="hover:text-amber-300 transition duration-300 hover:translate-x-1">Inicio</a></li>
+            <li><a href="/_events/cronograma" className="hover:text-amber-300 transition duration-300 hover:translate-x-1">Cronograma</a></li>
+            <li><a href="/_events/comision-organizadora" className="hover:text-amber-300 transition duration-300 hover:translate-x-1">Comisión Organizadora</a></li>
+            <li><a href="/_events/inscripcion" className="hover:text-amber-300 transition duration-300 hover:translate-x-1">Inscripciones</a></li>
           </ul>
         </div>
 

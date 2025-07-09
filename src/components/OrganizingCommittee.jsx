@@ -204,12 +204,12 @@ const OrganizingCommittee = () => {
     <p className="text-base leading-relaxed mb-6 text-blue-100">
       Nuestro equipo multidisciplinario trabaja incansablemente para garantizar un evento de alta calidad académica, facilitando el intercambio de conocimientos y experiencias en investigación cualitativa.
     </p>
-    <button
-      className="bg-white text-blue-700 font-bold py-3 px-6 rounded-2xl hover:bg-blue-50 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
-      type="button"
+    <a
+      href="https://relaticpanama.org/suscription" 
+      className="bg-white text-blue-700 font-bold py-3 px-6 rounded-2xl hover:bg-blue-50 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl inline-block"
     >
-      🤝 ¡Únete a Nosotros!
-    </button>
+      🤝 ¡Únete a RELATIC!
+    </a>
   </div>
 </section>
 
