@@ -70,29 +70,40 @@ const CongressTriptych = () => {
               </div>
               <div className="border-l-4 border-purple-500 pl-4 bg-gradient-to-r from-purple-50 to-indigo-50 rounded-r-xl p-4 shadow-lg">
                 <h4 className="font-black text-purple-700 mb-3 flex items-center">
-                  <span className="mr-2">📝</span> Tipos de trabajos
+                  <span className="mr-2">📝</span> Tipos de participación
                 </h4>
                 <ul className="list-none space-y-2 mb-4">
   <li>
-    <a href="/ponencias" className="flex items-center text-gray-700 hover:text-yellow-600 transition-all duration-200">
+    <a href="/_events/presentacion-ponencias" className="flex items-center text-gray-700 hover:text-yellow-600 transition-all duration-200">
       <span className="mr-2">🎤</span>Ponencias
     </a>
   </li>
   <li>
-    <a href="/libros" className="flex items-center text-gray-700 hover:text-yellow-600 transition-all duration-200">
+    <a href="/revistas" className="flex items-center text-gray-700 hover:text-yellow-600 transition-all duration-200">
+      <span className="mr-2">🗣️</span>Conferencia
+    </a>
+  </li>
+  <li>
+    <a href="/_events/presentacion-libros" className="flex items-center text-gray-700 hover:text-yellow-600 transition-all duration-200">
       <span className="mr-2">📚</span>Libros
     </a>
   </li>
   <li>
-    <a href="/carteles" className="flex items-center text-gray-700 hover:text-yellow-600 transition-all duration-200">
+    <a href="/_events/cartel-cientifico" className="flex items-center text-gray-700 hover:text-yellow-600 transition-all duration-200">
       <span className="mr-2">🖼️</span>Carteles
     </a>
   </li>
   <li>
-    <a href="/revistas" className="flex items-center text-gray-700 hover:text-yellow-600 transition-all duration-200">
-      <span className="mr-2">📰</span>Revistas
-    </a>
-  </li>
+  <a href="/panelista" className="flex items-center text-gray-700 hover:text-yellow-600 transition-all duration-200">
+    <span className="mr-2">👥</span>Panelista
+  </a>
+</li>
+<li>
+  <a href="/talleres" className="flex items-center text-gray-700 hover:text-yellow-600 transition-all duration-200">
+    <span className="mr-2">🧑‍🏫</span>Facilitador de Taller
+  </a>
+</li>
+
 </ul>
                 <p className="font-black text-purple-700 mb-2">Modalidad (Híbrida)</p>
                 <ul className="list-none space-y-1">

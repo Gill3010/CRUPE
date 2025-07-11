@@ -333,7 +333,7 @@ const CongressForm = () => {
                 name="pais"
                 label="País"
                 required
-                options={['Panamá', 'Perú', 'Colombia', 'Argentina', 'Chile', 'España', 'Estados Unidos']}
+                options={['Panamá', 'Perú', 'Colombia', 'Argentina', 'Chile', 'España', 'Estados Unidos', 'Cuba', 'Brasil']}
                 icon={MapPin}
                 formData={formData}
                 handleInputChange={handleInputChange}
@@ -461,7 +461,7 @@ const CongressForm = () => {
               name="tipoParticipacion"
               label="Tipo de Participación"
               required
-              options={['Ponencia', 'Conferencia', 'Taller']}
+              options={['Ponencia', 'Conferencia', 'Taller', 'Panelista', 'Facilitador de Taller', 'Libros']}
               icon={FileText}
               formData={formData}
               handleInputChange={handleInputChange}

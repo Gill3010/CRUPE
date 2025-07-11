@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import { Suspense, lazy } from 'react';
+import PropTypes from 'prop-types';
 
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -12,16 +12,18 @@ import EventBannerWithCountdown from './components/EventBannerWithCountdown';
 import OrganizingCommittee from './components/OrganizingCommittee';
 import VideoShowcase from './components/VideoShowcase';
 import VideoGalleryEnterview from './components/VideoGalleryEnterview';
+import PosterGuidelines from './components/PosterGuidelines';
+import BookPresentationGuidelines from './components/BookPresentationGuidelines'; 
+import PresentationGuidelines from './components/Presentationguidelines';
+import AbstractSubmissionGuidelines from './components/AbstractSubmissionGuidelines';
 
 const EventCalendar = lazy(() => import('./components/EventCalendar'));
 
-const ResponsiveGrid = ({ children }) => {
-  return (
-    <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 px-4 sm:px-6 lg:px-8 py-12">
-      {children}
-    </div>
-  );
-};
+const ResponsiveGrid = ({ children }) => (
+  <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 px-4 sm:px-6 lg:px-8 py-12">
+    {children}
+  </div>
+);
 
 ResponsiveGrid.propTypes = {
   children: PropTypes.node.isRequired,
@@ -47,7 +49,17 @@ const RedirectToEventsButton = () => {
 
 const AppContent = () => {
   const location = useLocation();
-  const noLayoutRoutes = ['/inscripcion', '/cronograma', '/comision-organizadora'];
+
+  // 📌 Rutas sin Navbar/Footer
+  const noLayoutRoutes = [
+    '/inscripcion',
+    '/cronograma',
+    '/comision-organizadora',
+    '/cartel-cientifico',
+    '/presentacion-libros',
+    '/presentacion-ponencias',
+    '/presentacion-resumen',
+  ];
 
   if (noLayoutRoutes.includes(location.pathname)) {
     const isOrganizing = location.pathname === '/comision-organizadora';
@@ -59,13 +71,23 @@ const AppContent = () => {
         }`}
       >
         <RedirectToEventsButton />
+
         {location.pathname === '/inscripcion' && <CongressForm />}
+
         {location.pathname === '/cronograma' && (
           <Suspense fallback={<div>Cargando cronograma...</div>}>
             <EventCalendar />
           </Suspense>
         )}
+
         {isOrganizing && <OrganizingCommittee />}
+
+        {location.pathname === '/cartel-cientifico' && <PosterGuidelines />}
+        {location.pathname === '/presentacion-libros' && <BookPresentationGuidelines />}
+        {location.pathname === '/presentacion-ponencias' && <PresentationGuidelines />}
+        {location.pathname === '/presentacion-resumen' && <AbstractSubmissionGuidelines />}
+
+        {/* Si necesitas más rutas sin Navbar/Footer, agrégalas aquí */}
       </section>
     );
   }
@@ -89,7 +111,7 @@ const AppContent = () => {
 
                 <section id="patent-cards">
                   <ResponsiveGrid>
-                    {/* Cards adicionales si las tienes */}
+                    {/* Aquí puedes agregar más tarjetas si las tienes */}
                   </ResponsiveGrid>
 
                   <div className="mt-16">

@@ -11,6 +11,8 @@ import Larico from '/assets/Larico.png';
 import Juana from '/assets/JuanaB.jpeg';
 import Wilfredo from '/assets/Wilfredo.jpeg';
 import Claudia from '/assets/Claudia.jpeg';
+import Antonio from '/assets/Antonio.png';
+import Rita from '/assets/Rita.jpeg';
 
 const speakers = [
   {
@@ -84,6 +86,24 @@ const speakers = [
     orcid: "0000-0003-4185-2923",
     country: "Colombia",
     flag: "🇨🇴"
+  },
+  {
+    id: 9,
+    name: " Dr. Antonio Rolando Montoya Ponte",
+    topic: "Tema pendiente",
+    image: Antonio,
+    orcid: "0000-0003-4597-3976",
+    country: "Perú",
+    flag: "🇵🇪"
+  },
+  {
+    id: 10,
+    name: "Dra. Rita de Cassia",
+    topic: "Impacto de la virtualidad en la Educación superior brasileña",
+    image: Rita,
+    orcid: "0000-0002-0137-6005",
+    country: "Brasil",
+    flag: "🇧🇷"
   }
 ];
 
