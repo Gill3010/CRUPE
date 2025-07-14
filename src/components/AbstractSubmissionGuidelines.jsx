@@ -65,7 +65,7 @@ const AbstractSubmissionGuidelines = () => {
         href="https://relaticpanama.org/_events/inscripcion"
         target="_blank"
         rel="noopener noreferrer"
-        className="underline text-blue-300 hover:text-blue-200 transition"
+        className="underline text-blue-300 hover:text-blue-200 transition break-all"
       >
         https://relaticpanama.org/_events/inscripcion
       </a>

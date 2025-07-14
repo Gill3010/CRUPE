@@ -48,7 +48,7 @@ const Navbar = () => {
               </div>
               <div className="text-white">
                 <h1 className="text-xl font-bold bg-gradient-to-r from-amber-400 via-yellow-400 to-orange-400 bg-clip-text text-transparent">
-                  Tercer Encuentro
+                  Tercer Congreso
                 </h1>
                 <span className="text-xs text-gray-300 tracking-wider">INVESTIGACIONES CUALITATIVAS</span>
               </div>
@@ -74,7 +74,7 @@ const Navbar = () => {
             </a>
 
             <a 
-              href="#" 
+              href="/_events/ejes-tematicos" 
               className="text-white hover:text-amber-300 transition-colors duration-300 font-medium relative group"
             >
               Ejes Temáticos
@@ -146,7 +146,7 @@ const Navbar = () => {
               </a>
 
               <a 
-                href="#" 
+                href="/_events/ejes-tematicos" 
                 className="block px-4 py-3 text-white hover:text-amber-300 hover:bg-gradient-to-r hover:from-amber-600/20 hover:to-yellow-600/20 rounded-lg transition-all duration-300 font-medium"
                 onClick={() => setIsOpen(false)}
               >

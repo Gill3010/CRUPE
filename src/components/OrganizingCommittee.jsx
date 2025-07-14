@@ -122,7 +122,7 @@ const OrganizingCommittee = () => {
             Comisión Organizadora
           </h1>
           <p className="text-xl md:text-2xl text-slate-600 font-medium mb-6">
-            III Encuentro Investigaciones Cualitativas
+            III Congreso Investigaciones Cualitativas
           </p>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-indigo-600 mx-auto rounded-full mb-8"></div>
           <div className="max-w-3xl mx-auto" data-aos="fade-up">

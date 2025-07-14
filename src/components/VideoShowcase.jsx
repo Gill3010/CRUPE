@@ -8,7 +8,7 @@ const videos = [
   {
     id: 1,
     title: "Diversidad cultural peruana",
-    subtitle: "Ponencia del III Encuentro",
+    subtitle: "Ponencia del III Congreso",
     src: `${import.meta.env.BASE_URL}assets/Video1.mp4`,
     thumbnail: "https://images.unsplash.com/photo-1568805647632-69f6deec1547?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     duration: "1:39",
@@ -17,7 +17,7 @@ const videos = [
   {
     id: 2,
     title: "Biblioteca histórica encantadora",
-    subtitle: "Ponencia del III Encuentro",
+    subtitle: "Ponencia del III Congreso",
     src: `${import.meta.env.BASE_URL}assets/Video2.mp4`,
     thumbnail: "https://images.unsplash.com/photo-1672641797471-5cbd731aef07?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8TXVzZW8lMjBkZWwlMjBDb252ZW50byUyMGRlJTIwU2FuJTIwRnJhbmNpc2NvJTIweSUyMENhdGFjdW1iYXN8ZW58MHx8MHx8fDA%3D",
     duration: "1:23",
@@ -27,7 +27,7 @@ const videos = [
   {
     id: 3,
     title: "Herencia incaica milenaria",
-    subtitle: "Ponencia del III Encuentro",
+    subtitle: "Ponencia del III Congreso",
     src: `${import.meta.env.BASE_URL}assets/Video4.mp4`,
     thumbnail: "https://images.unsplash.com/photo-1566793772361-1d5d9cefbd12?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fCVFMiU4MCVBMiUwOWRhbnphJTIwdHJhZGljaW9uYWwlMjBwZXJ1YW5hJTIwJTA5JUUyJTgwJUEyJTA5Zm9sa2xvcmUlMjBwZXJ1YW5vJTIwJTA5JUUyJTgwJUEyJTA5YmFpbGUlMjBhbmRpbm8lMjAlMDklRTIlODAlQTIlMDljdWx0dXJhJTIwcGVydSUyMCUwOSVFMiU4MCVBMiUwOXRyYWplJTIwdCVDMyVBRHBpY28lMjBwZXJ1YW5vJTIwJTA5JUUyJTgwJUEyJTA5Y3VzY28lMjBmZXN0aXZhbCUyMCUwOSVFMiU4MCVBMiUwOXB1bm8lMjBkYW56YXN8ZW58MHx8MHx8fDA%3D",
     duration: "1:14",
@@ -36,7 +36,7 @@ const videos = [
   {
     id: 4,
     title: "Tradiciones ancestrales vivas",
-    subtitle: "Ponencia del III Encuentro",
+    subtitle: "Ponencia del III Congreso",
     src: `${import.meta.env.BASE_URL}assets/Video5.mp4`,
     thumbnail: "https://images.unsplash.com/photo-1647211103199-faa4cd24b4ec?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fCVFMiU4MCVBMiUwOWRhbnphJTIwdHJhZGljaW9uYWwlMjBwZXJ1YW5hJTIwJTA5JUUyJTgwJUEyJTA5Zm9sa2xvcmUlMjBwZXJ1YW5vJTIwJTA5JUUyJTgwJUEyJTA5YmFpbGUlMjBhbmRpbm8lMjAlMDklRTIlODAlQTIlMDljdWx0dXJhJTIwcGVydSUyMCUwOSVFMiU4MCVBMiUwOXRyYWplJTIwdCVDMyVBRHBpY28lMjBwZXJ1YW5vJTIwJTA5JUUyJTgwJUEyJTA5Y3VzY28lMjBmZXN0aXZhbCUyMCUwOSVFMiU4MCVBMiUwOXB1bm8lMjBkYW56YXN8ZW58MHx8MHx8fDA%3D",
     duration: "2:16",
@@ -45,7 +45,7 @@ const videos = [
   {
     id: 5,
     title: "Música andina auténtica",
-    subtitle: "Ponencia del III Encuentro",
+    subtitle: "Ponencia del III Congreso",
     src: `${import.meta.env.BASE_URL}assets/Video6.mp4`,
     thumbnail: "https://images.unsplash.com/photo-1589682449071-d13c27d1c298?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGN1bHR1cmElMjBkZSUyMHBlciVDMyVCQXxlbnwwfHwwfHx8MA%3D%3D",
     duration: "2:16",
@@ -147,7 +147,7 @@ const VideoCard = ({ video }) => (
           <p className="mb-2"><strong>Duración:</strong> {video.duration}</p>
           <p className="mb-4"><strong>Categoría:</strong> {video.category}</p>
           <p className="text-sm">
-            Esta presentación forma parte del III Encuentro de Investigaciones Cualitativas, 
+            Esta presentación forma parte del III Congreso de Investigaciones Cualitativas, 
             donde se exploraron metodologías innovadoras y enfoques contemporáneos en investigación.
           </p>
         </div>
@@ -180,7 +180,7 @@ const VideoCard = ({ video }) => (
             <span className="text-3xl">🎬</span>
           </div>
           <h1 className="text-5xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent mb-4" data-aos="fade-up" data-aos-delay="200">
-            Perú: Cultura Milenaria y Cuna del III Encuentro
+            Perú: Cultura Milenaria y Cuna del III Congreso
           </h1>
           <p className="text-xl text-white/70 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="300">
             Conoce la sede del evento

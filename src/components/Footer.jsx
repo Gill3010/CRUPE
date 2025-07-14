@@ -21,7 +21,7 @@ const Footer = () => {
         {/* Marca del Encuentro */}
         <div className="space-y-4">
           <h2 className="text-3xl font-extrabold tracking-tight bg-gradient-to-r from-amber-400 via-yellow-400 to-orange-400 bg-clip-text text-transparent drop-shadow-xl">
-            III Encuentro Cualitativo 2025
+            III Congreso Cualitativo 2025
           </h2>
           <p className="text-sm text-gray-300 leading-relaxed">
             Un espacio de reflexión académica sobre el impacto de las TIC y la Inteligencia Artificial en las metodologías cualitativas.
@@ -44,10 +44,10 @@ const Footer = () => {
         <div>
           <h3 className="text-lg font-semibold mb-4 border-b border-amber-400/30 pb-1 text-amber-300">Ejes Temáticos</h3>
           <ul className="space-y-2 text-gray-300 text-sm">
-            <li><a href="#" className="hover:text-amber-300 transition duration-300 hover:translate-x-1">TIC en la investigación</a></li>
-            <li><a href="#" className="hover:text-amber-300 transition duration-300 hover:translate-x-1">IA y análisis cualitativo</a></li>
-            <li><a href="#" className="hover:text-amber-300 transition duration-300 hover:translate-x-1">Innovación metodológica</a></li>
-            <li><a href="#" className="hover:text-amber-300 transition duration-300 hover:translate-x-1">Ética en entornos digitales</a></li>
+            <li><a href="/_events/ejes-tematicos" className="hover:text-amber-300 transition duration-300 hover:translate-x-1">Innovaciones en Metodologías Cualitativas</a></li>
+            <li><a href="/_events/ejes-tematicos" className="hover:text-amber-300 transition duration-300 hover:translate-x-1">TIC y la Inteligencia Artificial</a></li>
+            <li><a href="/_events/ejes-tematicos" className="hover:text-amber-300 transition duration-300 hover:translate-x-1">Aplicación Disciplinaria e Interdisciplinaria</a></li>
+            <li><a href="/_events/ejes-tematicos" className="hover:text-amber-300 transition duration-300 hover:translate-x-1">Ética y Responsabilidad en la Era Digital</a></li>
           </ul>
         </div>
 
@@ -59,7 +59,7 @@ const Footer = () => {
               <div className="p-1 rounded bg-amber-500/20 border border-amber-400/30">
                 <Mail size={16} className="text-amber-300" />
               </div>
-              <a href="mailto:encuentro@relaticpanama.org" className="hover:underline">
+              <a href="mailto:gerencia@relaticpanama.org" className="hover:underline">
                 gerencia@relaticpanama.org
               </a>
             </li>

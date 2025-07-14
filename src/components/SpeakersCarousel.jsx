@@ -246,7 +246,7 @@ const SpeakersCarousel = () => {
       <div className="text-center mb-12" data-aos="fade-up" data-aos-delay="200">
   <a href="/_events/inscripcion"> {/* Puedes cambiar el href al destino deseado */}
     <button className="px-6 py-3 bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-400 text-purple-900 font-black rounded-xl shadow-xl hover:shadow-yellow-400/50 hover:scale-105 transition-all duration-300 text-sm md:text-base">
-      🚀 ¿Quieres ser ponente? ¡Inscríbete!
+      🚀 ¿Quieres participar? ¡Inscríbete!
     </button>
   </a>
 </div>

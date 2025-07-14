@@ -8,7 +8,7 @@ const videos = [
   {
     id: 7,
     title: "Conducción de entrevistas",
-    subtitle: "Ponencia del III Encuentro",
+    subtitle: "Ponencia del III Congreso",
     src: `${import.meta.env.BASE_URL}assets/Video7.mp4`,
     thumbnail: "https://plus.unsplash.com/premium_photo-1684769160411-ab16f414d1bc?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZW50cmV2aXN0YXN8ZW58MHx8MHx8fDA%3D",
     duration: "1:39",
@@ -17,7 +17,7 @@ const videos = [
   {
     id: 8,
     title: "Guía de preguntas",
-    subtitle: "Ponencia del III Encuentro",
+    subtitle: "Ponencia del III Congreso",
     src: `${import.meta.env.BASE_URL}assets/Video8.mp4`,
     thumbnail: "https://images.unsplash.com/photo-1573497620053-ea5300f94f21?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZW50cmV2aXN0YXN8ZW58MHx8MHx8fDA%3D",
     duration: "1:23",
@@ -26,16 +26,16 @@ const videos = [
   {
     id: 9,
     title: "Entrevista en profundidad",
-    subtitle: "Ponencia del III Encuentro",
+    subtitle: "Ponencia del III Congreso",
     src: `${import.meta.env.BASE_URL}assets/Video9.mp4`,
     thumbnail: "https://images.unsplash.com/photo-1745848413060-0827ec268cda?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8ZW50cmV2aXN0YXN8ZW58MHx8MHx8fDA%3D",
     duration: "1:43",
-    category: "Encuentro"
+    category: "Congreso"
   },
   {
     id: 10,
     title: "Registro de respuestas",
-    subtitle: "Ponencia del III Encuentro",
+    subtitle: "Ponencia del III Congreso",
     src: `${import.meta.env.BASE_URL}assets/Video10.mp4`,
     thumbnail: "https://images.unsplash.com/photo-1497015289639-54688650d173?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZW50cmV2aXN0YXN8ZW58MHx8MHx8fDA%3D",
     duration: "1:14",
@@ -44,7 +44,7 @@ const videos = [
   {
     id: 5,
     title: "Análisis del discurso",
-    subtitle: "Ponencia del III Encuentro",
+    subtitle: "Ponencia del III Congreso",
     src: `${import.meta.env.BASE_URL}assets/Video3.mp4`,
     thumbnail: "https://media.istockphoto.com/id/2191361301/photo/elderly-people-receiving-sales-from-businessmen.webp?a=1&b=1&s=612x612&w=0&k=20&c=pcTa2oFJY74y09nvVyyak5nemDaKp8sBg6sC17-zogU=",
     duration: "2:16",
@@ -145,7 +145,7 @@ const VideoCard = ({ video }) => (
           <p className="mb-2"><strong>Duración:</strong> {video.duration}</p>
           <p className="mb-4"><strong>Categoría:</strong> {video.category}</p>
           <p className="text-sm">
-            Esta presentación forma parte del III Encuentro de Investigaciones Cualitativas, 
+            Esta presentación forma parte del III Congreso de Investigaciones Cualitativas, 
             donde se exploraron metodologías innovadoras y enfoques contemporáneos en investigación.
           </p>
         </div>
@@ -178,7 +178,7 @@ const VideoCard = ({ video }) => (
             <span className="text-3xl">🎬</span>
           </div>
           <h1 className="text-5xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent mb-4" data-aos="fade-up" data-aos-delay="200">
-            Entrevistas del III Encuentro
+            Entrevistas del III Congreso
           </h1>
           <p className="text-xl text-white/70 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="300">
             Ver entrevistas

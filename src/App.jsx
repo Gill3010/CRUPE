@@ -16,6 +16,13 @@ import PosterGuidelines from './components/PosterGuidelines';
 import BookPresentationGuidelines from './components/BookPresentationGuidelines'; 
 import PresentationGuidelines from './components/Presentationguidelines';
 import AbstractSubmissionGuidelines from './components/AbstractSubmissionGuidelines';
+import InvestmentTable from './components/InvestmentTable';
+import ConferencePresentationGuidelines from './components/ConferencePresentationGuidelines';
+import CongressOverview from './components/CongressOverview';
+import PanelRequirements from './components/PanelRequirements';
+import WorkshopRequirements from './components/WorkshopRequirements';
+
+
 
 const EventCalendar = lazy(() => import('./components/EventCalendar'));
 
@@ -59,6 +66,14 @@ const AppContent = () => {
     '/presentacion-libros',
     '/presentacion-ponencias',
     '/presentacion-resumen',
+    '/inversion',
+    '/conferencias',
+    '/ejes-tematicos',
+    '/presentacion-panelistas',
+    '/presentacion-talleres',
+
+    
+
   ];
 
   if (noLayoutRoutes.includes(location.pathname)) {
@@ -86,6 +101,14 @@ const AppContent = () => {
         {location.pathname === '/presentacion-libros' && <BookPresentationGuidelines />}
         {location.pathname === '/presentacion-ponencias' && <PresentationGuidelines />}
         {location.pathname === '/presentacion-resumen' && <AbstractSubmissionGuidelines />}
+         {location.pathname === '/inversion' && <InvestmentTable />}
+          {location.pathname === '/conferencias' && <ConferencePresentationGuidelines />}
+          {location.pathname === '/ejes-tematicos' && <CongressOverview />}
+          {location.pathname === '/presentacion-panelistas' && <PanelRequirements/>}
+          {location.pathname === '/presentacion-talleres' && <WorkshopRequirements/>}
+
+
+
 
         {/* Si necesitas más rutas sin Navbar/Footer, agrégalas aquí */}
       </section>

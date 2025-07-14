@@ -1,186 +1,145 @@
 import { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
-import LogoUP from '/assets/LogoUP.jpg';
-import LogoEGV from '/assets/LogoEGV.jpg';
-import LogoRE from '/assets/LogoRE.png';
-
 const SponsorsCarousel = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const base = import.meta.env.BASE_URL;
 
-  const institutions = [
-    {
-      id: 1,
-      name: "🎓 Universidad de Panamá",
-      logo: LogoUP,
-      description: "Casa de estudios superiores líder en Panamá"
-    },
-    {
-      id: 2,
-      name: "📚 Universidad Nacional Enrique Guzmán y Valle",
-      logo: LogoEGV,
-      description: "Alma Máter del Magisterio Nacional"
-    },
-    {
-      id: 3,
-      name: "🔬 Relatic Panamá",
-      logo: LogoRE,
-      description: "Fomentando la Investigación y la Innovación"
-    }
+  const images = [
+    { src: base + 'assets/LogoUP.jpg', alt: 'Universidad de Panamá', href: 'https://www.up.ac.pa/' },
+    { src: base + 'assets/LogoCespe.jpeg', alt: 'Centro Latinoamericano de Estudios en Epistemología Pedagógica', href: 'https://cespecorporativa.org/' },
+    { src: base + 'assets/LogoEGV.jpg', alt: 'Universidad Nacional de Educacion Enrique Guzmán y Valle', href: 'https://www.une.edu.pe/uneweb/' },
+    { src: base + 'assets/LogoRE.png', alt: 'Red Latinoamericana de Investigaciones Cualitativas', href: 'https://relaticpanama.org/' },
+    { src: base + 'assets/LogoSaopaulo.svg', alt: 'Universidade de São Paulo, Brasil', href: 'https://www5.usp.br/' },
+    { src: base + 'assets/LogoUP.jpg', alt: 'Universidad de Panamá', href: 'https://www.up.ac.pa/' },
+    { src: base + 'assets/LogoCespe.jpeg', alt: 'Centro Latinoamericano de Estudios en Epistemología Pedagógica', href: 'https://www.une.edu.pe/uneweb/' },
+    { src: base + 'assets/LogoEGV.jpg', alt: 'Universidad Nacional de Educacion Enrique Guzmán y Valle', href: 'https://cespecorporativa.org/' },
+    { src: base + 'assets/LogoRE.png', alt: 'Red Latinoamericana de Investigaciones Cualitativas', href: 'https://relaticpanama.org/' },
+    { src: base + 'assets/LogoSaopaulo.svg', alt: 'Universidade de São Paulo, Brasil', href: 'https://www5.usp.br/' },
   ];
+
+  const infiniteImages = [...images, ...images];
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const imagesPerSlide = 5;
 
   useEffect(() => {
     AOS.init({
-      once: false,
       duration: 1000,
-      offset: 50,
-      disable: false
+      once: false,
+      mirror: true,
+      easing: 'ease-in-out',
     });
   }, []);
 
+  const prevImage = () => {
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + infiniteImages.length) % infiniteImages.length);
+  };
+
   useEffect(() => {
-    if (!isAutoPlaying) return;
-
     const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % institutions.length);
-    }, 4000);
-
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % infiniteImages.length);
+    }, 2500);
     return () => clearInterval(interval);
-  }, [isAutoPlaying, institutions.length]);
+  }, []);
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % institutions.length);
-    setIsAutoPlaying(false);
-    setTimeout(() => setIsAutoPlaying(true), 10000);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + institutions.length) % institutions.length);
-    setIsAutoPlaying(false);
-    setTimeout(() => setIsAutoPlaying(true), 10000);
-  };
-
-  const goToSlide = (index) => {
-    setCurrentSlide(index);
-    setIsAutoPlaying(false);
-    setTimeout(() => setIsAutoPlaying(true), 10000);
+  const containerStyle = {
+    transform: `translateX(-${(currentIndex % infiniteImages.length) * (100 / imagesPerSlide)}%)`,
+    transition: 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)',
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-4 md:px-6 py-8" data-aos="fade-up">
-      {/* Título */}
-      <div className="text-center mb-8 md:mb-12" data-aos="fade-up" data-aos-delay="100">
-        <h2 className="text-3xl md:text-5xl font-black bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent mb-4">
+    <div
+      data-aos="fade-up"
+      className="p-[4px] bg-gradient-to-r from-amber-400 via-yellow-400 to-orange-400 rounded-lg shadow-2xl mb-6"
+    >
+      <div className="relative w-full bg-white p-6 rounded-lg shadow-xl overflow-hidden">
+        <h2
+          data-aos="fade-right"
+          className="text-2xl md:text-4xl font-bold bg-gradient-to-r from-blue-700 via-indigo-700 to-purple-700 bg-clip-text text-transparent mb-8 text-center"
+        >
           Invitan
         </h2>
-        <div className="w-24 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-600 mx-auto rounded-full shadow-2xl shadow-blue-500/25"></div>
-      </div>
 
-      {/* Carousel Container */}
-      <div className="relative bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl shadow-2xl overflow-hidden transition-all duration-500" data-aos="fade-up" data-aos-delay="200">
-        {/* Carousel Content */}
-        <div className="relative h-96 md:h-80">
-          <div 
-            className="flex transition-transform duration-700 ease-in-out h-full"
-            style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-          >
-            {institutions.map((institution, index) => (
-              <div
-                key={institution.id}
-                className="w-full flex-shrink-0 flex items-center justify-center p-4 md:p-6"
-                data-aos="fade-up"
-                data-aos-delay={300 + index * 100}
-              >
-                <div className="text-center max-w-md leading-relaxed">
-                  {/* Logo Container */}
-                  <div className="relative mb-6 group hover:scale-105 transition-all duration-500">
-                    <div className="absolute inset-0 bg-gradient-to-r from-blue-400 via-purple-400 to-indigo-500 rounded-2xl blur opacity-25 group-hover:opacity-40 transition-opacity duration-300"></div>
-                    <div className="relative bg-gradient-to-r from-white to-gray-50 rounded-2xl p-6 shadow-xl group-hover:shadow-2xl transition-all duration-500 border border-gray-200/50">
-                      <img
-                        src={institution.logo}
-                        alt={institution.name}
-                        className="w-full h-32 object-contain rounded-lg"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Institution Info */}
-                  <h3 className="text-xl md:text-2xl font-bold text-gray-800 mb-2">
-                    {institution.name}
-                  </h3>
-                  <p className="text-sm md:text-base font-light text-gray-600">
-                    {institution.description}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Navigation Arrows */}
-        <button
-          onClick={prevSlide}
-          className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/40 text-gray-800 rounded-full p-3 shadow-xl hover:shadow-2xl transition-all duration-300 backdrop-blur-sm"
+        <div
+          className="flex cursor-grab select-none"
+          style={containerStyle}
+          data-aos="fade-left"
         >
-          <ChevronLeft className="w-6 h-6 group-hover:scale-110 transition-transform" />
-        </button>
-        
-        <button
-          onClick={nextSlide}
-          className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/40 text-gray-800 rounded-full p-3 shadow-xl hover:shadow-2xl transition-all duration-300 backdrop-blur-sm"
-        >
-          <ChevronRight className="w-6 h-6 group-hover:scale-110 transition-transform" />
-        </button>
-
-        {/* Dots Indicator */}
-        <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-3">
-          {institutions.map((_, index) => (
-            <button
+          {infiniteImages.map((image, index) => (
+            <div
               key={index}
-              onClick={() => goToSlide(index)}
-              className={`h-3 rounded-full transition-all duration-300 ${
-                index === currentSlide
-                  ? 'bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-600 w-8'
-                  : 'bg-white/50 hover:bg-white/80 w-3'
-              }`}
-            />
+              className="flex-shrink-0 w-full sm:w-1/5 mx-2"
+              data-aos="zoom-in"
+              data-aos-delay={index * 100}
+            >
+              <div className="relative bg-white rounded-lg shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-110 hover:shadow-2xl cursor-pointer">
+                <a
+                  href={image.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    className="w-full h-60 object-contain"
+                    loading="lazy"
+                  />
+                </a>
+                {image.alt && (
+                  <div className="absolute bottom-0 left-0 right-0 p-3 bg-black bg-opacity-60 backdrop-blur-sm">
+                    <p
+                      className="text-white text-center text-base font-semibold tracking-wide truncate"
+                      title={image.alt}
+                    >
+                      {image.alt}
+                    </p>
+                  </div>
+                )}
+              </div>
+            </div>
           ))}
         </div>
 
-        {/* Auto-play Indicator */}
-        <div className="absolute top-4 right-4">
-          <div className={`w-3 h-3 rounded-full ${isAutoPlaying ? 'bg-green-400 animate-pulse' : 'bg-gray-400'}`}></div>
+        {/* Botón Anterior */}
+        <button
+          onClick={prevImage}
+          data-aos="fade-right"
+          data-aos-delay="200"
+          className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white w-14 h-14 rounded-full shadow-xl hover:scale-125 transition-transform duration-300 flex items-center justify-center bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 hover:brightness-110"
+          aria-label="Anterior"
+          type="button"
+        >
+          &#8249;
+        </button>
+
+        {/* Botón Siguiente */}
+        <button
+          onClick={() => setCurrentIndex((prevIndex) => (prevIndex + 1) % infiniteImages.length)}
+          data-aos="fade-left"
+          data-aos-delay="200"
+          className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white w-14 h-14 rounded-full shadow-xl hover:scale-125 transition-transform duration-300 flex items-center justify-center bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 hover:brightness-110"
+          aria-label="Siguiente"
+          type="button"
+        >
+          &#8250;
+        </button>
+
+        {/* Indicadores */}
+        <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-3">
+          {images.slice(0, imagesPerSlide).map((_, index) => {
+            const isActive = index === currentIndex % imagesPerSlide;
+            return (
+              <span
+                key={index}
+                className={`h-4 w-4 rounded-full shadow-lg transition-all duration-300 ${
+                  isActive
+                    ? 'bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 scale-125'
+                    : 'bg-gray-300 scale-100'
+                }`}
+              />
+            );
+          })}
         </div>
-      </div>
-
-      {/* Progress Bar */}
-      <div className="mt-6 bg-gray-200 rounded-full h-2 overflow-hidden" data-aos="fade-up" data-aos-delay="500">
-        <div 
-          className="h-full bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-600 rounded-full transition-all duration-700 ease-out"
-          style={{ 
-            width: `${((currentSlide + 1) / institutions.length) * 100}%` 
-          }}
-        ></div>
-      </div>
-
-      {/* Institution Names Below */}
-      <div className="flex flex-wrap justify-center mt-8 gap-4 md:gap-8" data-aos="fade-up" data-aos-delay="600">
-        {institutions.map((institution, index) => (
-          <button
-            key={institution.id}
-            onClick={() => goToSlide(index)}
-            className={`text-sm md:text-base font-medium tracking-wider transition-all duration-300 ${
-              index === currentSlide
-                ? 'text-blue-600 border-b-2 border-blue-600'
-                : 'text-gray-500 hover:text-gray-800'
-            }`}
-          >
-            {institution.name.replace(/^(.{2})/, '')} {/* Oculta el emoji del botón si lo deseas */}
-          </button>
-        ))}
       </div>
     </div>
   );

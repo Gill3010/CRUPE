@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { Video, Users, Mic, Clock10, FileText, ExternalLink, Timer } from 'lucide-react';
 
-const PresentationGuidelines = () => {
+const ConferencePresentationGuidelines = () => {
   useEffect(() => {
     const observerOptions = {
       threshold: 0.1,
@@ -35,10 +35,10 @@ const PresentationGuidelines = () => {
         {/* Header */}
         <div className="text-center mb-12 aos-animate">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-            Requisitos para la Presentación de Ponencias
+            Requisitos para la Presentación de Conferencias
           </h1>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            Indicaciones para los autores y ponentes que participarán en el congreso
+            Indicaciones para los conferencistas que participarán en el congreso
           </p>
         </div>
 
@@ -57,7 +57,7 @@ const PresentationGuidelines = () => {
             <div>
               <h3 className="text-lg font-semibold text-white mb-2 flex items-center gap-2">
                 <Video className="w-5 h-5 text-blue-400" />
-                Video de la ponencia
+                Video de la Conferencia
               </h3>
               <p className="text-gray-300">
                 Enviar un archivo con la presentación oral en formato <strong>video mp4</strong> de máximo 10 minutos.
@@ -140,7 +140,7 @@ const PresentationGuidelines = () => {
                 Duración
               </h3>
               <p className="text-gray-300">
-                30 minutos
+                40 minutos
               </p>
             </div>
           </div>
@@ -149,7 +149,7 @@ const PresentationGuidelines = () => {
         {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row gap-6 justify-center aos-animate">
          <a
-  href="/_events/Requisitosponencias.pdf"
+  href="/_events/Requisitosconferencias.pdf"
   target="_blank"
   rel="noopener noreferrer"
   className="group relative overflow-hidden bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl backdrop-blur-sm border border-white/20"
@@ -176,7 +176,7 @@ const PresentationGuidelines = () => {
         {/* Footer note */}
         <div className="text-center mt-12 aos-animate">
           <p className="text-gray-400 text-sm">
-            Agradecemos seguir estas recomendaciones para garantizar el éxito académico del evento.
+            Seguir estas pautas es clave para lograr el máximo provecho académico del evento.
           </p>
         </div>
       </div>
@@ -184,4 +184,4 @@ const PresentationGuidelines = () => {
   );
 };
 
-export default PresentationGuidelines;
+export default ConferencePresentationGuidelines;

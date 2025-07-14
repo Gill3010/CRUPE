@@ -89,12 +89,12 @@ const EventBannerWithCountdown = () => {
 
         {/* Subtítulo explicativo */}
         <h3 className="text-base md:text-lg text-white opacity-85 mb-2 font-medium tracking-wide">
-          Encuentro Internacional Híbrido
+          Congreso Internacional Híbrido
         </h3>
 
         {/* Título y descripción */}
        <h1 className="text-4xl md:text-6xl font-black mb-2 drop-shadow-lg bg-gradient-to-r from-amber-400 via-yellow-400 to-orange-400 bg-clip-text text-transparent">
-  Tercer Encuentro de Investigaciones Cualitativas
+  Tercer Congreso de Investigaciones Cualitativas
 </h1>
       <h2 className="text-xl md:text-3xl font-light mb-4 opacity-90 drop-shadow-md">
   <span className="font-bold bg-gradient-to-r from-amber-400 via-yellow-400 to-orange-400 bg-clip-text text-transparent">
@@ -127,7 +127,7 @@ const EventBannerWithCountdown = () => {
         📍 <span className="bg-gradient-to-r from-amber-400 via-yellow-400 to-orange-400 bg-clip-text text-transparent">Ubicación:</span>
       </span><br />
       <span className="text-base md:text-lg font-medium">
-        Universidad Nacional Enrique Guzmán y Valle — Escuela de Posgrado (calle Los Agrícolas n.º 280, urb. Las Acacias, La Molina), Lima, Perú 🇵🇪
+        Universidad Nacional Enrique Guzmán y Valle, Lima, Perú 🇵🇪
       </span>
     </div>
 

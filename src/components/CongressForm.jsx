@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { FileText, Upload, User, Mail, MapPin, Camera, CreditCard } from 'lucide-react';
+import { FileText, Upload, User, Mail, MapPin, CreditCard } from 'lucide-react';
 
 // Componentes movidos fuera del render principal para evitar redefinición
 const InputField = ({ name, label, type = 'text', required = false, placeholder, icon: Icon, children, formData, handleInputChange, errors, showAnimations }) => (
@@ -137,7 +137,8 @@ const CongressForm = () => {
     celular : '',
     areaConocimiento: '',
     tipoParticipacion: '',
-    fotoCarnet: null,
+    tema: '',
+    resumenCientifico: null,
     comprobantePago: null
   });
 
@@ -224,7 +225,7 @@ const CongressForm = () => {
     const newErrors = {};
     const requiredFields = [
       'email', 'pais', 'cedula', 'primerNombre', 'primerApellido', 'celular',
-      'areaConocimiento', 'tipoParticipacion'
+      'areaConocimiento', 'tipoParticipacion', 'tema'
     ];
 
     requiredFields.forEach(field => {
@@ -237,8 +238,8 @@ const CongressForm = () => {
       newErrors.email = 'Email inválido';
     }
 
-    if (!formData.fotoCarnet) {
-      newErrors.fotoCarnet = 'La foto tamaño carnet es requerida';
+    if (!formData.resumenCientifico) {
+      newErrors.resumenCientifico = 'El resumen científico es requerido';
     }
 
     setErrors(newErrors);
@@ -279,7 +280,8 @@ const CongressForm = () => {
           celular : '',
           areaConocimiento: '',
           tipoParticipacion: '',
-          fotoCarnet: null,
+          tema: '',
+          resumenCientifico: null,
           comprobantePago: null
         });
         setErrors({});
@@ -301,9 +303,9 @@ const CongressForm = () => {
 
       <div className="relative z-10 container mx-auto px-4 py-12">
         <div className="text-center mb-16" {...(showAnimations && { 'data-aos': 'fade-down' })}>
-          <h1 className="text-5xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent mb-4">
-            III Encuentro de Investigaciones Cualitativas
-          </h1>
+          <h1 className="text-5xl font-bold text-white mb-4">
+  III Congreso de Investigaciones Cualitativas
+</h1>
           <p className="text-xl text-white/70 max-w-2xl mx-auto">
             Completa tu inscripción para participar en este evento académico de alto nivel
           </p>
@@ -457,17 +459,30 @@ const CongressForm = () => {
               <FileText className="w-5 h-5 text-cyan-400" />
               <span>Participación</span>
             </h2>
-            <SelectField
-              name="tipoParticipacion"
-              label="Tipo de Participación"
-              required
-              options={['Ponencia', 'Conferencia', 'Taller', 'Panelista', 'Facilitador de Taller', 'Libros']}
-              icon={FileText}
-              formData={formData}
-              handleInputChange={handleInputChange}
-              errors={errors}
-              showAnimations={showAnimations}
-            />
+            <div className="space-y-6">
+              <SelectField
+                name="tipoParticipacion"
+                label="Tipo de Participación"
+                required
+                options={['Ponencia', 'Conferencia', 'Taller', 'Panelista', 'Facilitador de Taller', 'Libros']}
+                icon={FileText}
+                formData={formData}
+                handleInputChange={handleInputChange}
+                errors={errors}
+                showAnimations={showAnimations}
+              />
+              <InputField
+                name="tema"
+                label="Tema"
+                required
+                placeholder="Ingresa el tema de tu participación"
+                icon={FileText}
+                formData={formData}
+                handleInputChange={handleInputChange}
+                errors={errors}
+                showAnimations={showAnimations}
+              />
+            </div>
           </div>
 
           {/* Archivos */}
@@ -478,11 +493,11 @@ const CongressForm = () => {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <FileField
-                name="fotoCarnet"
-                label="Foto Tamaño Carnet"
+                name="resumenCientifico"
+                label="Resumen Científico (Formato Word o PDF)"
                 required
-                accept="image/*"
-                icon={Camera}
+                accept=".doc,.docx,.pdf"
+                icon={FileText}
                 formData={formData}
                 handleFileChange={handleFileChange}
                 errors={errors}

@@ -88,11 +88,11 @@ export default function EventCalendar() {
 
       <div className="relative z-10">
         <div className="text-center mb-8" data-aos="fade-up">
-          <h2 className="text-5xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent mb-4">
-            Cronograma del Congreso
-          </h2>
+          <h2 className="text-5xl font-bold text-white mb-4">
+  Cronograma del Congreso
+</h2>
           <p className="text-xl text-white/80 max-w-3xl mx-auto">
-            Consulta las actividades del III Encuentro de Investigaciones Cualitativas
+            Consulta las actividades del III Congreso de Investigaciones Cualitativas
           </p>
         </div>
 
