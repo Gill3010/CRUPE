@@ -30,3 +30,4 @@ dist.zip
 *.mov
 *.avi
 *.rar
+api/config.php
