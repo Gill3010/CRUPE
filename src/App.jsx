@@ -21,6 +21,8 @@ import ConferencePresentationGuidelines from './components/ConferencePresentatio
 import CongressOverview from './components/CongressOverview';
 import PanelRequirements from './components/PanelRequirements';
 import WorkshopRequirements from './components/WorkshopRequirements';
+import AssistantRegistrationForm from './components/AssistantRegistrationForm';
+import ParticipationSelector from './components/ParticipationSelector';
 
 
 
@@ -71,6 +73,10 @@ const AppContent = () => {
     '/ejes-tematicos',
     '/presentacion-panelistas',
     '/presentacion-talleres',
+    '/asistencia',
+    '/tipo-participacion',
+
+
 
     
 
@@ -106,6 +112,8 @@ const AppContent = () => {
           {location.pathname === '/ejes-tematicos' && <CongressOverview />}
           {location.pathname === '/presentacion-panelistas' && <PanelRequirements/>}
           {location.pathname === '/presentacion-talleres' && <WorkshopRequirements/>}
+          {location.pathname === '/asistencia' && <AssistantRegistrationForm/>}
+          {location.pathname === '/tipo-participacion' && <ParticipationSelector/>}
 
 
 

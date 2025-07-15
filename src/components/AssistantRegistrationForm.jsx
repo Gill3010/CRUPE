@@ -124,7 +124,7 @@ FileField.propTypes = {
   showAnimations: PropTypes.bool.isRequired,
 };
 
-const CongressForm = () => {
+const AssistantRegistrationForm = () => {
   const [formData, setFormData] = useState({
     email: '',
     pais: '',
@@ -136,9 +136,7 @@ const CongressForm = () => {
     segundoApellido: '',
     celular : '',
     areaConocimiento: '',
-    tipoParticipacion: '',
-    tema: '',
-    resumenCientifico: null,
+    tipoParticipacion: 'Asistente',
     comprobantePago: null
   });
 
@@ -225,7 +223,7 @@ const CongressForm = () => {
     const newErrors = {};
     const requiredFields = [
       'email', 'pais', 'cedula', 'primerNombre', 'primerApellido', 'celular',
-      'areaConocimiento', 'tipoParticipacion', 'tema'
+      'areaConocimiento', 'tipoParticipacion'
     ];
 
     requiredFields.forEach(field => {
@@ -236,10 +234,6 @@ const CongressForm = () => {
 
     if (formData.email && !/\S+@\S+\.\S+/.test(formData.email)) {
       newErrors.email = 'Email inválido';
-    }
-
-    if (!formData.resumenCientifico) {
-      newErrors.resumenCientifico = 'El resumen científico es requerido';
     }
 
     setErrors(newErrors);
@@ -259,7 +253,7 @@ const CongressForm = () => {
         }
       });
 
-      const response = await fetch('https://relaticpanama.org/_events/api/submit_inscriptions.php', {
+      const response = await fetch('https://relaticpanama.org/_events/api/submit_assistance.php', {
         method: 'POST',
         body: data
       });
@@ -279,9 +273,7 @@ const CongressForm = () => {
           segundoApellido: '',
           celular : '',
           areaConocimiento: '',
-          tipoParticipacion: '',
-          tema: '',
-          resumenCientifico: null,
+          tipoParticipacion: 'Asistente',
           comprobantePago: null
         });
         setErrors({});
@@ -307,7 +299,7 @@ const CongressForm = () => {
   III Congreso de Investigaciones Cualitativas
 </h1>
           <p className="text-xl text-white/70 max-w-2xl mx-auto">
-            Completa tu inscripción para participar en este evento académico de alto nivel
+            Formulario de inscripción exclusivo para asistentes
           </p>
         </div>
 
@@ -460,28 +452,20 @@ const CongressForm = () => {
               <span>Participación</span>
             </h2>
             <div className="space-y-6">
-              <SelectField
-                name="tipoParticipacion"
-                label="Tipo de Participación"
-                required
-                options={['Ponencia', 'Conferencia', 'Carteles', 'Panelista', 'Facilitador de Taller', 'Libros']}
-                icon={FileText}
-                formData={formData}
-                handleInputChange={handleInputChange}
-                errors={errors}
-                showAnimations={showAnimations}
-              />
-              <InputField
-                name="tema"
-                label="Tema"
-                required
-                placeholder="Ingresa el tema de tu participación"
-                icon={FileText}
-                formData={formData}
-                handleInputChange={handleInputChange}
-                errors={errors}
-                showAnimations={showAnimations}
-              />
+              <div className="space-y-2" {...(showAnimations && { 'data-aos': 'fade-up', 'data-aos-delay': '200' })}>
+                <label className="flex items-center space-x-2 text-sm font-medium text-white/90">
+                  <FileText className="w-4 h-4 text-cyan-400" />
+                  <span>Tipo de Participación</span>
+                  <span className="text-pink-400">*</span>
+                </label>
+                <input
+                  type="text"
+                  name="tipoParticipacion"
+                  value="Asistente"
+                  readOnly
+                  className="w-full bg-white/5 text-white rounded-xl p-3 border border-white/20 cursor-not-allowed opacity-70"
+                />
+              </div>
             </div>
           </div>
 
@@ -491,18 +475,7 @@ const CongressForm = () => {
               <Upload className="w-5 h-5 text-cyan-400" />
               <span>Documentos</span>
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <FileField
-                name="resumenCientifico"
-                label="Resumen Científico (Formato Word o PDF)"
-                required
-                accept=".doc,.docx,.pdf"
-                icon={FileText}
-                formData={formData}
-                handleFileChange={handleFileChange}
-                errors={errors}
-                showAnimations={showAnimations}
-              />
+            <div className="grid grid-cols-1 gap-6">
               <FileField
                 name="comprobantePago"
                 label="Comprobante de Pago"
@@ -535,4 +508,4 @@ const CongressForm = () => {
   );
 };
 
-export default CongressForm;
+export default AssistantRegistrationForm;

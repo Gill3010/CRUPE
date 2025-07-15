@@ -36,7 +36,7 @@ const Footer = () => {
             <li><a href="https://relaticpanama.org/_events" className="hover:text-amber-300 transition duration-300 hover:translate-x-1">Inicio</a></li>
             <li><a href="/_events/cronograma" className="hover:text-amber-300 transition duration-300 hover:translate-x-1">Cronograma</a></li>
             <li><a href="/_events/comision-organizadora" className="hover:text-amber-300 transition duration-300 hover:translate-x-1">Comisión Organizadora</a></li>
-            <li><a href="/_events/inscripcion" className="hover:text-amber-300 transition duration-300 hover:translate-x-1">Inscripciones</a></li>
+            <li><a href="/_events/tipo-participacion" className="hover:text-amber-300 transition duration-300 hover:translate-x-1">Inscripciones</a></li>
           </ul>
         </div>
 

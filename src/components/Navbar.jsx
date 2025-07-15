@@ -99,7 +99,7 @@ const Navbar = () => {
 
             {/* CTA Button */}
             <a
-              href="/_events/inscripcion"
+              href="/_events/tipo-participacion"
               className="relative px-6 py-2 bg-gradient-to-r from-amber-600 via-yellow-600 to-orange-700 text-white rounded-full font-semibold hover:from-amber-500 hover:via-yellow-500 hover:to-orange-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-amber-500/25"
             >
               <span className="relative z-10 flex items-center space-x-2">
@@ -171,7 +171,7 @@ const Navbar = () => {
 
               <div className="pt-4 border-t border-amber-400/20">
                 <a
-                  href="/_events/inscripcion"
+                  href="/_events/tipo-participacion"
                   className="flex items-center justify-center space-x-2 w-full px-6 py-3 bg-gradient-to-r from-amber-600 via-yellow-600 to-orange-700 text-white rounded-lg font-semibold hover:from-amber-500 hover:via-yellow-500 hover:to-orange-600 transition-all duration-300 transform hover:scale-105"
                   onClick={() => setIsOpen(false)}
                 >

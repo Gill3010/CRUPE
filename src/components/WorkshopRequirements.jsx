@@ -50,116 +50,116 @@ const WorkshopRequirements = () => {
           </h2>
 
           {/* Punto 1 */}
-          <div className="flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300">
-            <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold">
-              1
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold text-white mb-2 flex items-center gap-2">
-                <NotebookPen className="w-5 h-5 text-blue-400" />
-                Formato de presentación
-              </h3>
-              <p className="text-gray-300">
-                Debe incluir título (en español e inglés), autores (sin grados), afiliación institucional, correo, duración (máx. 90 minutos), fundamentación, objetivos, destinatarios, contenidos, metodología, materiales requeridos y referencias bibliográficas.
-              </p>
-            </div>
-          </div>
+<div className="flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300">
+  <div className="flex-shrink-0 w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold">
+    1
+  </div>
+  <div>
+    <h3 className="text-lg font-semibold text-white mb-2 flex items-center gap-2">
+      <NotebookPen className="w-5 h-5 text-blue-400" />
+      Formato de presentación
+    </h3>
+    <p className="text-gray-300">
+      Debe incluir título (en español e inglés), autores (sin grados), afiliación institucional, correo, duración (máx. 90 minutos), fundamentación, objetivos, destinatarios, contenidos, metodología, materiales requeridos y referencias bibliográficas.
+    </p>
+  </div>
+</div>
 
-          {/* Punto 2 */}
-          <div className="flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300">
-            <div className="w-8 h-8 bg-gradient-to-r from-pink-400 to-purple-600 rounded-full flex items-center justify-center text-white font-bold">
-              2
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold text-white mb-2 flex items-center gap-2">
-                <FolderEdit className="w-5 h-5 text-pink-400" />
-                Fundamentación y objetivos
-              </h3>
-              <p className="text-gray-300">
-                Se debe explicar la relevancia del taller y qué objetivos pretende alcanzar con los asistentes.
-              </p>
-            </div>
-          </div>
+{/* Punto 2 */}
+<div className="flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300">
+  <div className="flex-shrink-0 w-8 h-8 bg-gradient-to-r from-pink-400 to-purple-600 rounded-full flex items-center justify-center text-white font-bold">
+    2
+  </div>
+  <div>
+    <h3 className="text-lg font-semibold text-white mb-2 flex items-center gap-2">
+      <FolderEdit className="w-5 h-5 text-pink-400" />
+      Fundamentación y objetivos
+    </h3>
+    <p className="text-gray-300">
+      Se debe explicar la relevancia del taller y qué objetivos pretende alcanzar con los asistentes.
+    </p>
+  </div>
+</div>
 
-          {/* Punto 3 */}
-          <div className="flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300">
-            <div className="w-8 h-8 bg-gradient-to-r from-blue-400 to-indigo-600 rounded-full flex items-center justify-center text-white font-bold">
-              3
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold text-white mb-2 flex items-center gap-2">
-                <Users className="w-5 h-5 text-blue-400" />
-                Destinatarios
-              </h3>
-              <p className="text-gray-300">
-                Especificar el público objetivo del taller, así como los requisitos previos necesarios para participar.
-              </p>
-            </div>
-          </div>
+{/* Punto 3 */}
+<div className="flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300">
+  <div className="flex-shrink-0 w-8 h-8 bg-gradient-to-r from-blue-400 to-indigo-600 rounded-full flex items-center justify-center text-white font-bold">
+    3
+  </div>
+  <div>
+    <h3 className="text-lg font-semibold text-white mb-2 flex items-center gap-2">
+      <Users className="w-5 h-5 text-blue-400" />
+      Destinatarios
+    </h3>
+    <p className="text-gray-300">
+      Especificar el público objetivo del taller, así como los requisitos previos necesarios para participar.
+    </p>
+  </div>
+</div>
 
-          {/* Punto 4 */}
-          <div className="flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300">
-            <div className="w-8 h-8 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full flex items-center justify-center text-white font-bold">
-              4
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold text-white mb-2 flex items-center gap-2">
-                <FolderOpenDot className="w-5 h-5 text-purple-400" />
-                Metodología y contenidos
-              </h3>
-              <p className="text-gray-300">
-                Describir las actividades, temas a abordar y cómo se distribuirá el tiempo.
-              </p>
-            </div>
-          </div>
+{/* Punto 4 */}
+<div className="flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300">
+  <div className="flex-shrink-0 w-8 h-8 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full flex items-center justify-center text-white font-bold">
+    4
+  </div>
+  <div>
+    <h3 className="text-lg font-semibold text-white mb-2 flex items-center gap-2">
+      <FolderOpenDot className="w-5 h-5 text-purple-400" />
+      Metodología y contenidos
+    </h3>
+    <p className="text-gray-300">
+      Describir las actividades, temas a abordar y cómo se distribuirá el tiempo.
+    </p>
+  </div>
+</div>
 
-          {/* Punto 5 */}
-          <div className="flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300">
-            <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full flex items-center justify-center text-white font-bold">
-              5
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold text-white mb-2 flex items-center gap-2">
-                <Timer className="w-5 h-5 text-indigo-400" />
-                Duración del taller
-              </h3>
-              <p className="text-gray-300">
-                La duración máxima sugerida para cada taller es de <strong>90 minutos</strong>.
-              </p>
-            </div>
-          </div>
+{/* Punto 5 */}
+<div className="flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300">
+  <div className="flex-shrink-0 w-8 h-8 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full flex items-center justify-center text-white font-bold">
+    5
+  </div>
+  <div>
+    <h3 className="text-lg font-semibold text-white mb-2 flex items-center gap-2">
+      <Timer className="w-5 h-5 text-indigo-400" />
+      Duración del taller
+    </h3>
+    <p className="text-gray-300">
+      La duración máxima sugerida para cada taller es de <strong>90 minutos</strong>.
+    </p>
+  </div>
+</div>
 
-          {/* Punto 6 */}
-          <div className="flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300">
-            <div className="w-8 h-8 bg-gradient-to-r from-pink-400 to-purple-600 rounded-full flex items-center justify-center text-white font-bold">
-              6
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold text-white mb-2 flex items-center gap-2">
-                <FileText className="w-5 h-5 text-pink-400" />
-                Número de participantes
-              </h3>
-              <p className="text-gray-300">
-                Indicar el <strong>cupo mínimo y máximo</strong> permitido para el desarrollo óptimo del taller.
-              </p>
-            </div>
-          </div>
+{/* Punto 6 */}
+<div className="flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300">
+  <div className="flex-shrink-0 w-8 h-8 bg-gradient-to-r from-pink-400 to-purple-600 rounded-full flex items-center justify-center text-white font-bold">
+    6
+  </div>
+  <div>
+    <h3 className="text-lg font-semibold text-white mb-2 flex items-center gap-2">
+      <FileText className="w-5 h-5 text-pink-400" />
+      Número de participantes
+    </h3>
+    <p className="text-gray-300">
+      Indicar el <strong>cupo mínimo y máximo</strong> permitido para el desarrollo óptimo del taller.
+    </p>
+  </div>
+</div>
 
-          {/* Punto 7 */}
-          <div className="flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300">
-            <div className="w-8 h-8 bg-gradient-to-r from-indigo-400 to-blue-500 rounded-full flex items-center justify-center text-white font-bold">
-              7
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold text-white mb-2 flex items-center gap-2">
-                <Users className="w-5 h-5 text-indigo-400" />
-                Certificados
-              </h3>
-              <p className="text-gray-300">
-                Serán entregados solo a quienes <strong>se inscriban y participen</strong> efectivamente en el taller.
-              </p>
-            </div>
-          </div>
+{/* Punto 7 */}
+<div className="flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300">
+  <div className="flex-shrink-0 w-8 h-8 bg-gradient-to-r from-indigo-400 to-blue-500 rounded-full flex items-center justify-center text-white font-bold">
+    7
+  </div>
+  <div>
+    <h3 className="text-lg font-semibold text-white mb-2 flex items-center gap-2">
+      <Users className="w-5 h-5 text-indigo-400" />
+      Certificados
+    </h3>
+    <p className="text-gray-300">
+      Serán entregados solo a quienes <strong>se inscriban y participen</strong> efectivamente en el taller.
+    </p>
+  </div>
+</div>
         </div>
         {/* Action Buttons */}
 <div className="flex flex-col sm:flex-row gap-6 justify-center aos-animate mt-12">
@@ -176,7 +176,7 @@ const WorkshopRequirements = () => {
     </div>
   </a>
 
-  <a
+  {/* <a
     href="/assets/PlantillaTalleres.pdf"
     target="_blank"
     rel="noopener noreferrer"
@@ -187,7 +187,7 @@ const WorkshopRequirements = () => {
       <ExternalLink className="w-6 h-6" />
       <span className="text-lg">Ver Plantilla</span>
     </div>
-  </a>
+  </a> */}
 </div>
 
         {/* Footer note */}

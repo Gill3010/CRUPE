@@ -184,7 +184,7 @@ const EventBannerWithCountdown = () => {
 {/* Botón de inscripción */}
 <div data-aos="fade-up" data-aos-delay="700">
   <a
-    href="/_events/inscripcion"
+    href="/_events/tipo-participacion"
     className="px-8 py-3 bg-white/25 backdrop-blur-sm border-2 border-white/40 text-white rounded-full hover:bg-white/35 transition-all duration-300 font-semibold text-lg transform hover:scale-105 shadow-lg hover:shadow-xl"
   >
     🚀 ¡INSCRÍBETE YA!

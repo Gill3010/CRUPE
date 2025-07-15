@@ -138,7 +138,7 @@ const BookPresentationGuidelines = () => {
             </div>
           </a>
 
-          <a
+          {/* <a
             href="BookTemplate.pptx"
             className="group relative overflow-hidden bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl backdrop-blur-sm border border-white/20"
           >
@@ -147,7 +147,7 @@ const BookPresentationGuidelines = () => {
               <ExternalLink className="w-6 h-6" />
               <span className="text-lg">Ver Plantilla</span>
             </div>
-          </a>
+          </a> */}
         </div>
 
         {/* Footer note */}

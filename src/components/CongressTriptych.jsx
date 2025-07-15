@@ -197,7 +197,7 @@ const CongressTriptych = () => {
               </ul>
             </div>
             <div className="text-center">
-              <a href="/_events/inscripcion" className="block">
+              <a href="/_events/tipo-participacion" className="block">
   <div className="bg-gradient-to-r from-yellow-400 to-yellow-300 hover:from-yellow-300 hover:to-yellow-200 text-purple-800 font-black py-3 md:py-4 px-4 md:px-6 rounded-xl cursor-pointer transition-all duration-300 shadow-2xl hover:shadow-yellow-400/50 hover:scale-105 text-sm md:text-base text-center">
     🚀 ¡INSCRÍBETE YA!
   </div>
