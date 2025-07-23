@@ -112,7 +112,7 @@ const CongressTriptych = () => {
         </li>
         <li>
           <a href="/_events/cartel-cientifico" className="flex items-center text-gray-700 hover:text-yellow-600 transition-all duration-200">
-            <span className="mr-2">🖼️</span>Carteles
+            <span className="mr-2">🖼️</span>Carteles Digitales
           </a>
         </li>
         <li>

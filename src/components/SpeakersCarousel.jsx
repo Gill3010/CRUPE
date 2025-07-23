@@ -13,6 +13,7 @@ import Wilfredo from '/assets/Wilfredo.jpeg';
 import Claudia from '/assets/Claudia.jpeg';
 import Antonio from '/assets/Antonio.png';
 import Rita from '/assets/Rita.jpeg';
+import Silverio from '/assets/Silverio.jpeg';
 
 const speakers = [
   {
@@ -104,6 +105,15 @@ const speakers = [
     orcid: "0000-0002-0137-6005",
     country: "Brasil",
     flag: "🇧🇷"
+  },
+  {
+    id: 11,
+    name: "Dr. Silverio Limacho",
+    topic: "Comisión Organizadora",
+    image: Silverio,
+    orcid: "0000-0001-9627-1750",
+    country: "Bolivia",
+    flag: "🇧🇴"
   }
 ];
 

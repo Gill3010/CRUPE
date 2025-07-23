@@ -464,7 +464,7 @@ const CongressForm = () => {
                 name="tipoParticipacion"
                 label="Tipo de Participación"
                 required
-                options={['Ponencia', 'Conferencia', 'Carteles', 'Panelista', 'Facilitador de Taller', 'Libros']}
+                options={['Ponencia', 'Conferencia', 'Carteles Digitales', 'Panelista', 'Facilitador de Taller', 'Libros']}
                 icon={FileText}
                 formData={formData}
                 handleInputChange={handleInputChange}

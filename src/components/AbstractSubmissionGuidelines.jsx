@@ -62,12 +62,12 @@ const AbstractSubmissionGuidelines = () => {
     <p className="text-gray-300">
       Registrarse en la plataforma del Congreso disponible en:&nbsp;
       <a
-        href="https://relaticpanama.org/_events/inscripcion"
+        href="https://relaticpanama.org/_events/tipo-participacion"
         target="_blank"
         rel="noopener noreferrer"
         className="underline text-blue-300 hover:text-blue-200 transition break-all"
       >
-        https://relaticpanama.org/_events/inscripcion
+        https://relaticpanama.org/_events/tipo-participacion
       </a>
     </p>
   </div>
@@ -92,7 +92,7 @@ const AbstractSubmissionGuidelines = () => {
                 <li>Tipo de trabajo (entre paréntesis), Arial 12 pts, centrado.</li>
                 <li>Nombre(s) del autor(es), alineado(s) a la derecha, máx. 3.</li>
                 <li>Institución y país, Arial 11 pts.</li>
-                <li>Identificador ORCID (<a href="https://orcid.org/" className="underline text-blue-300" target="_blank">https://orcid.org/</a>)</li>
+                <li>Identificador ORCID (<a href="https://orcid.org/register" className="underline text-blue-300" target="_blank">https://orcid.org/register</a>)</li>
                 <li>Correo electrónico de contacto.</li>
                 <li>Resumen en español y abstract en inglés (250 palabras máx. cada uno).</li>
                 <li>Palabras clave y keywords (máximo 5).</li>

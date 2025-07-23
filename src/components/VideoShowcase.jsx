@@ -179,12 +179,20 @@ const VideoCard = ({ video }) => (
           <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl mb-6 shadow-2xl" data-aos="zoom-in" data-aos-delay="100">
             <span className="text-3xl">🎬</span>
           </div>
-          <h1 className="text-5xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent mb-4" data-aos="fade-up" data-aos-delay="200">
-            Perú: Cultura Milenaria y Cuna del III Congreso
-          </h1>
-          <p className="text-xl text-white/70 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="300">
-            Conoce la sede del evento
-          </p>
+          <h1
+  className="text-5xl font-bold text-white mb-4"
+  data-aos="fade-up"
+  data-aos-delay="200"
+>
+  Perú: Cultura Milenaria y Cuna del III Congreso
+</h1>
+<p
+  className="text-xl text-white/70 max-w-2xl mx-auto"
+  data-aos="fade-up"
+  data-aos-delay="300"
+>
+  Conoce la sede del evento
+</p>
         </div>
 
         {/* Videos Scroll */}

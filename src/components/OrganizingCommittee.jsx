@@ -13,6 +13,7 @@ import Monica from '/assets/Monica.jpeg';
 import Isabel from '/assets/Isabel.jpeg';
 import Honorio from '/assets/Honorio.jpeg';
 import Antonio from '/assets/Antonio.png';
+import Silverio from '/assets/Silverio.jpeg';
 
 const organizingTeam = [
   {
@@ -72,11 +73,18 @@ const organizingTeam = [
     orcid: 'https://orcid.org/0000-0001-6889-2234',
   },
   {
-    name: 'Dr. Antonio Rolando Montoya Ponte',
+    name: 'Dr. Antonio Montoya',
     role: 'Comité de logística presencial y a distancia (Hospedaje y Estadía)',
     institution: <>Universidad Nacional de Educación: Lima, Perú <span className="text-xl" role="img" aria-label="Bandera de Perú">🇵🇪</span></>,
     image: Antonio,
     orcid: 'https://orcid.org/0000-0003-4597-3976',
+  },
+  {
+    name: 'Dr. Silverio Limacho',
+    role: 'Comisión Organizadora',
+    institution: <>Universidad Pedagógica de la ciudad de Sucre, Bolivia <span className="text-xl" role="img" aria-label="Bandera de Perú">🇧🇴</span></>,
+    image: Silverio,
+    orcid: 'https://orcid.org/0000-0001-9627-1750',
   }
 ];
 

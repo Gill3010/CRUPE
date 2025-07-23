@@ -13,7 +13,7 @@ import OrganizingCommittee from './components/OrganizingCommittee';
 import VideoShowcase from './components/VideoShowcase';
 import VideoGalleryEnterview from './components/VideoGalleryEnterview';
 import PosterGuidelines from './components/PosterGuidelines';
-import BookPresentationGuidelines from './components/BookPresentationGuidelines'; 
+import BookPresentationGuidelines from './components/BookPresentationGuidelines';
 import PresentationGuidelines from './components/Presentationguidelines';
 import AbstractSubmissionGuidelines from './components/AbstractSubmissionGuidelines';
 import InvestmentTable from './components/InvestmentTable';
@@ -23,8 +23,8 @@ import PanelRequirements from './components/PanelRequirements';
 import WorkshopRequirements from './components/WorkshopRequirements';
 import AssistantRegistrationForm from './components/AssistantRegistrationForm';
 import ParticipationSelector from './components/ParticipationSelector';
-
-
+import PaymentMethods from './components/PaymentMethods';
+import MetricsDashboard from './components/MetricsDashboard'; // ✅ NUEVO
 
 const EventCalendar = lazy(() => import('./components/EventCalendar'));
 
@@ -59,7 +59,6 @@ const RedirectToEventsButton = () => {
 const AppContent = () => {
   const location = useLocation();
 
-  // 📌 Rutas sin Navbar/Footer
   const noLayoutRoutes = [
     '/inscripcion',
     '/cronograma',
@@ -75,11 +74,6 @@ const AppContent = () => {
     '/presentacion-talleres',
     '/asistencia',
     '/tipo-participacion',
-
-
-
-    
-
   ];
 
   if (noLayoutRoutes.includes(location.pathname)) {
@@ -93,7 +87,12 @@ const AppContent = () => {
       >
         <RedirectToEventsButton />
 
-        {location.pathname === '/inscripcion' && <CongressForm />}
+        {location.pathname === '/inscripcion' && (
+          <>
+            <CongressForm />
+            <PaymentMethods />
+          </>
+        )}
 
         {location.pathname === '/cronograma' && (
           <Suspense fallback={<div>Cargando cronograma...</div>}>
@@ -107,18 +106,29 @@ const AppContent = () => {
         {location.pathname === '/presentacion-libros' && <BookPresentationGuidelines />}
         {location.pathname === '/presentacion-ponencias' && <PresentationGuidelines />}
         {location.pathname === '/presentacion-resumen' && <AbstractSubmissionGuidelines />}
-         {location.pathname === '/inversion' && <InvestmentTable />}
-          {location.pathname === '/conferencias' && <ConferencePresentationGuidelines />}
-          {location.pathname === '/ejes-tematicos' && <CongressOverview />}
-          {location.pathname === '/presentacion-panelistas' && <PanelRequirements/>}
-          {location.pathname === '/presentacion-talleres' && <WorkshopRequirements/>}
-          {location.pathname === '/asistencia' && <AssistantRegistrationForm/>}
-          {location.pathname === '/tipo-participacion' && <ParticipationSelector/>}
+        {location.pathname === '/inversion' && (
+          <>
+            <InvestmentTable />
+            <PaymentMethods />
+          </>
+        )}
 
-
-
-
-        {/* Si necesitas más rutas sin Navbar/Footer, agrégalas aquí */}
+        {location.pathname === '/conferencias' && <ConferencePresentationGuidelines />}
+        {location.pathname === '/ejes-tematicos' && <CongressOverview />}
+        {location.pathname === '/presentacion-panelistas' && <PanelRequirements />}
+        {location.pathname === '/presentacion-talleres' && <WorkshopRequirements />}
+        {location.pathname === '/asistencia' && (
+          <>
+            <AssistantRegistrationForm />
+            <PaymentMethods />
+          </>
+        )}
+        {location.pathname === '/tipo-participacion' && (
+          <>
+            <ParticipationSelector />
+            <PaymentMethods />
+          </>
+        )}
       </section>
     );
   }
@@ -126,6 +136,8 @@ const AppContent = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
+
+      {/* Banner justo debajo del navbar, solo en "/" */}
       {location.pathname === '/' && <EventBannerWithCountdown />}
 
       <main className="flex-grow">
@@ -134,6 +146,11 @@ const AppContent = () => {
             path="/"
             element={
               <>
+                {/* Métricas justo antes de SpeakersCarousel */}
+                <section className="px-4 sm:px-6 lg:px-8 py-12">
+                  <MetricsDashboard />
+                </section>
+
                 <SpeakersCarousel />
 
                 <section className="px-4 sm:px-6 lg:px-8 py-12">
@@ -142,7 +159,7 @@ const AppContent = () => {
 
                 <section id="patent-cards">
                   <ResponsiveGrid>
-                    {/* Aquí puedes agregar más tarjetas si las tienes */}
+                    {/* Puedes agregar tarjetas aquí si lo deseas */}
                   </ResponsiveGrid>
 
                   <div className="mt-16">
