@@ -110,7 +110,7 @@ const Footer = () => {
           Promoviendo la innovación en la investigación cualitativa a través de las TIC y la IA.
         </p>
         <p className="text-xs text-gray-600 mt-2">
-          Desarrollado por{' '}
+          Powered by{' '}
           <a
             href="https://www.innovaproyectos.org"
             target="_blank"

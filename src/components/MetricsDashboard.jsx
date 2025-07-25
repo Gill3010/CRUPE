@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Users, CheckCircle, PieChart, TrendingUp } from 'lucide-react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const MetricsDashboard = () => {
   const [suscriptions, setSuscriptions] = useState(null);
@@ -7,6 +9,14 @@ const MetricsDashboard = () => {
   const [distribution, setDistribution] = useState([]);
 
   useEffect(() => {
+    // Inicializar AOS con la misma configuración del CongressTriptych
+    AOS.init({
+      once: false,
+      duration: 1000,
+      offset: 50,
+      disable: false,
+    });
+
     fetch('https://relaticpanama.org/api/get_total_suscriptions.php')
       .then(res => res.json())
       .then(data => setSuscriptions(data.total));
@@ -33,7 +43,7 @@ const MetricsDashboard = () => {
         {/* Título centrado con ícono */}
         <div
           className="flex flex-col items-center justify-center text-center mb-6"
-          data-aos="fade-down"
+          data-aos="fade-up"
         >
           <div className="flex items-center space-x-3">
             <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-2xl shadow-lg">
@@ -48,7 +58,7 @@ const MetricsDashboard = () => {
         {/* Grid principal */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Métricas principales */}
-          <div className="grid grid-cols-2 gap-4" data-aos="fade-right">
+          <div className="grid grid-cols-2 gap-4" data-aos="fade-up" data-aos-delay="200">
             {/* Inscritos */}
             <div className="bg-white/10 backdrop-blur-lg border border-cyan-500/20 rounded-2xl p-3 shadow-md hover:scale-[1.02] transition">
               <div className="flex items-center space-x-2 mb-1">
@@ -73,7 +83,7 @@ const MetricsDashboard = () => {
           </div>
 
           {/* Distribución */}
-          <div className="lg:col-span-2" data-aos="fade-left">
+          <div className="lg:col-span-2" data-aos="fade-up" data-aos-delay="400">
             <div className="bg-white/10 backdrop-blur-lg border border-slate-500/20 rounded-2xl p-3 shadow-md">
               <div className="flex items-center space-x-2 mb-4">
                 <PieChart className="w-5 h-5 text-emerald-400" />

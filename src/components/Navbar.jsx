@@ -38,36 +38,36 @@ const Navbar = () => {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <a href="https://relaticpanama.org/_events" className="block">
-            <div className="flex items-center space-x-3">
+          <a href="https://relaticpanama.org/_events" className="block flex-shrink-0">
+            <div className="flex items-center space-x-2 lg:space-x-3">
               <div className="relative">
-                <div className="w-10 h-10 bg-gradient-to-br from-amber-500 via-yellow-600 to-orange-700 rounded-lg flex items-center justify-center shadow-lg">
-                  <Presentation className="w-6 h-6 text-white" />
+                <div className="w-8 h-8 lg:w-10 lg:h-10 bg-gradient-to-br from-amber-500 via-yellow-600 to-orange-700 rounded-lg flex items-center justify-center shadow-lg">
+                  <Presentation className="w-5 h-5 lg:w-6 lg:h-6 text-white" />
                 </div>
-                <div className="absolute -top-1 -right-1 w-3 h-3 bg-gradient-to-r from-yellow-400 to-amber-500 rounded-full animate-pulse" />
+                <div className="absolute -top-1 -right-1 w-2 h-2 lg:w-3 lg:h-3 bg-gradient-to-r from-yellow-400 to-amber-500 rounded-full animate-pulse" />
               </div>
-              <div className="text-white">
-                <h1 className="text-xl font-bold bg-gradient-to-r from-amber-400 via-yellow-400 to-orange-400 bg-clip-text text-transparent">
+              <div className="text-white min-w-0">
+                <h1 className="text-base lg:text-xl font-bold bg-gradient-to-r from-amber-400 via-yellow-400 to-orange-400 bg-clip-text text-transparent whitespace-nowrap">
                   Tercer Congreso
                 </h1>
-                <span className="text-xs text-gray-300 tracking-wider">INVESTIGACIONES CUALITATIVAS</span>
+                <span className="text-xs text-gray-300 tracking-wider whitespace-nowrap">INVESTIGACIONES CUALITATIVAS</span>
               </div>
             </div>
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-4 lg:space-x-6 xl:space-x-8">
             <a 
-              href="/_events/" 
-              className="text-white hover:text-amber-300 transition-colors duration-300 font-medium relative group"
+              href="https://relaticpanama.org" 
+              className="text-white hover:text-amber-300 transition-colors duration-300 font-medium relative group whitespace-nowrap text-sm lg:text-base ml-8 lg:ml-12"
             >
-              
+              Ir a RELATIC
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-amber-400 to-yellow-400 transition-all duration-300 group-hover:w-full" />
             </a>
 
             <a 
               href="/_events/cronograma" 
-              className="text-white hover:text-amber-300 transition-colors duration-300 font-medium relative group"
+              className="text-white hover:text-amber-300 transition-colors duration-300 font-medium relative group whitespace-nowrap text-sm lg:text-base"
             >
               Cronograma
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-amber-400 to-yellow-400 transition-all duration-300 group-hover:w-full" />
@@ -75,7 +75,7 @@ const Navbar = () => {
 
             <a 
               href="/_events/ejes-tematicos" 
-              className="text-white hover:text-amber-300 transition-colors duration-300 font-medium relative group"
+              className="text-white hover:text-amber-300 transition-colors duration-300 font-medium relative group whitespace-nowrap text-sm lg:text-base"
             >
               Ejes Temáticos
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-amber-400 to-yellow-400 transition-all duration-300 group-hover:w-full" />
@@ -83,7 +83,7 @@ const Navbar = () => {
 
             <a 
               href="/_events/comision-organizadora" 
-              className="text-white hover:text-amber-300 transition-colors duration-300 font-medium relative group"
+              className="text-white hover:text-amber-300 transition-colors duration-300 font-medium relative group whitespace-nowrap text-sm lg:text-base"
             >
               Comisión Organizadora
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-amber-400 to-yellow-400 transition-all duration-300 group-hover:w-full" />
@@ -91,7 +91,7 @@ const Navbar = () => {
 
             <a 
               href="https://relaticpanama.org/suscription" 
-              className="text-white hover:text-amber-300 transition-colors duration-300 font-medium relative group"
+              className="text-white hover:text-amber-300 transition-colors duration-300 font-medium relative group whitespace-nowrap text-sm lg:text-base"
             >
               Afíliate a RELATIC
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-amber-400 to-yellow-400 transition-all duration-300 group-hover:w-full" />
@@ -100,11 +100,11 @@ const Navbar = () => {
             {/* CTA Button */}
             <a
               href="/_events/tipo-participacion"
-              className="relative px-6 py-2 bg-gradient-to-r from-amber-600 via-yellow-600 to-orange-700 text-white rounded-full font-semibold hover:from-amber-500 hover:via-yellow-500 hover:to-orange-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-amber-500/25"
+              className="relative px-4 lg:px-6 py-2 bg-gradient-to-r from-amber-600 via-yellow-600 to-orange-700 text-white rounded-full font-semibold hover:from-amber-500 hover:via-yellow-500 hover:to-orange-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-amber-500/25 whitespace-nowrap"
             >
-              <span className="relative z-10 flex items-center space-x-2">
-                <span className="text-base">🚀</span>
-                <span>¡INSCRÍBETE YA!</span>
+              <span className="relative z-10 flex items-center space-x-1 lg:space-x-2">
+                <span className="text-sm lg:text-base">🚀</span>
+                <span className="text-sm lg:text-base">¡INSCRÍBETE YA!</span>
               </span>
               <div className="absolute inset-0 bg-gradient-to-r from-amber-400 to-yellow-400 rounded-full opacity-0 hover:opacity-20 transition-opacity duration-300" />
             </a>
@@ -130,11 +130,11 @@ const Navbar = () => {
           <div className="bg-slate-800/95 backdrop-blur-md rounded-xl border border-amber-400/20 mt-4 overflow-hidden">
             <div className="p-4 space-y-2">
               <a 
-                href="/_events/" 
+                href="https://relaticpanama.org" 
                 className="block px-4 py-3 text-white hover:text-amber-300 hover:bg-gradient-to-r hover:from-amber-600/20 hover:to-yellow-600/20 rounded-lg transition-all duration-300 font-medium"
                 onClick={() => setIsOpen(false)}
               >
-                
+                Ir a RELATIC
               </a>
 
               <a 
