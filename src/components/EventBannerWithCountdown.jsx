@@ -4,12 +4,13 @@ import 'aos/dist/aos.css';
 import { Users } from 'lucide-react';
 import Particles from 'react-tsparticles';
 import { loadFull } from 'tsparticles';
+import PropTypes from 'prop-types';
 
 const EventBannerWithCountdown = () => {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-  const targetDate = new Date('2025-09-25T08:30:00');
 
   useEffect(() => {
+    const targetDate = new Date('2025-09-25T08:30:00');
     AOS.init({ once: false, duration: 1000, offset: 30 });
     setTimeout(() => AOS.refresh(), 100);
 
@@ -36,7 +37,6 @@ const EventBannerWithCountdown = () => {
   const particlesInit = useCallback(async (engine) => {
     await loadFull(engine);
   }, []);
-
   const TimeCard = ({ value, label, icon, isSeconds }) => (
     <div className={`bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 rounded-xl p-4 md:p-6 shadow-2xl border border-white/20 backdrop-blur-sm transform hover:scale-105 transition-all duration-300 ${isSeconds ? 'animate-pulse' : ''}`}>
       <div className="text-center">
@@ -50,6 +50,13 @@ const EventBannerWithCountdown = () => {
       </div>
     </div>
   );
+
+  TimeCard.propTypes = {
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    label: PropTypes.string.isRequired,
+    icon: PropTypes.node.isRequired,
+    isSeconds: PropTypes.bool
+  };
 
   return (
     <div className="relative w-full min-h-screen overflow-hidden" id="event-banner">

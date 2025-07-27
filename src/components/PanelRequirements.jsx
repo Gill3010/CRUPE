@@ -6,7 +6,6 @@ import {
   LayoutList,
   MessageCircle,
   CalendarClock,
-  ExternalLink
 } from 'lucide-react';
 
 const PanelRequirements = () => {
@@ -138,7 +137,7 @@ const PanelRequirements = () => {
         {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row gap-6 justify-center aos-animate">
           <a
-            href="/_events/Requisitospanelistas.pdf"
+            href="/_events/pdfs/Requisitospanelistas.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="group relative overflow-hidden bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl backdrop-blur-sm border border-white/20"

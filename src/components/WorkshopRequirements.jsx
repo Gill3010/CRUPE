@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Users, FileText, Timer,ExternalLink , ClipboardList, NotebookPen, FolderEdit, FolderOpenDot } from 'lucide-react';
+import { Users, FileText, Timer, ClipboardList, NotebookPen, FolderEdit, FolderOpenDot } from 'lucide-react';
 
 const WorkshopRequirements = () => {
   useEffect(() => {
@@ -164,7 +164,7 @@ const WorkshopRequirements = () => {
         {/* Action Buttons */}
 <div className="flex flex-col sm:flex-row gap-6 justify-center aos-animate mt-12">
   <a
-    href="/_events/Requisitostalleres.pdf"
+    href="/_events/pdfs/Requisitostalleres.pdf"
     target="_blank"
     rel="noopener noreferrer"
     className="group relative overflow-hidden bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl backdrop-blur-sm border border-white/20"

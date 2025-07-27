@@ -40,7 +40,7 @@ const SponsorsCarousel = () => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % infiniteImages.length);
     }, 2500);
     return () => clearInterval(interval);
-  }, []);
+  }, [infiniteImages.length]);
 
   const containerStyle = {
     transform: `translateX(-${(currentIndex % infiniteImages.length) * (100 / imagesPerSlide)}%)`,

@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { FileText, Mic, Mail, ExternalLink, Timer } from 'lucide-react';
+import { FileText, Mic, Mail, Timer } from 'lucide-react';
 
 const BookPresentationGuidelines = () => {
   useEffect(() => {
@@ -126,7 +126,7 @@ const BookPresentationGuidelines = () => {
         {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row gap-6 justify-center aos-animate">
           <a
-            href="/_events/Requisitoslibros.pdf"
+            href="/_events/pdfs/Requisitoslibros.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="group relative overflow-hidden bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl backdrop-blur-sm border border-white/20"

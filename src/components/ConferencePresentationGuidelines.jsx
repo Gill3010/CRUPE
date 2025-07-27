@@ -149,7 +149,7 @@ const ConferencePresentationGuidelines = () => {
         {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row gap-6 justify-center aos-animate">
          <a
-  href="/_events/Requisitosconferencias.pdf"
+  href="/_events/pdfs/Requisitosconferencias.pdf"
   target="_blank"
   rel="noopener noreferrer"
   className="group relative overflow-hidden bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl backdrop-blur-sm border border-white/20"
@@ -162,7 +162,7 @@ const ConferencePresentationGuidelines = () => {
 </a>
 
           <a
-            href="/_events/Plantillaponenciaconferencia.pdf"
+            href="/_events/pdfs/Plantillaponenciaconferencia.pdf"
             className="group relative overflow-hidden bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl backdrop-blur-sm border border-white/20"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
