@@ -2,11 +2,10 @@ import { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { FileText, Upload, User, Mail, MapPin, CreditCard } from 'lucide-react';
 
-// Componentes movidos fuera del render principal para evitar redefinición
 const InputField = ({ name, label, type = 'text', required = false, placeholder, icon: Icon, children, formData, handleInputChange, errors, showAnimations }) => (
   <div className="space-y-2" {...(showAnimations && { 'data-aos': 'fade-up', 'data-aos-delay': '100' })}>
-    <label className="flex items-center space-x-2 text-sm font-medium text-white/90">
-      {Icon && <Icon className="w-4 h-4 text-cyan-400" />}
+    <label className="flex items-center space-x-2 text-sm font-medium text-white">
+      {Icon && <Icon className="w-4 h-4 text-[#00BCD4]" />}
       <span>{label}</span>
       {required && <span className="text-pink-400">*</span>}
     </label>
@@ -17,8 +16,8 @@ const InputField = ({ name, label, type = 'text', required = false, placeholder,
         value={formData[name] || ''}
         onChange={handleInputChange}
         placeholder={placeholder}
-        className={`w-full bg-white/5 text-white placeholder-white/50 rounded-xl p-3 border transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-cyan-400 ${
-          errors[name] ? 'border-red-400' : 'border-white/20 hover:border-white/40'
+        className={`w-full bg-[#0a2d4d] text-white placeholder-white rounded-xl p-3 border transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#00BCD4] focus:border-[#00BCD4] ${
+          errors[name] ? 'border-red-400' : 'border-[#00BCD4] hover:border-white'
         }`}
       />
     )}
@@ -44,8 +43,8 @@ InputField.propTypes = {
 
 const SelectField = ({ name, label, options, required = false, icon: Icon, formData, handleInputChange, errors, showAnimations }) => (
   <div className="space-y-2" {...(showAnimations && { 'data-aos': 'fade-up', 'data-aos-delay': '200' })}>
-    <label className="flex items-center space-x-2 text-sm font-medium text-white/90">
-      {Icon && <Icon className="w-4 h-4 text-cyan-400" />}
+    <label className="flex items-center space-x-2 text-sm font-medium text-white">
+      {Icon && <Icon className="w-4 h-4 text-[#00BCD4]" />}
       <span>{label}</span>
       {required && <span className="text-pink-400">*</span>}
     </label>
@@ -53,13 +52,13 @@ const SelectField = ({ name, label, options, required = false, icon: Icon, formD
       name={name}
       value={formData[name] || ''}
       onChange={handleInputChange}
-      className={`w-full bg-white/5 text-white rounded-xl p-3 border transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-cyan-400 ${
-        errors[name] ? 'border-red-400' : 'border-white/20 hover:border-white/40'
+      className={`w-full bg-[#0a2d4d] text-white rounded-xl p-3 border transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#00BCD4] focus:border-[#00BCD4] ${
+        errors[name] ? 'border-red-400' : 'border-[#00BCD4] hover:border-white'
       }`}
     >
-      <option value="" className="bg-slate-800">Seleccionar...</option>
+      <option value="" className="bg-[#0a2d4d]">Seleccionar...</option>
       {options.map(option => (
-        <option key={option} value={option} className="bg-slate-800">{option}</option>
+        <option key={option} value={option} className="bg-[#0a2d4d]">{option}</option>
       ))}
     </select>
     {errors[name] && (
@@ -82,8 +81,8 @@ SelectField.propTypes = {
 
 const FileField = ({ name, label, required = false, accept, icon: Icon, formData, handleFileChange, errors, showAnimations }) => (
   <div className="space-y-2" {...(showAnimations && { 'data-aos': 'fade-up', 'data-aos-delay': '300' })}>
-    <label className="flex items-center space-x-2 text-sm font-medium text-white/90">
-      {Icon && <Icon className="w-4 h-4 text-cyan-400" />}
+    <label className="flex items-center space-x-2 text-sm font-medium text-white">
+      {Icon && <Icon className="w-4 h-4 text-[#00BCD4]" />}
       <span>{label}</span>
       {required && <span className="text-pink-400">*</span>}
     </label>
@@ -98,11 +97,11 @@ const FileField = ({ name, label, required = false, accept, icon: Icon, formData
       />
       <label
         htmlFor={name}
-        className={`w-full bg-white/5 text-white rounded-xl p-3 border transition-all duration-300 hover:bg-white/10 cursor-pointer flex items-center justify-center space-x-2 ${
-          errors[name] ? 'border-red-400' : 'border-white/20 hover:border-white/40'
+        className={`w-full bg-[#0a2d4d] text-white rounded-xl p-3 border transition-all duration-300 hover:bg-[#0a2d4d]/90 cursor-pointer flex items-center justify-center space-x-2 ${
+          errors[name] ? 'border-red-400' : 'border-[#00BCD4] hover:border-white'
         }`}
       >
-        <Upload className="w-4 h-4" />
+        <Upload className="w-4 h-4 text-[#00BCD4]" />
         <span>{formData[name] ? formData[name].name : 'Seleccionar archivo'}</span>
       </label>
     </div>
@@ -158,17 +157,13 @@ const AssistantRegistrationForm = () => {
               offset: 100
             });
             
-            // Después de las animaciones, desactivar el estado de animaciones
             setTimeout(() => {
               setShowAnimations(false);
-              
-              // Desactivar completamente AOS
               window.removeEventListener('scroll', window.AOS.refresh);
               window.removeEventListener('resize', window.AOS.refresh);
               window.AOS.refresh = () => {};
               window.AOS.refreshHard = () => {};
               window.AOS.init = () => {};
-              
               if (window.AOS.observer) {
                 window.AOS.observer.disconnect();
               }
@@ -289,25 +284,22 @@ const AssistantRegistrationForm = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-radial from-blue-400/10 via-transparent to-transparent"></div>
-      <div className="absolute inset-0 bg-gradient-conic from-purple-400/5 via-blue-400/5 to-purple-400/5"></div>
-
-      <div className="relative z-10 container mx-auto px-4 py-12">
+    <div className="min-h-screen bg-[#0a2d4d] relative overflow-hidden">
+      <div className="relative z-10 container mx-auto px-4 py-12 max-w-4xl">
         <div className="text-center mb-16" {...(showAnimations && { 'data-aos': 'fade-down' })}>
           <h1 className="text-5xl font-bold text-white mb-4">
-  III Congreso de Investigaciones Cualitativas
-</h1>
-          <p className="text-xl text-white/70 max-w-2xl mx-auto">
+            III Congreso de Investigaciones Cualitativas
+          </h1>
+          <p className="text-xl text-white max-w-2xl mx-auto">
             Formulario de inscripción exclusivo para asistentes
           </p>
         </div>
 
-        <div className="max-w-4xl mx-auto space-y-8">
+        <div className="space-y-8">
           {/* Contacto */}
-          <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-6 border border-white/20 hover:border-white/40 shadow-2xl hover:shadow-3xl transition-all duration-700 ease-out hover:scale-105" {...(showAnimations && { 'data-aos': 'zoom-in' })}>
+          <section className="bg-[#0a2d4d] rounded-2xl p-6 border border-[#00BCD4] hover:border-white transition-colors duration-300" {...(showAnimations && { 'data-aos': 'zoom-in' })}>
             <h2 className="text-lg font-bold text-white mb-6 flex items-center space-x-2">
-              <Mail className="w-5 h-5 text-cyan-400" />
+              <Mail className="w-5 h-5 text-[#00BCD4]" />
               <span>Información de Contacto</span>
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -335,12 +327,12 @@ const AssistantRegistrationForm = () => {
                 showAnimations={showAnimations}
               />
             </div>
-          </div>
+          </section>
 
           {/* Identificación */}
-          <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-6 border border-white/20 hover:border-white/40 shadow-2xl hover:shadow-3xl transition-all duration-700 ease-out hover:scale-105" {...(showAnimations && { 'data-aos': 'zoom-in', 'data-aos-delay': '100' })}>
+          <section className="bg-[#0a2d4d] rounded-2xl p-6 border border-[#00BCD4] hover:border-white transition-colors duration-300" {...(showAnimations && { 'data-aos': 'zoom-in', 'data-aos-delay': '100' })}>
             <h2 className="text-lg font-bold text-white mb-6 flex items-center space-x-2">
-              <FileText className="w-5 h-5 text-cyan-400" />
+              <FileText className="w-5 h-5 text-[#00BCD4]" />
               <span>Identificación</span>
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -366,12 +358,12 @@ const AssistantRegistrationForm = () => {
                 showAnimations={showAnimations}
               />
             </div>
-          </div>
+          </section>
 
           {/* Información Personal */}
-          <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-6 border border-white/20 hover:border-white/40 shadow-2xl hover:shadow-3xl transition-all duration-700 ease-out hover:scale-105" {...(showAnimations && { 'data-aos': 'zoom-in', 'data-aos-delay': '200' })}>
+          <section className="bg-[#0a2d4d] rounded-2xl p-6 border border-[#00BCD4] hover:border-white transition-colors duration-300" {...(showAnimations && { 'data-aos': 'zoom-in', 'data-aos-delay': '200' })}>
             <h2 className="text-lg font-bold text-white mb-6 flex items-center space-x-2">
-              <User className="w-5 h-5 text-cyan-400" />
+              <User className="w-5 h-5 text-[#00BCD4]" />
               <span>Información Personal</span>
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -443,18 +435,18 @@ const AssistantRegistrationForm = () => {
                 showAnimations={showAnimations}
               />
             </div>
-          </div>
+          </section>
 
           {/* Tipo de participación */}
-          <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-6 border border-white/20 hover:border-white/40 shadow-2xl hover:shadow-3xl transition-all duration-700 ease-out hover:scale-105" {...(showAnimations && { 'data-aos': 'zoom-in', 'data-aos-delay': '300' })}>
+          <section className="bg-[#0a2d4d] rounded-2xl p-6 border border-[#00BCD4] hover:border-white transition-colors duration-300" {...(showAnimations && { 'data-aos': 'zoom-in', 'data-aos-delay': '300' })}>
             <h2 className="text-lg font-bold text-white mb-6 flex items-center space-x-2">
-              <FileText className="w-5 h-5 text-cyan-400" />
+              <FileText className="w-5 h-5 text-[#00BCD4]" />
               <span>Participación</span>
             </h2>
             <div className="space-y-6">
               <div className="space-y-2" {...(showAnimations && { 'data-aos': 'fade-up', 'data-aos-delay': '200' })}>
-                <label className="flex items-center space-x-2 text-sm font-medium text-white/90">
-                  <FileText className="w-4 h-4 text-cyan-400" />
+                <label className="flex items-center space-x-2 text-sm font-medium text-white">
+                  <FileText className="w-4 h-4 text-[#00BCD4]" />
                   <span>Tipo de Participación</span>
                   <span className="text-pink-400">*</span>
                 </label>
@@ -463,16 +455,16 @@ const AssistantRegistrationForm = () => {
                   name="tipoParticipacion"
                   value="Asistente"
                   readOnly
-                  className="w-full bg-white/5 text-white rounded-xl p-3 border border-white/20 cursor-not-allowed opacity-70"
+                  className="w-full bg-[#0a2d4d] text-white rounded-xl p-3 border border-[#00BCD4] cursor-not-allowed opacity-70"
                 />
               </div>
             </div>
-          </div>
+          </section>
 
           {/* Archivos */}
-          <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-6 border border-white/20 hover:border-white/40 shadow-2xl hover:shadow-3xl transition-all duration-700 ease-out hover:scale-105" {...(showAnimations && { 'data-aos': 'zoom-in', 'data-aos-delay': '400' })}>
+          <section className="bg-[#0a2d4d] rounded-2xl p-6 border border-[#00BCD4] hover:border-white transition-colors duration-300" {...(showAnimations && { 'data-aos': 'zoom-in', 'data-aos-delay': '400' })}>
             <h2 className="text-lg font-bold text-white mb-6 flex items-center space-x-2">
-              <Upload className="w-5 h-5 text-cyan-400" />
+              <Upload className="w-5 h-5 text-[#00BCD4]" />
               <span>Documentos</span>
             </h2>
             <div className="grid grid-cols-1 gap-6">
@@ -487,7 +479,7 @@ const AssistantRegistrationForm = () => {
                 showAnimations={showAnimations}
               />
             </div>
-          </div>
+          </section>
 
           {/* Enviar */}
           <div className="text-center" {...(showAnimations && { 'data-aos': 'fade-up', 'data-aos-delay': '500' })}>
@@ -495,7 +487,7 @@ const AssistantRegistrationForm = () => {
               type="button"
               onClick={handleSubmit}
               disabled={loading}
-              className={`bg-white/20 backdrop-blur-sm rounded-full px-8 py-4 text-white text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-white/30 focus:outline-none focus:ring-2 focus:ring-cyan-400 ${
+              className={`bg-[#00BCD4] rounded-full px-8 py-4 text-[#0a2d4d] text-lg font-semibold transition-transform duration-300 focus:outline-none focus:ring-2 focus:ring-[#00BCD4] ${
                 loading ? 'cursor-not-allowed opacity-50' : 'hover:scale-110 active:scale-95'
               }`}
             >

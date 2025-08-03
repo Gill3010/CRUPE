@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Users, FileText } from 'lucide-react';
-import { useNavigate } from 'react-router-dom'; // Cambia por <a> si no usas React Router
+import { useNavigate } from 'react-router-dom';
 
 const ParticipationSelector = () => {
   const navigate = useNavigate();
@@ -32,40 +32,40 @@ const ParticipationSelector = () => {
   }, []);
 
   return (
-    <div className="bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 py-12 px-4 rounded-3xl shadow-xl border border-white/10">
-      <div className="max-w-4xl mx-auto text-center space-y-10">
-        <div className="aos-animate">
-          <h1 className="text-3xl md:text-4xl font-bold text-white bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent mb-2">
+    <div className="bg-[#0f172a] py-12 px-4">
+      <div className="max-w-4xl mx-auto text-center">
+
+        {/* Header */}
+        <div className="aos-animate mb-12">
+          <h1 className="text-4xl md:text-5xl font-bold text-[#00BCD4] mb-4">
             ¿Cómo deseas participar?
           </h1>
-          <p className="text-lg text-gray-300">
+          <p className="text-lg text-white max-w-2xl mx-auto">
             Elige tu modalidad de inscripción para el congreso
           </p>
         </div>
 
+        {/* Botones */}
         <div className="flex flex-col sm:flex-row justify-center gap-6 aos-animate">
+
           {/* Asistente */}
           <button
             onClick={() => navigate('/asistencia')}
-            className="group relative overflow-hidden bg-gradient-to-r from-blue-500 to-cyan-600 hover:from-blue-600 hover:to-cyan-700 text-white font-bold py-4 px-6 rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl backdrop-blur-sm border border-white/20 w-full sm:w-auto"
+            className="bg-[#00BCD4] text-[#0a2d4d] font-semibold py-3 px-6 rounded-xl flex items-center gap-3 hover:bg-white hover:text-[#0a2d4d] transition"
+            style={{ minWidth: '180px' }}
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            <div className="relative flex items-center justify-center gap-3 text-lg">
-              <Users className="w-5 h-5" />
-              Asistente
-            </div>
+            <Users className="w-5 h-5" />
+            Asistente
           </button>
 
           {/* Otra participación */}
           <button
             onClick={() => navigate('/inscripcion')}
-            className="group relative overflow-hidden bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 text-white font-bold py-4 px-6 rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl backdrop-blur-sm border border-white/20 w-full sm:w-auto"
+            className="bg-white text-[#0a2d4d] font-semibold py-3 px-6 rounded-xl flex items-center gap-3 hover:bg-[#00BCD4] hover:text-[#0a2d4d] transition"
+            style={{ minWidth: '180px' }}
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            <div className="relative flex items-center justify-center gap-3 text-lg">
-              <FileText className="w-5 h-5" />
-              Tipos de participación
-            </div>
+            <FileText className="w-5 h-5" />
+            Tipos de participación
           </button>
         </div>
       </div>

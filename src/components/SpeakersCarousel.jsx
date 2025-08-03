@@ -1,8 +1,10 @@
+// ... (importaciones sin cambios)
 import { useState, useEffect, useCallback } from 'react';
-import { ChevronLeft, ChevronRight, Play, Headphones, Volume2 } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Play, } from 'lucide-react';
 import { SiOrcid } from 'react-icons/si';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+// Imágenes importadas
 import Farnum from '/assets/Farnum.jpeg';
 import Honorio from '/assets/Honorio.jpeg';
 import Sosimo from '/assets/Sosimo.jpeg';
@@ -41,7 +43,7 @@ const speakers = [
   {
     id: 3,
     name: "Dra. Mónica Contreras",
-    topic: "Icuali en la Divulgación del Conocimiento Científico",
+    topic: "Icuali en la Divulgación ...",
     image: Monica,
     orcid: "0000-0003-0972-6951",
     country: "Panamá",
@@ -143,7 +145,7 @@ const SpeakersCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [dimensions, setDimensions] = useState({
     cardWidth: 320,
-    cardHeight: 680,
+    cardHeight: 600,
     visibleCards: 5
   });
 
@@ -152,7 +154,7 @@ const SpeakersCarousel = () => {
       if (window.innerWidth < 768) {
         setDimensions({ cardWidth: 280, cardHeight: 'auto', visibleCards: 1 });
       } else {
-        setDimensions({ cardWidth: 320, cardHeight: 680, visibleCards: 5 });
+        setDimensions({ cardWidth: 320, cardHeight: 600, visibleCards: 5 });
       }
     };
 
@@ -216,29 +218,28 @@ const SpeakersCarousel = () => {
 
   return (
     <div className="w-full">
-      <div className="text-center mb-8 md:mb-12" data-aos="fade-up" data-aos-delay="100">
-        <div className="inline-block text-center">
-          <h2 className="text-3xl md:text-5xl font-black bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent mb-0 pb-1">
-            Ponentes del Congreso
-          </h2>
-          <div className="w-full h-1 mt-4 bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-600 rounded-full shadow-2xl shadow-blue-500/25"></div>
-        </div>
-      </div>
+   <div className="text-center mb-6 md:mb-10" data-aos="fade-up" data-aos-delay="100">
+  <h2 className="text-xl sm:text-2xl lg:text-2xl font-bold text-slate-800 tracking-tight">
+    Ponentes del Congreso
+  </h2>
 
-      <div className="relative w-full h-[800px] flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-50/50 via-purple-50/50 to-indigo-50/50 mb-28 px-8" data-aos="fade-up">
+  <div className="w-16 h-0.5 bg-gradient-to-r from-cyan-400 to-cyan-500 rounded-full mt-2 mx-auto"></div>
+</div>
+      <div className="relative w-full h-[700px] md:h-[750px] flex items-center justify-center overflow-hidden bg-gray-50 px-4 md:px-8 mb-20" data-aos="fade-up">
         <button 
-          className="absolute left-4 z-30 cursor-pointer bg-white rounded-full p-2 shadow-lg hover:bg-purple-50 transition-all" 
+          className="absolute left-2 z-30 bg-white border-2 border-cyan-400 rounded-full p-1.5 hover:bg-cyan-400 hover:text-white transition-all" 
           onClick={prevSlide} 
           aria-label="Ponente anterior"
         >
-          <ChevronLeft size={40} className="text-purple-700" />
+          <ChevronLeft size={34} className="text-cyan-400 hover:text-white" />
         </button>
+
         <button 
-          className="absolute right-4 z-30 cursor-pointer bg-white rounded-full p-2 shadow-lg hover:bg-purple-50 transition-all" 
+          className="absolute right-2 z-30 bg-white border-2 border-cyan-400 rounded-full p-1.5 hover:bg-cyan-400 hover:text-white transition-all" 
           onClick={nextSlide} 
           aria-label="Ponente siguiente"
         >
-          <ChevronRight size={40} className="text-purple-700" />
+          <ChevronRight size={34} className="text-cyan-400 hover:text-white" />
         </button>
 
         <div className="relative w-full h-full flex items-center justify-center">
@@ -248,95 +249,70 @@ const SpeakersCarousel = () => {
               return (
                 <div
                   key={speaker.id}
-                  className={`absolute top-0 bg-white rounded-2xl shadow-xl flex flex-col items-center justify-start transition-all duration-300 ${index === currentIndex ? 'z-10' : 'z-0'}`}
+                  className={`absolute top-0 bg-white border-2 border-cyan-400 rounded-2xl flex flex-col items-center justify-start transition-all duration-300 ${index === currentIndex ? 'z-10' : 'z-0'}`}
                   style={{ 
                     ...style, 
                     width: `${cardWidth}px`, 
                     height: cardHeight === 'auto' ? 'auto' : `${cardHeight}px`, 
-                    padding: '28px' 
+                    padding: '24px' 
                   }}
                 >
-                  {/* Foto del ponente */}
-                  <div className="relative mb-6 w-full flex justify-center">
+                  <div className="relative mb-4 w-full flex justify-center">
                     <img 
                       src={speaker.image} 
                       alt={speaker.name} 
-                      className="rounded-full w-[220px] h-[220px] object-contain bg-white border-4 border-purple-100 shadow-md" 
+                      className="rounded-full w-[180px] h-[180px] object-contain bg-white border-4 border-cyan-400" 
                       loading="lazy" 
                     />
-                    <div className="absolute -bottom-2 -right-2 bg-purple-600 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold text-sm">
+                    <div className="absolute -bottom-2 -right-2 bg-cyan-400 text-slate-900 rounded-full w-9 h-9 flex items-center justify-center font-bold text-sm">
                       {index + 1}
                     </div>
                   </div>
 
-                  {/* Información del ponente */}
-                  <h3 className="text-2xl font-black text-purple-900 mb-3 text-center">
+                  <h3 className="text-xl font-bold mb-2 text-center text-slate-900">
                     {speaker.name}
                   </h3>
                   
-                  <p className="text-sm text-gray-500 font-medium mb-2 text-center">
-                    <span className="text-2xl mr-1">{speaker.flag}</span>
+                  <p className="text-sm text-slate-600 font-medium mb-1 text-center">
+                    <span className="text-xl mr-1">{speaker.flag}</span>
                     {speaker.country}
                   </p>
 
-                  {/* ORCID */}
                   {speaker.orcid && (
                     <a 
                       href={`https://orcid.org/${speaker.orcid}`} 
                       target="_blank" 
                       rel="noopener noreferrer" 
-                      className="inline-flex items-center justify-center space-x-1 text-green-600 text-sm mt-1 hover:underline mb-3"
+                      className="inline-flex items-center justify-center space-x-1 text-cyan-400 hover:text-slate-900 text-sm mt-1 hover:underline mb-2"
                     >
                       <SiOrcid className="text-base" />
                       <span>ORCID</span>
                     </a>
                   )}
 
-                  {/* Tema de la ponencia */}
-                  <div className="flex-1 flex items-start justify-center mb-4">
-                    <p className="text-sm font-light text-gray-600 text-center leading-relaxed overflow-hidden" 
+                  <div className="flex-1 flex items-start justify-center mb-3">
+                    <p className="text-sm font-light text-slate-600 text-center leading-relaxed overflow-hidden" 
                        style={{ 
                          display: '-webkit-box',
                          WebkitLineClamp: 2,
                          WebkitBoxOrient: 'vertical',
                          minHeight: '1.2rem',
-                         maxHeight: '2.8rem'
+                         maxHeight: '2.6rem'
                        }}>
                       {speaker.topic}
                     </p>
                   </div>
 
-                  {/* Separador */}
-                  <div className="w-full h-px bg-gradient-to-r from-transparent via-purple-300 to-transparent my-3"></div>
+                  <div className="w-full h-px bg-slate-300 my-2" />
 
-                  {/* Sección de audio mejorada */}
                   {speaker.audio && (
-                    <div className="w-full mb-4">
-                      {/* Header del audio */}
-                      <div className="flex items-center justify-center mb-3 px-3 py-2 bg-gradient-to-r from-purple-50 to-indigo-50 rounded-xl border border-purple-100">
-                        <Headphones className="w-4 h-4 text-purple-600 mr-2" />
-                        <span className="text-sm font-semibold text-purple-800">
-                          Escucha la ponencia
-                        </span>
-                        <Volume2 className="w-4 h-4 text-purple-600 ml-2" />
-                      </div>
-                      
-                      {/* Reproductor de audio personalizado */}
-                      <div className="bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl p-3 border border-gray-200 shadow-inner">
-                        <audio
-                          controls
-                          className="w-full h-8 rounded-lg"
-                          preload="none"
-                          style={{
-                            filter: 'sepia(20%) saturate(70%) hue-rotate(200deg) brightness(1.1)',
-                          }}
-                        >
+                    <div className="w-full mb-3">
+                      <div className="bg-slate-50 rounded-xl p-2 border border-slate-200">
+                        <audio controls className="w-full h-8 rounded" preload="none">
                           <source src={speaker.audio} type="audio/mpeg" />
                           Tu navegador no soporta el elemento de audio.
                         </audio>
-                        
-                        {/* Indicador visual adicional */}
-                        <div className="flex items-center justify-center mt-2 text-xs text-gray-500">
+                        <div className="flex items-center justify-center mt-1 text-xs text-slate-600">
                           <Play className="w-3 h-3 mr-1" />
                           <span>Audio de la presentación</span>
                         </div>
@@ -344,12 +320,11 @@ const SpeakersCarousel = () => {
                     </div>
                   )}
 
-                  {/* Botón de acción */}
                   <a
                     href={speaker.pdf}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-auto px-6 py-2.5 bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-600 text-white rounded-xl text-sm font-medium hover:opacity-90 transition-opacity shadow-md hover:scale-105 hover:shadow-xl transition-all duration-300 text-center"
+                    className="mt-auto px-5 py-2 bg-cyan-400 hover:bg-slate-900 text-slate-900 hover:text-cyan-400 border-2 border-cyan-400 rounded-xl text-sm font-medium transition-all duration-300 transform hover:scale-105 text-center"
                   >
                     Ver detalles ✨
                   </a>
@@ -359,14 +334,27 @@ const SpeakersCarousel = () => {
           </div>
         </div>
       </div>
-       
-      <div className="text-center mb-12" data-aos="fade-up" data-aos-delay="200">
-        <button className="px-6 py-3 bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-400 text-purple-900 font-black rounded-xl shadow-xl hover:shadow-yellow-400/50 hover:scale-105 transition-all duration-300 text-sm md:text-base">
-          🚀 ¿Quieres participar? ¡Inscríbete!
-        </button>
-      </div>
+
+      <div className="text-center mb-10" data-aos="fade-up" data-aos-delay="200">
+  <a
+    href="/_events/tipo-participacion"
+    className="inline-block px-6 py-2.5 bg-cyan-400 hover:bg-slate-900 text-slate-900 hover:text-cyan-400 border-2 border-cyan-400 font-black rounded-xl hover:scale-105 transition-all duration-300 text-sm md:text-base"
+  >
+    🚀 ¿Quieres participar? ¡Inscríbete!
+  </a>
+</div>
     </div>
   );
 };
 
 export default SpeakersCarousel;
+
+
+
+
+
+
+
+
+
+

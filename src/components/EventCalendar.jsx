@@ -7,7 +7,8 @@ import Papa from "papaparse";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-const BASE_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vS7l-YW6UPNLNR-CPDUud2okXKJJ93iJ6_ZwjqJlhAWYvLC6dAydAZMmuQkCjojONxkT7v3kX_LF5X7/pub?gid=2070773446&single=true&output=csv";
+const BASE_CSV_URL =
+  "https://docs.google.com/spreadsheets/d/e/2PACX-1vS7l-YW6UPNLNR-CPDUud2okXKJJ93iJ6_ZwjqJlhAWYvLC6dAydAZMmuQkCjojONxkT7v3kX_LF5X7/pub?gid=2070773446&single=true&output=csv";
 
 const normalizeTime = (timeStr) => {
   if (!timeStr) return null;
@@ -77,27 +78,21 @@ export default function EventCalendar() {
 
   return (
     <div
-      className="min-h-[70vh] bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 relative overflow-hidden p-8 rounded-2xl shadow-2xl border border-white/20 backdrop-blur-xl"
+      className="min-h-[70vh] bg-[#0f172a] p-8 rounded-xl border border-white/10"
       data-aos="fade-in"
     >
-      {/* Fondos dinámicos */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_70%)]" />
-        <div className="absolute inset-0 bg-[conic-gradient(from_0deg_at_50%_50%,rgba(59,130,246,0.1),transparent_30%,rgba(147,51,234,0.1),transparent_70%)]" />
-      </div>
-
       <div className="relative z-10">
         <div className="text-center mb-8" data-aos="fade-up">
-          <h2 className="text-5xl font-bold text-white mb-4">
-  Cronograma del Congreso
-</h2>
-          <p className="text-xl text-white/80 max-w-3xl mx-auto">
+          <h2 className="text-4xl font-bold text-[#00BCD4] mb-4">
+            Cronograma del Congreso
+          </h2>
+          <p className="text-lg text-white max-w-3xl mx-auto">
             Consulta las actividades del III Congreso de Investigaciones Cualitativas
           </p>
         </div>
 
         <div
-          className="bg-white/10 backdrop-blur-xl rounded-2xl border border-white/20 hover:border-white/40 p-6 shadow-2xl hover:shadow-3xl transition-all duration-700 ease-out"
+          className="bg-[#0c3a5c] rounded-xl border border-white/10 p-6 transition-all duration-300"
           data-aos="zoom-in"
         >
           <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-6 gap-4">
@@ -106,13 +101,13 @@ export default function EventCalendar() {
             </h3>
             <button
               onClick={fetchCSV}
-              className="bg-white/20 backdrop-blur-sm rounded-full px-5 py-2 text-white text-sm font-medium hover:scale-105 active:scale-95 transition-all shadow-lg"
+              className="bg-[#00BCD4] text-[#0a2d4d] px-5 py-2 rounded-full text-sm font-medium hover:opacity-90 active:scale-95 transition-all"
             >
               {loading ? "Actualizando..." : "Actualizar cronograma"}
             </button>
           </div>
 
-          {/* 🌐 Adaptable a pantallas pequeñas */}
+          {/* Calendario adaptable */}
           <div className="overflow-x-auto scrollbar-hide">
             <div className="min-w-[360px]">
               <FullCalendar
@@ -139,7 +134,7 @@ export default function EventCalendar() {
         </div>
       </div>
 
-      {/* Hide scrollbar on WebKit */}
+      {/* Ocultar scrollbar en WebKit */}
       <style>{`
         .scrollbar-hide::-webkit-scrollbar {
           display: none;

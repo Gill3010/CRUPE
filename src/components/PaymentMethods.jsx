@@ -112,9 +112,9 @@ const PaymentMethods = () => {
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <div className="text-center mb-8 aos-animate">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-blue-700 via-indigo-700 to-purple-700 bg-clip-text text-transparent">
-            Métodos de Pago Disponibles
-          </h1>
+         <h1 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: '#0f172a' }}>
+  Métodos de Pago Disponibles
+</h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Selecciona el método que prefieras para realizar tu pago de forma segura.
           </p>
@@ -163,7 +163,7 @@ const PaymentMethods = () => {
 
         {/* Interbank section */}
 <div className="text-center mt-12 mb-6 aos-animate">
-  <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-blue-700 via-indigo-700 to-purple-700 bg-clip-text text-transparent">
+  <h2 className="text-2xl md:text-3xl font-bold mb-2 text-[#0f172a]">
   Método de pago en Perú (Soles – S/)
 </h2>
 </div>

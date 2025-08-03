@@ -10,7 +10,7 @@ import SponsorsCarousel from './components/SponsorsCarousel';
 import SpeakersCarousel from './components/SpeakersCarousel';
 import EventBannerWithCountdown from './components/EventBannerWithCountdown';
 import OrganizingCommittee from './components/OrganizingCommittee';
-import VideoShowcase from './components/VideoShowcase';
+// import VideoShowcase from './components/VideoShowcase';
 import VideoGalleryEnterview from './components/VideoGalleryEnterview';
 import PosterGuidelines from './components/PosterGuidelines';
 import BookPresentationGuidelines from './components/BookPresentationGuidelines';
@@ -163,7 +163,7 @@ const AppContent = () => {
                   </ResponsiveGrid>
 
                   <div className="mt-16">
-                    <VideoShowcase />
+                    {/* <VideoShowcase /> */}
                     <VideoGalleryEnterview />
                   </div>
 
