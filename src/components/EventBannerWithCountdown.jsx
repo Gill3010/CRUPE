@@ -1,13 +1,7 @@
 import { useState, useEffect } from 'react';
-import {
-  ChevronLeft,
-  ChevronRight,
-  Calendar,
-  MapPin,
-  Clock
-} from 'lucide-react';
+import { ChevronLeft, ChevronRight, Calendar, MapPin, Clock } from 'lucide-react';
 
-const CongresoCarousel = () => {
+const EventoCarousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying] = useState(true);
   const [hasMounted, setHasMounted] = useState(false);
@@ -18,8 +12,8 @@ const CongresoCarousel = () => {
     seconds: 0
   });
 
-  // Configurar fecha del evento (25 de septiembre de 2025, 8:30 AM Lima)
-  const eventDate = new Date('2025-09-25T08:30:00-05:00'); // UTC-5 (Lima timezone)
+  // Configurar fecha del evento (21 de octubre de 2025, 9:00 AM Panamá)
+  const eventDate = new Date('2025-10-21T09:00:00-05:00');
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -52,69 +46,43 @@ const CongresoCarousel = () => {
   const slides = [
     {
       id: 1,
-      title: "Tercer Congreso de Investigaciones Cualitativas",
-      subtitle: "Las TIC e Inteligencia Artificial en la investigación cualitativa",
-      description: "Innovando la comprensión: TIC e Inteligencia Artificial al servicio de la investigación cualitativa",
+      title: "I Congreso Científico Internacional CRUPE 2025",
+      subtitle: "Innovación educativa en Panamá Este",
+      description: "Educación investigación y gestión para el desarrollo: la estrategia de Panamá Este",
       textColor: "text-white",
-      thumbnail: "https://images.unsplash.com/photo-1589682449071-d13c27d1c298?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0",
+      thumbnail: "https://images.unsplash.com/photo-1662702933459-eeb71db82f85?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aSUyMGNvbmdyZXNvJTIwY2llbnQlQzMlQURmaWNvJTIwaW50ZXJuYWNpb25hbHxlbnwwfHwwfHx8MA%3D%3D",
       bullets: [
-        "📅 25, 26 y 27 de septiembre de 2025",
-        "🏛️ Universidad Nacional Enrique Guzmán y Valle",
-        "🇵🇪 Lima, Perú · Modalidad Híbrida"
+        "📅 21 al 23 de octubre de 2025",
+        "🏛️ Centro Regional Universitario Panamá Este",
+        "🇵🇦 Modalidad híbrida (presencial - virtual)"
       ],
       isMainSlide: true
     },
     {
       id: 2,
-      title: "Innovaciones en Metodologías Cualitativas",
-      subtitle: "Nuevos enfoques para la investigación del siglo XXI",
-      description: "Metodologías emergentes que revolucionan la investigación cualitativa contemporánea.",
+      title: "Eje temático",
+      subtitle: "Educación e investigación para el desarrollo sostenible",
       textColor: "text-white",
-      thumbnail: "https://images.unsplash.com/photo-1647211103199-faa4cd24b4ec?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0",
+      thumbnail: "https://plus.unsplash.com/premium_photo-1679469727132-b64600e60b47?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGRlc2Fycm9sbG8lMjBzb3N0ZW5pYmxlfGVufDB8fDB8fHww",
       bullets: [
-        "Integración de TIC en Métodos Cualitativos",
-        "Metodologías Mixtas Avanzadas",
-        "Investigación Participativa Digital"
-      ]
+        "Prácticas pedagógicas para el desarrollo sostenible",
+        "Investigación educativa y políticas públicas en educación",
+        "Ciencias, sociales, cultura y desarrollo humano sostenible"
+      ],
+      isEjeTematico: true
     },
     {
       id: 3,
-      title: "Inteligencia Artificial en Investigación",
-      subtitle: "Herramientas digitales para el análisis cualitativo",
-      description: "La IA transforma el análisis e interpretación de datos cualitativos.",
+      title: "Eje temático",
+      subtitle: "Ciencias administrativas e investigación para la gestión sostenible",
       textColor: "text-white",
-      thumbnail: "https://images.unsplash.com/photo-1566793772361-1d5d9cefbd12?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0",
+      thumbnail: "https://images.unsplash.com/photo-1705595531929-dc6b916728ab?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGNpZW5jaWFzJTIwYWRtaW5pc3RyYXRpdmFzJTIwZSUyMGludmVzdGlnYWNpJUMzJUIzbiUyMHBhcmElMjBsYSUyMGdlc3RpJUMzJUIzbiUyMHNvc3RlbmlibGV8ZW58MHx8MHx8fDA%3D",
       bullets: [
-        "IA en Análisis de Contenido",
-        "Automatización de Procesos",
-        "Validación Inteligente de Resultados"
-      ]
-    },
-    {
-      id: 4,
-      title: "Aplicación Interdisciplinaria",
-      subtitle: "Investigación cualitativa en múltiples campos",
-      description: "Aplicaciones en diversas disciplinas académicas y profesionales.",
-      textColor: "text-white",
-      thumbnail: "https://images.unsplash.com/photo-1568805647632-69f6deec1547?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.1.0",
-      bullets: [
-        "Arte y Diseño Contemporáneo",
-        "Ciencias Administrativas y Contables",
-        "Ciencias de la Educación Digital"
-      ]
-    },
-    {
-      id: 5,
-      title: "Ética en la Era Digital",
-      subtitle: "Principios éticos en investigación cualitativa digital",
-      description: "Desafíos éticos y responsabilidad social en la investigación moderna.",
-      textColor: "text-white",
-      thumbnail: "https://images.unsplash.com/photo-1583202806174-ab03e16760d5?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGN1bHR1cmElMjBkZWwlMjBwZXJ1fGVufDB8fDB8fHww",
-      bullets: [
-        "Ética en Recolección Digital",
-        "Privacidad y Consentimiento",
-        "Responsabilidad Social Investigativa"
-      ]
+        "Planificación y sostenibilidad territorial en Panamá Este",
+        "Tecnologías emergentes y medioambiente: gestión de la innovación sostenible",
+        "Ciencia de datos, administración pública y toma de decisiones"
+      ],
+      isEjeTematico: true
     }
   ];
 
@@ -122,7 +90,7 @@ const CongresoCarousel = () => {
     if (!isAutoPlaying) return;
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 5000);
+    }, 7000);
     return () => clearInterval(interval);
   }, [isAutoPlaying, slides.length]);
 
@@ -132,24 +100,34 @@ const CongresoCarousel = () => {
 
   return (
     <div className="relative w-full h-screen overflow-hidden bg-slate-900">
-      {/* Contador regresivo - Fijo en todos los slides */}
-      <div className="absolute top-20 md:top-24 left-1/2 transform -translate-x-1/2 z-30 bg-cyan-400 text-slate-900 px-4 md:px-6 py-2 md:py-3 rounded-full border-2 border-white">
-        <div className="flex items-center gap-2 md:gap-3 text-xs md:text-sm font-bold">
-          <Clock size={14} className="md:w-4 md:h-4" />
-          <span className="hidden sm:inline">EL EVENTO COMIENZA EN:</span>
-          <span className="sm:hidden">FALTAN:</span>
-          <span className="bg-slate-900 text-cyan-400 px-2 py-1 rounded text-xs">
-            {timeLeft.days}D
-          </span>
-          <span className="bg-slate-900 text-cyan-400 px-2 py-1 rounded text-xs">
-            {timeLeft.hours}H
-          </span>
-          <span className="bg-slate-900 text-cyan-400 px-2 py-1 rounded text-xs">
-            {timeLeft.minutes}M
-          </span>
-          <span className="bg-slate-900 text-cyan-400 px-2 py-1 rounded text-xs">
-            {timeLeft.seconds}S
-          </span>
+      {/* Contador regresivo - Posicionado debajo del navbar */}
+      <div className="absolute top-[70px] sm:top-[80px] left-1/2 transform -translate-x-1/2 z-30 bg-slate-900/90 backdrop-blur-sm text-white px-4 py-2 rounded-lg border border-[#4BA146] shadow-lg max-w-[95%] mx-auto">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-3">
+          <div className="flex items-center gap-1 sm:gap-2">
+            <Clock size={16} className="text-[#4BA146] flex-shrink-0" />
+            <span className="text-xs sm:text-sm font-semibold whitespace-nowrap">EVENTO COMIENZA EN:</span>
+          </div>
+          <div className="flex items-center gap-1 sm:gap-2">
+            <div className="flex flex-col items-center bg-slate-800/90 px-2 py-1 rounded-md min-w-[40px] sm:min-w-[50px]">
+              <span className="text-lg sm:text-xl font-bold text-[#4BA146]">{timeLeft.days}</span>
+              <span className="text-[0.6rem] sm:text-xs uppercase tracking-wider">Días</span>
+            </div>
+            <div className="text-lg font-bold text-[#4BA146] hidden sm:block">:</div>
+            <div className="flex flex-col items-center bg-slate-800/90 px-2 py-1 rounded-md min-w-[40px] sm:min-w-[50px]">
+              <span className="text-lg sm:text-xl font-bold text-[#4BA146]">{timeLeft.hours}</span>
+              <span className="text-[0.6rem] sm:text-xs uppercase tracking-wider">Horas</span>
+            </div>
+            <div className="text-lg font-bold text-[#4BA146] hidden sm:block">:</div>
+            <div className="flex flex-col items-center bg-slate-800/90 px-2 py-1 rounded-md min-w-[40px] sm:min-w-[50px]">
+              <span className="text-lg sm:text-xl font-bold text-[#4BA146]">{timeLeft.minutes}</span>
+              <span className="text-[0.6rem] sm:text-xs uppercase tracking-wider">Min</span>
+            </div>
+            <div className="text-lg font-bold text-[#4BA146] hidden sm:block">:</div>
+            <div className="flex flex-col items-center bg-slate-800/90 px-2 py-1 rounded-md min-w-[40px] sm:min-w-[50px]">
+              <span className="text-lg sm:text-xl font-bold text-[#4BA146]">{timeLeft.seconds}</span>
+              <span className="text-[0.6rem] sm:text-xs uppercase tracking-wider">Seg</span>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -165,67 +143,76 @@ const CongresoCarousel = () => {
                 ${index === currentSlide ? 'opacity-100' : 'opacity-0'}
               `}
             >
-              {/* Background image sin overlay gradiente */}
+              {/* Background image */}
               <div
                 className="absolute inset-0 bg-cover bg-center"
                 style={{ backgroundImage: `url(${slide.thumbnail})` }}
               />
-              <div className="absolute inset-0 bg-slate-900 bg-opacity-80" />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/70 to-slate-900/50" />
 
-              <div className="relative z-20 h-full flex items-center justify-center px-4 md:px-8">
-                <div className="text-center max-w-4xl w-full pt-16 md:pt-20">
+              {/* Contenido principal con margen superior para navbar + contador */}
+              <div className="relative z-20 h-full flex items-center justify-center px-4 sm:px-6 pt-[120px] sm:pt-[140px] pb-24 sm:pb-20">
+                <div className="text-center w-full max-w-4xl">
                   {/* Título principal */}
-                  <h1 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-3 md:mb-4 ${slide.textColor} transition-all duration-1000 delay-500
-                    ${isActive ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'} leading-tight`}>
+                  <h1 className={`relative text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-3 sm:mb-4 ${slide.textColor} transition-all duration-1000 delay-300
+                    ${isActive ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'} leading-tight pb-3`}>
                     {slide.title}
+                    <span className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 w-16 sm:w-24 h-0.5 bg-[#4BA146] transition-all duration-1000 delay-500
+                      ${isActive ? 'scale-x-100 opacity-100' : 'scale-x-0 opacity-0'}`}></span>
                   </h1>
 
                   {/* Subtítulo */}
-                  <h2 className={`text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold mb-3 md:mb-4 text-cyan-400 transition-all duration-1000 delay-700
+                  <h2 className={`text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold mb-3 sm:mb-4 text-[#4BA146] transition-all duration-1000 delay-500
                     ${isActive ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'} leading-tight`}>
                     {slide.subtitle}
                   </h2>
 
                   {/* Descripción */}
-                  <p className={`text-sm sm:text-base md:text-lg lg:text-xl ${slide.textColor} max-w-3xl mx-auto leading-relaxed transition-all duration-1000 delay-900 font-medium px-4 mb-4
-                    ${isActive ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-                    {slide.description}
-                  </p>
+                  {slide.description && (
+                    <p className={`text-sm sm:text-base md:text-lg lg:text-xl ${slide.textColor} max-w-3xl mx-auto leading-relaxed transition-all duration-1000 delay-700 font-medium px-2 sm:px-4 mb-4 sm:mb-6
+                      ${isActive ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+                      {slide.description}
+                    </p>
+                  )}
 
-                  {/* Lista de bullets optimizada */}
-                  <ul className={`mt-4 space-y-2 text-left text-sm sm:text-base md:text-lg max-w-2xl mx-auto ${slide.textColor} transition-all duration-1000 delay-1000 px-4 ${isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-                    {slide.bullets.map((item, i) => (
-                      <li key={i} className="flex items-center gap-3 p-2 md:p-3 bg-slate-900 bg-opacity-70 rounded-lg">
-                        <div className="w-2 h-2 bg-cyan-400 rounded-full flex-shrink-0"></div>
-                        <span className="font-medium leading-relaxed">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  {/* Lista de bullets */}
+                  <div className={`mt-4 sm:mt-6 space-y-2 sm:space-y-3 text-left max-w-2xl mx-auto transition-all duration-1000 delay-700 px-2 sm:px-4 ${isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+                    {slide.isEjeTematico && (
+                      <h3 className="text-sm sm:text-base font-bold text-[#F7941D] mb-1 sm:mb-2">Subtemas:</h3>
+                    )}
+                    <ul className="space-y-2 sm:space-y-3">
+                      {slide.bullets.map((item, i) => (
+                        <li key={i} className="flex items-start gap-2 p-2 sm:p-3 bg-slate-900/70 backdrop-blur-sm rounded-lg border border-slate-700">
+                          <div className={`w-2 h-2 mt-2 rounded-full flex-shrink-0 ${slide.isEjeTematico ? 'bg-[#F7941D]' : 'bg-[#4BA146]'}`}></div>
+                          <span className="font-medium leading-relaxed text-white">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
 
                   {/* Botón CTA */}
-                  <div className="mt-6 md:mt-8">
+                  <div className="mt-6 sm:mt-8">
                     <a 
-  href="/_events/tipo-participacion"
-  className={`
-    relative inline-block px-6 sm:px-8 md:px-10 py-3 md:py-4
-    bg-cyan-400 text-slate-900 border-2 border-cyan-400 rounded-full
-    font-bold text-base sm:text-lg md:text-xl
-    hover:bg-slate-900 hover:text-cyan-400 hover:scale-105
-    transform transition-all duration-300
-    ${isActive ? 'translate-y-0 opacity-100 delay-[1200ms]' : 'translate-y-8 opacity-0'}
-    transition-all duration-1000
-  `}
->
-  <span className="relative z-10 flex items-center justify-center space-x-2">
-    <span className="text-lg md:text-xl">🚀</span>
-    <span className="text-sm sm:text-base md:text-lg">¡INSCRÍBETE YA!</span>
-    <span className="text-lg md:text-xl">✨</span>
-  </span>
-</a>
+                      href="#"
+                      className={`
+                        inline-block px-6 sm:px-8 py-2 sm:py-3
+                        bg-[#4BA146] text-white border-2 border-[#4BA146] rounded-lg
+                        font-bold text-base sm:text-lg
+                        hover:bg-transparent hover:text-[#4BA146]
+                        transform transition-all duration-300
+                        ${isActive ? 'translate-y-0 opacity-100 delay-[900ms]' : 'translate-y-8 opacity-0'}
+                        relative overflow-hidden
+                      `}
+                    >
+                      <span className="relative z-10 flex items-center justify-center space-x-2 sm:space-x-3">
+                        <span>🚀 REGÍSTRATE</span>
+                      </span>
+                      <span className="absolute inset-0 bg-white opacity-0 hover:opacity-10 transition-opacity duration-300 -z-1"></span>
+                    </a>
                     
                     {slide.isMainSlide && (
-                      <p className={`mt-3 md:mt-4 font-semibold px-4 text-sm sm:text-base text-white ${isActive ? 'opacity-100 delay-[1300ms]' : 'opacity-0'} transition-all duration-1000`}>
-                        ¡No te lo pierdas! Evento extraordinario lleno de conocimiento e innovación
+                      <p className={`mt-3 sm:mt-4 font-medium px-4 text-xs sm:text-sm text-white/80 ${isActive ? 'opacity-100 delay-[1000ms]' : 'opacity-0'} transition-all duration-1000`}>
+                        ¡Evento exclusivo para la comunidad universitaria!
                       </p>
                     )}
                   </div>
@@ -237,50 +224,72 @@ const CongresoCarousel = () => {
       </div>
 
       {/* Botones de navegación */}
-      <button onClick={prevSlide} className="absolute left-2 md:left-6 top-1/2 transform -translate-y-1/2 z-30 p-2 md:p-4 bg-slate-900 border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-slate-900 rounded-full transition-all duration-300 hover:scale-110">
-        <ChevronLeft size={20} className="md:w-7 md:h-7" />
+      <button 
+        onClick={prevSlide} 
+        className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 z-30 p-2 sm:p-3 bg-slate-900/70 backdrop-blur-sm border-2 border-[#4BA146] text-[#4BA146] hover:bg-[#4BA146] hover:text-white rounded-full transition-all duration-300 hover:scale-110 focus:outline-none shadow-lg"
+        aria-label="Slide anterior"
+      >
+        <ChevronLeft size={20} className="sm:w-6 sm:h-6" />
       </button>
 
-      <button onClick={nextSlide} className="absolute right-2 md:right-6 top-1/2 transform -translate-y-1/2 z-30 p-2 md:p-4 bg-slate-900 border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-slate-900 rounded-full transition-all duration-300 hover:scale-110">
-        <ChevronRight size={20} className="md:w-7 md:h-7" />
+      <button 
+        onClick={nextSlide} 
+        className="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 z-30 p-2 sm:p-3 bg-slate-900/70 backdrop-blur-sm border-2 border-[#4BA146] text-[#4BA146] hover:bg-[#4BA146] hover:text-white rounded-full transition-all duration-300 hover:scale-110 focus:outline-none shadow-lg"
+        aria-label="Slide siguiente"
+      >
+        <ChevronRight size={20} className="sm:w-6 sm:h-6" />
       </button>
 
       {/* Indicadores de slides */}
-      <div className="absolute bottom-16 md:bottom-20 left-1/2 transform -translate-x-1/2 z-30 flex space-x-2 md:space-x-4">
+      <div className="absolute bottom-16 sm:bottom-20 left-1/2 transform -translate-x-1/2 z-30 flex space-x-2 sm:space-x-3">
         {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`w-3 h-3 md:w-4 md:h-4 rounded-full transition-all duration-300 border-2 border-white ${
+            className={`relative w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
               index === currentSlide 
-                ? 'bg-cyan-400 scale-125' 
-                : 'bg-white bg-opacity-30 hover:bg-opacity-60 hover:scale-110'
+                ? 'bg-[#4BA146] scale-125' 
+                : 'bg-white/30 hover:bg-white/60'
             }`}
-          />
+            aria-label={`Ir al slide ${index + 1}`}
+          >
+            {index === currentSlide && (
+              <span className="absolute inset-0 rounded-full border border-[#4BA146] animate-ping opacity-75"></span>
+            )}
+          </button>
         ))}
       </div>
 
       {/* Barra de progreso */}
-      <div className="absolute bottom-0 left-0 w-full h-2 z-30 bg-slate-900">
+      <div className="absolute bottom-0 left-0 w-full h-1 z-30 bg-slate-900/50">
         <div 
-          className="h-full bg-cyan-400 transition-all duration-300 ease-linear" 
+          className="h-full bg-gradient-to-r from-[#4BA146] to-[#0077C8] transition-all duration-1000 ease-linear" 
           style={{ width: `${((currentSlide + 1) / slides.length) * 100}%` }} 
+          aria-hidden="true"
         />
       </div>
 
-      {/* Información del evento fija */}
-      <div className="absolute bottom-20 md:bottom-24 right-2 md:right-6 z-30 bg-slate-900 text-white p-2 md:p-4 rounded-lg border-2 border-cyan-400 max-w-[200px] md:max-w-xs">
-        <div className="flex items-center gap-1 md:gap-2 mb-1 md:mb-2">
-          <MapPin size={14} className="md:w-4 md:h-4 flex-shrink-0 text-cyan-400" />
-          <span className="text-xs md:text-sm font-semibold">Lima, Perú 🇵🇪</span>
+      {/* Información del evento */}
+      <div className={`absolute bottom-20 sm:bottom-24 right-2 sm:right-4 z-30 bg-slate-900/90 backdrop-blur-sm text-white p-2 sm:p-3 rounded-lg border border-[#4BA146]/50 shadow-lg max-w-[160px] sm:max-w-xs transition-all duration-300 ${
+        isAutoPlaying ? 'opacity-90 hover:opacity-100' : 'opacity-100'
+      }`}>
+        <div className="flex items-start gap-1 sm:gap-2 mb-1 sm:mb-2">
+          <MapPin size={14} className="mt-0.5 flex-shrink-0 text-[#4BA146]" />
+          <div>
+            <h3 className="text-[0.6rem] sm:text-xs uppercase tracking-wider text-[#4BA146] font-bold">Ubicación</h3>
+            <p className="text-xs sm:text-sm">Centro Regional Universitario Panamá Este</p>
+          </div>
         </div>
-        <div className="flex items-center gap-1 md:gap-2">
-          <Calendar size={14} className="md:w-4 md:h-4 flex-shrink-0 text-cyan-400" />
-          <span className="text-xs md:text-sm">25-27 Sept 2025</span>
+        <div className="flex items-start gap-1 sm:gap-2">
+          <Calendar size={14} className="mt-0.5 flex-shrink-0 text-[#4BA146]" />
+          <div>
+            <h3 className="text-[0.6rem] sm:text-xs uppercase tracking-wider text-[#4BA146] font-bold">Fecha</h3>
+            <p className="text-xs sm:text-sm">21-23 Oct 2025</p>
+          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default CongresoCarousel;
+export default EventoCarousel;

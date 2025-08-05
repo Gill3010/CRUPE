@@ -1,186 +1,169 @@
 import { useState, useEffect } from 'react';
-import {
-  Menu,
-  X,
-  Presentation
-} from 'lucide-react';
+import { Menu, X, Building2 } from 'lucide-react';
 
-// NAVBAR COMPONENT - Diseño profesional con colores planos
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
+
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    handleScroll();
+    checkMobile();
+
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('resize', checkMobile);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', checkMobile);
+    };
   }, []);
 
   const toggleMobile = () => {
     setIsOpen(!isOpen);
   };
 
+  const menuItems = [
+    { name: 'Inicio', url: '/_events/_crupe' },
+    { name: 'Cronograma', url: '/_events/_crupe/cronograma' },
+    { name: 'Comité Organizador', url: '/_events/_crupe/comision-organizadora' },
+    { name: 'Ejes Temáticos', url: '/_events/_crupe/ejes-tematicos' },
+    { name: 'Contacto', url: '/contacto' }
+  ];
+
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled 
-        ? 'bg-slate-900 border-b border-cyan-400' 
+        ? 'bg-white/95 backdrop-blur-sm border-b border-[#4BA146]/30 shadow-md' 
         : 'bg-transparent'
     }`}>
-      {/* Elementos decorativos geométricos */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-2 left-10 w-8 h-8 border border-cyan-400 transform rotate-45 opacity-30" />
-        <div className="absolute top-4 right-20 w-6 h-6 border border-cyan-400 rounded-full opacity-30" />
-        <div className="absolute bottom-2 right-10 w-4 h-4 bg-cyan-400 transform rotate-12 opacity-20" />
-      </div>
-
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <a href="/_events" className="block flex-shrink-0">
-            <div className="flex items-center space-x-2 lg:space-x-3">
-              <div className="relative">
-                <div className="w-8 h-8 lg:w-10 lg:h-10 bg-cyan-400 rounded-lg flex items-center justify-center">
-                  <Presentation className="w-5 h-5 lg:w-6 lg:h-6 text-slate-900" />
-                </div>
-                <div className="absolute -top-1 -right-1 w-2 h-2 lg:w-3 lg:h-3 bg-slate-900 rounded-full animate-pulse" />
-              </div>
-              <div className="text-white min-w-0">
-                <h1 className="text-base lg:text-xl font-bold whitespace-nowrap">
-                  Tercer Congreso
-                </h1>
-                <span className="text-xs tracking-wider whitespace-nowrap text-cyan-400">
-                  INVESTIGACIONES CUALITATIVAS
-                </span>
-              </div>
+          <a 
+            href="/_events/_crupe" 
+            className="flex items-center space-x-2 md:space-x-3 group"
+          >
+            <div className={`flex items-center justify-center w-9 h-9 md:w-10 md:h-10 rounded-md transition-all duration-300 ${
+              isScrolled ? 'bg-[#4BA146]' : 'bg-[#4BA146]/90 backdrop-blur-sm group-hover:bg-[#4BA146]'
+            }`}>
+              <Building2 className="w-5 h-5 md:w-6 md:h-6 text-white group-hover:scale-110 transition-transform duration-300" />
+            </div>
+            <div className="text-[#0077C8] group-hover:text-[#4BA146] transition-all duration-300">
+              <h1 className="text-sm md:text-lg font-bold leading-tight">
+                I Congreso Científico 
+              </h1>
+              <p className="text-[0.65rem] md:text-xs tracking-wider text-[#F7941D] group-hover:text-[#0077C8] transition-colors duration-300">
+                Internacional CRUPE 2025
+              </p>
             </div>
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-4 lg:space-x-6 xl:space-x-8">
-            <a 
-              href="https://relaticpanama.org" 
-              className="text-white hover:text-cyan-400 transition-colors duration-300 font-medium relative group whitespace-nowrap text-sm lg:text-base ml-8 lg:ml-12"
-            >
-              Ir a RELATIC
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 transition-all duration-300 group-hover:w-full" />
-            </a>
+          <div className="hidden md:flex items-center space-x-1 lg:space-x-3">
+            {menuItems.map((item) => (
+              <div key={item.name} className="relative group">
+                <a 
+                  href={item.url} 
+                  className={`px-3 py-2 rounded-md transition-all duration-200 font-medium text-sm lg:text-base ${
+                    isScrolled 
+                      ? 'text-[#0077C8] hover:text-[#4BA146]' 
+                      : 'text-white hover:text-[#F7941D]'
+                  } relative z-10`}
+                >
+                  {item.name}
+                  <span className={`absolute bottom-0 left-0 w-0 h-0.5 ${
+                    isScrolled ? 'bg-[#4BA146]' : 'bg-white'
+                  } transition-all duration-300 group-hover:w-full`}></span>
+                </a>
+              </div>
+            ))}
 
-            <a 
-              href="/_events/cronograma" 
-              className="text-white hover:text-cyan-400 transition-colors duration-300 font-medium relative group whitespace-nowrap text-sm lg:text-base"
-            >
-              Cronograma
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 transition-all duration-300 group-hover:w-full" />
-            </a>
+            <div className={`h-6 w-px mx-1 lg:mx-2 transition-all duration-300 ${
+              isScrolled ? 'bg-[#4BA146]' : 'bg-white/50'
+            }`}></div>
 
-            <a 
-              href="/_events/ejes-tematicos" 
-              className="text-white hover:text-cyan-400 transition-colors duration-300 font-medium relative group whitespace-nowrap text-sm lg:text-base"
-            >
-              Ejes Temáticos
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 transition-all duration-300 group-hover:w-full" />
-            </a>
-
-            <a 
-              href="/_events/comision-organizadora" 
-              className="text-white hover:text-cyan-400 transition-colors duration-300 font-medium relative group whitespace-nowrap text-sm lg:text-base"
-            >
-              Comisión Organizadora
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 transition-all duration-300 group-hover:w-full" />
-            </a>
-
-            <a 
-              href="https://relaticpanama.org/suscription" 
-              className="text-white hover:text-cyan-400 transition-colors duration-300 font-medium relative group whitespace-nowrap text-sm lg:text-base"
-            >
-              Afíliate a RELATIC
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 transition-all duration-300 group-hover:w-full" />
-            </a>
-
-            {/* CTA Button */}
-            <a
-              href="/_events/tipo-participacion"
-              className="relative px-4 lg:px-6 py-2 bg-cyan-400 hover:bg-slate-900 text-slate-900 hover:text-cyan-400 border-2 border-cyan-400 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 whitespace-nowrap"
-            >
-              <span className="relative z-10 flex items-center space-x-1 lg:space-x-2">
-                <span className="text-sm lg:text-base">🚀</span>
-                <span className="text-sm lg:text-base">¡INSCRÍBETE YA!</span>
-              </span>
-            </a>
+            <div className="relative group">
+              <a
+                href="#"
+                className={`px-3 lg:px-4 py-2 rounded-md font-medium text-sm lg:text-base transition-all duration-200 relative z-10 ${
+                  isScrolled 
+                    ? 'text-[#F7941D] hover:text-[#4BA146]' 
+                    : 'text-white hover:text-[#F7941D]'
+                }`}
+              >
+                {isMobile ? 'Regístrate' : 'Regístrate'}
+                <span className={`absolute bottom-0 left-0 w-0 h-0.5 ${
+                  isScrolled ? 'bg-[#4BA146]' : 'bg-white'
+                } transition-all duration-300 group-hover:w-full`}></span>
+              </a>
+            </div>
           </div>
 
-          {/* Mobile menu button */}
+          {/* Mobile Toggle */}
           <div className="md:hidden">
             <button
               onClick={toggleMobile}
-              className="text-white hover:text-cyan-400 transition-colors duration-300 p-2"
+              className={`transition-all duration-300 p-2 rounded-md ${
+                isScrolled 
+                  ? 'text-[#0077C8] bg-[#4BA146]/20 hover:bg-[#4BA146]/30' 
+                  : 'text-white bg-[#0077C8]/20 hover:bg-[#0077C8]/30'
+              }`}
+              aria-label="Toggle menu"
             >
-              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isOpen ? (
+                <X className="w-5 h-5" />
+              ) : (
+                <Menu className="w-5 h-5" />
+              )}
             </button>
           </div>
         </div>
 
         {/* Mobile Navigation */}
-        <div className={`md:hidden transition-all duration-500 ease-in-out ${
+        <div className={`md:hidden transition-all duration-300 ease-in-out overflow-hidden ${
           isOpen 
-            ? 'max-h-screen opacity-100 pb-6' 
-            : 'max-h-0 opacity-0 overflow-hidden'
+            ? 'max-h-screen opacity-100 py-2' 
+            : 'max-h-0 opacity-0'
         }`}>
-          <div className="bg-slate-900 border border-cyan-400 rounded-xl mt-4 overflow-hidden">
-            <div className="p-4 space-y-2">
-              <a 
-                href="https://relaticpanama.org" 
-                className="block px-4 py-3 text-white hover:text-cyan-400 hover:bg-slate-800 rounded-lg transition-all duration-300 font-medium"
-                onClick={() => setIsOpen(false)}
-              >
-                Ir a RELATIC
-              </a>
+          <div className={`rounded-lg mt-2 shadow-lg ${
+            isScrolled 
+              ? 'bg-white/95 backdrop-blur-sm border border-[#4BA146]/30' 
+              : 'bg-white/90 backdrop-blur-sm'
+          }`}>
+            <div className="px-2 py-2 space-y-1">
+              {menuItems.map((item) => (
+                <div key={item.name} className="relative group">
+                  <a 
+                    href={item.url} 
+                    className="block px-4 py-3 text-[#0077C8] hover:text-[#4BA146] rounded-md transition-all duration-200 font-medium text-sm"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {item.name}
+                    <span className="absolute bottom-2 left-4 w-0 h-0.5 bg-[#4BA146] transition-all duration-300 group-hover:w-[calc(100%-2rem)]"></span>
+                  </a>
+                </div>
+              ))}
 
-              <a 
-                href="/_events/cronograma" 
-                className="block px-4 py-3 text-white hover:text-cyan-400 hover:bg-slate-800 rounded-lg transition-all duration-300 font-medium"
-                onClick={() => setIsOpen(false)}
-              >
-                Cronograma
-              </a>
-
-              <a 
-                href="/_events/ejes-tematicos" 
-                className="block px-4 py-3 text-white hover:text-cyan-400 hover:bg-slate-800 rounded-lg transition-all duration-300 font-medium"
-                onClick={() => setIsOpen(false)}
-              >
-                Ejes Temáticos
-              </a>
-
-              <a 
-                href="/_events/comision-organizadora" 
-                className="block px-4 py-3 text-white hover:text-cyan-400 hover:bg-slate-800 rounded-lg transition-all duration-300 font-medium"
-                onClick={() => setIsOpen(false)}
-              >
-                Comisión Organizadora
-              </a>
-
-              <a 
-                href="https://relaticpanama.org/suscription" 
-                className="block px-4 py-3 text-white hover:text-cyan-400 hover:bg-slate-800 rounded-lg transition-all duration-300 font-medium"
-                onClick={() => setIsOpen(false)}
-              >
-                Afíliate a RELATIC
-              </a>
-
-              <div className="pt-4 border-t border-cyan-400">
-                <a
-                  href="/_events/tipo-participacion"
-                  className="flex items-center justify-center space-x-2 w-full px-6 py-3 bg-cyan-400 hover:bg-slate-800 text-slate-900 hover:text-cyan-400 border-2 border-cyan-400 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105"
-                  onClick={() => setIsOpen(false)}
-                >
-                  <span className="relative z-10 flex items-center space-x-2">
-                    <span className="text-base">🚀</span>
-                    <span>¡INSCRÍBETE YA!</span>
-                  </span>
-                </a>
+              <div className="pt-2 mt-1 border-t border-[#4BA146]/30">
+                <div className="relative group">
+                  <a
+                    href="#"
+                    className="block px-4 py-3 text-center text-[#F7941D] hover:text-[#0077C8] rounded-md font-medium text-sm transition-all duration-200"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Regístrate
+                    <span className="absolute bottom-2 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#0077C8] transition-all duration-300 group-hover:w-[calc(100%-2rem)]"></span>
+                  </a>
+                </div>
               </div>
             </div>
           </div>

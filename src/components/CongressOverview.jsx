@@ -1,145 +1,134 @@
 import { useEffect } from 'react';
-import { BookOpen, Cpu, Globe, ShieldCheck, Upload } from 'lucide-react';
+import { BookOpen, Building2, Users, Leaf } from 'lucide-react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const CongressOverview = () => {
   useEffect(() => {
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px',
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
-        }
-      });
-    }, observerOptions);
-
-    const elements = document.querySelectorAll('.aos-animate');
-    elements.forEach((el) => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(20px)';
-      el.style.transition = 'all 0.6s ease-out';
-      observer.observe(el);
+    AOS.init({
+      duration: 600,
+      once: false,
+      easing: 'ease-out-sine'
     });
-
-    return () => observer.disconnect();
   }, []);
 
   const themes = [
     {
       id: 1,
-      icon: <BookOpen className="w-5 h-5 text-[#00BCD4]" />,
-      title: 'Innovaciones en Metodologías Cualitativas',
-      items: [
-        'Integración de TIC en Métodos Cualitativos',
-        'Metodologías Mixtas',
-        'Investigación Participativa',
-      ],
+      icon: <BookOpen className="w-5 h-5 text-[#0077C8]" />,
+      title: 'Educación e investigación para el desarrollo sostenible',
+      description: 'Articulación entre procesos formativos y producción de conocimiento para enfrentar desafíos del desarrollo sostenible',
+      subtopics: [
+        'Innovación educativa y formación docente en contextos regionales',
+        'Prácticas pedagógicas para el desarrollo sostenible',
+        'Educación superior y equidad territorial',
+        'Investigación educativa y políticas públicas',
+        'Ciencias sociales, cultura y desarrollo humano sostenible',
+        'Humanidades aplicadas al fortalecimiento de identidades locales',
+        'Salud pública, educación comunitaria y bienestar social'
+      ]
     },
     {
       id: 2,
-      icon: <Cpu className="w-5 h-5 text-[#00BCD4]" />,
-      title: 'TIC y la Inteligencia Artificial',
-      items: [
-        'Uso de IA en el Análisis de Contenido',
-        'Desafíos de Interpretación',
-        'Validación de Resultados',
-      ],
-    },
-    {
-      id: 3,
-      icon: <Globe className="w-5 h-5 text-[#00BCD4]" />,
-      title: 'Aplicación Disciplinaria e Interdisciplinaria',
-      items: [
-        'Arte y Diseño',
-        'Ciencias Administrativas y Contables',
-        'Ciencias de la Educación',
-        'Ciencias Naturales y Exactas',
-        'Ciencias Sociales y Humanísticas',
-        'Ciencias de la Salud',
-        'Derecho y Ciencias Políticas',
-        'Tecnología e Ingeniería',
-      ],
-    },
-    {
-      id: 4,
-      icon: <ShieldCheck className="w-5 h-5 text-[#00BCD4]" />,
-      title: 'Ética y Responsabilidad en la Era Digital',
-      items: [
-        'Ética en la Recolección de Datos',
-        'Privacidad y Consentimiento Informado',
-        'Responsabilidad Social en la Investigación',
-      ],
-    },
-    {
-      id: 5,
-      icon: <Upload className="w-5 h-5 text-[#00BCD4]" />,
-      title: 'Publicación Científica',
-      items: [
-        'Publicación Abierta y Acceso a la Información',
-        'Evaluación por Pares y Transparencia',
-        'Difusión de Resultados a través de TIC',
-      ],
-    },
-    {
-      id: 6,
-      icon: <span className="text-[#00BCD4] text-xl">📂</span>,
-      title: 'Temas Libres',
-      items: [
-        'Espacio abierto para propuestas innovadoras en investigación cualitativa.',
-      ],
-    },
+      icon: <Building2 className="w-5 h-5 text-[#0077C8]" />,
+      title: 'Ciencias administrativas e investigación para la gestión sostenible',
+      description: 'Vinculación de ciencias económicas, administración y tecnología con investigación aplicada a modelos de gestión sostenibles',
+      subtopics: [
+        'Gestión estratégica para el desarrollo regional y local',
+        'Planificación y sostenibilidad territorial en Panamá Este',
+        'Tecnologías emergentes y medioambiente: gestión de la innovación sostenible',
+        'Ciencia de datos, administración pública y toma de decisiones',
+        'Economía circular, responsabilidad social y desarrollo productivo',
+        'Emprendimiento social y gestión comunitaria del conocimiento',
+        'Ciencias de la salud y gestión sanitaria en zonas rurales'
+      ]
+    }
   ];
 
   return (
-    <div className="min-h-screen bg-[#0f172a] py-12 px-4">
-      <div className="max-w-6xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-12 aos-animate">
-          <h1 className="text-4xl md:text-5xl font-bold text-[#00BCD4] mb-6">
-            III Congreso de Investigaciones Cualitativas
+    <section className="min-h-screen bg-white py-12 px-4 sm:px-6 relative border-t border-[#4BA146]">
+      <div className="max-w-6xl mx-auto relative">
+        {/* Encabezado */}
+        <header className="text-center mb-12" data-aos="fade-up">
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-[#4BA146] rounded-full mb-6 shadow-md">
+            <Leaf className="w-7 h-7 text-white" />
+          </div>
+          <h1 className="text-3xl md:text-4xl font-bold text-[#0077C8] mb-3">
+            Ejes Temáticos Oficiales
           </h1>
-          <p className="text-lg text-white max-w-2xl mx-auto">
-            Lema: <em>“Las TIC e Inteligencia Artificial en la investigación cualitativa”</em>
+          <p className="text-xl text-[#1a1a1a] font-medium mb-6">
+            Congreso Académico Regional
           </p>
-        </div>
+          <div className="w-20 h-1.5 bg-[#F7941D] mx-auto rounded-full mb-8"></div>
+          
+          <div className="max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+            <div className="bg-white rounded-xl p-6 border-2 border-[#4BA146] shadow-lg">
+              <p className="text-[#1a1a1a] leading-relaxed text-center text-lg">
+                <span className="font-semibold text-[#0077C8]">Enfoque integral</span> que articula educación, investigación y gestión para el desarrollo sostenible de nuestra región.
+              </p>
+            </div>
+          </div>
+        </header>
 
-        {/* Lista de Temas */}
-        <div className="grid md:grid-cols-2 gap-6 aos-animate">
-          {themes.map((theme, index) => (
-            <div
+        {/* Ejes Temáticos */}
+        <div className="space-y-8">
+          {themes.map((theme) => (
+            <article 
               key={theme.id}
-              className="flex items-start gap-4 p-4 rounded-lg border border-white/10 bg-[#0a2d4d] hover:bg-[#0c3a5c] transition-all duration-300"
+              className="bg-white rounded-xl overflow-hidden border-2 border-[#4BA146]/30 transition-all duration-300 hover:border-[#0077C8] shadow-md hover:shadow-lg"
+              data-aos="fade-up"
+              data-aos-delay={theme.id * 100}
             >
-              <div className="w-8 h-8 bg-[#00BCD4] text-[#0a2d4d] font-bold flex items-center justify-center rounded-full">
-                {index + 1}
+              <div className="p-6 md:p-8">
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0">
+                    <div className="w-12 h-12 bg-[#4BA146]/10 rounded-lg flex items-center justify-center border-2 border-[#4BA146]/30">
+                      {theme.icon}
+                    </div>
+                  </div>
+                  <div>
+                    <h2 className="text-xl font-bold text-[#0077C8] mb-3">{theme.title}</h2>
+                    <p className="text-[#1a1a1a] text-base">{theme.description}</p>
+                  </div>
+                </div>
               </div>
-              <div>
-                <h2 className="text-lg font-semibold text-white mb-2 flex items-center gap-2">
-                  {theme.icon}
-                  {theme.title}
-                </h2>
-                <ul className="list-disc list-inside text-white space-y-1 text-sm">
-                  {theme.items.map((item, i) => (
-                    <li key={i}>{item}</li>
+              
+              <div className="border-t-2 border-[#4BA146]/20 bg-[#4BA146]/5 p-6 md:p-8">
+                <h3 className="text-lg font-semibold text-[#0077C8] mb-4 flex items-center gap-2">
+                  <Users className="w-5 h-5 text-[#F7941D]" />
+                  <span>Subtemas:</span>
+                </h3>
+                
+                <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {theme.subtopics.map((subtopic, index) => (
+                    <li 
+                      key={index}
+                      className="flex items-start gap-3 bg-white rounded-md p-4 border-2 border-[#4BA146]/20 hover:bg-[#4BA146]/5 transition-colors duration-200 shadow-sm"
+                      data-aos="fade-up"
+                      data-aos-delay={150 + (index * 30)}
+                    >
+                      <span className="inline-flex items-center justify-center w-6 h-6 bg-[#F7941D] text-white text-sm font-bold rounded-full flex-shrink-0 mt-0.5">
+                        {index + 1}
+                      </span>
+                      <span className="text-[#1a1a1a] text-sm">{subtopic}</span>
+                    </li>
                   ))}
                 </ul>
               </div>
-            </div>
+            </article>
           ))}
         </div>
 
-        {/* Footer note */}
-        <div className="text-center mt-12 aos-animate">
-          <p className="text-white text-sm">
-            Gracias por tu interés en el III Congreso de Investigaciones Cualitativas.
-          </p>
-        </div>
+        {/* Nota final */}
+        <footer className="text-center mt-12" data-aos="fade-up" data-aos-delay="200">
+          <div className="bg-white rounded-lg p-6 border-2 border-[#4BA146] shadow-md inline-block max-w-2xl">
+            <p className="text-[#1a1a1a] text-lg">
+              <span className="text-[#0077C8] font-semibold">Importante:</span> Todos los trabajos deben alinearse con los Objetivos de Desarrollo Sostenible (ODS)
+            </p>
+          </div>
+        </footer>
       </div>
-    </div>
+    </section>
   );
 };
 

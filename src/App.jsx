@@ -6,12 +6,12 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import CongressForm from './components/CongressForm';
 import CongressTriptych from './components/CongressTriptych';
-import SponsorsCarousel from './components/SponsorsCarousel';
-import SpeakersCarousel from './components/SpeakersCarousel';
+// import SponsorsCarousel from './components/SponsorsCarousel';
+// import SpeakersCarousel from './components/SpeakersCarousel';
 import EventBannerWithCountdown from './components/EventBannerWithCountdown';
 import OrganizingCommittee from './components/OrganizingCommittee';
 // import VideoShowcase from './components/VideoShowcase';
-import VideoGalleryEnterview from './components/VideoGalleryEnterview';
+// import VideoGalleryEnterview from './components/VideoGalleryEnterview';
 import PosterGuidelines from './components/PosterGuidelines';
 import BookPresentationGuidelines from './components/BookPresentationGuidelines';
 import PresentationGuidelines from './components/Presentationguidelines';
@@ -24,7 +24,7 @@ import WorkshopRequirements from './components/WorkshopRequirements';
 import AssistantRegistrationForm from './components/AssistantRegistrationForm';
 import ParticipationSelector from './components/ParticipationSelector';
 import PaymentMethods from './components/PaymentMethods';
-import MetricsDashboard from './components/MetricsDashboard'; // ✅ NUEVO
+// import MetricsDashboard from './components/MetricsDashboard'; 
 
 const EventCalendar = lazy(() => import('./components/EventCalendar'));
 
@@ -148,10 +148,10 @@ const AppContent = () => {
               <>
                 {/* Métricas justo antes de SpeakersCarousel */}
                 <section className="px-4 sm:px-6 lg:px-8 py-12">
-                  <MetricsDashboard />
+                  {/* <MetricsDashboard /> */}
                 </section>
 
-                <SpeakersCarousel />
+                {/* <SpeakersCarousel /> */}
 
                 <section className="px-4 sm:px-6 lg:px-8 py-12">
                   <CongressTriptych />
@@ -164,10 +164,10 @@ const AppContent = () => {
 
                   <div className="mt-16">
                     {/* <VideoShowcase /> */}
-                    <VideoGalleryEnterview />
+                    {/* <VideoGalleryEnterview /> */}
                   </div>
 
-                  <SponsorsCarousel />
+                  {/* <SponsorsCarousel /> */}
                 </section>
               </>
             }
@@ -181,7 +181,7 @@ const AppContent = () => {
 };
 
 const App = () => (
-  <Router basename={import.meta.env.PROD ? '/_events' : '/'}>
+ <Router basename={import.meta.env.PROD ? '/_events/_crupe' : '/'}>
     <AppContent />
   </Router>
 );
