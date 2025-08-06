@@ -54,7 +54,7 @@ const EventoCarousel = () => {
       bullets: [
         "📅 21 al 23 de octubre de 2025",
         "🏛️ Centro Regional Universitario Panamá Este",
-        "🇵🇦 Modalidad híbrida (presencial - virtual)"
+        "💻👥 Modalidad híbrida (presencial - virtual)"
       ],
       isMainSlide: true
     },
@@ -100,32 +100,32 @@ const EventoCarousel = () => {
 
   return (
     <div className="relative w-full h-screen overflow-hidden bg-slate-900">
-      {/* Contador regresivo - Posicionado debajo del navbar */}
-      <div className="absolute top-[70px] sm:top-[80px] left-1/2 transform -translate-x-1/2 z-30 bg-slate-900/90 backdrop-blur-sm text-white px-4 py-2 rounded-lg border border-[#4BA146] shadow-lg max-w-[95%] mx-auto">
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-3">
-          <div className="flex items-center gap-1 sm:gap-2">
-            <Clock size={16} className="text-[#4BA146] flex-shrink-0" />
-            <span className="text-xs sm:text-sm font-semibold whitespace-nowrap">EVENTO COMIENZA EN:</span>
+      {/* Contador regresivo - Reubicado a la izquierda */}
+      <div className="absolute top-[70px] sm:top-[80px] left-2 sm:left-4 z-30 bg-slate-900/90 backdrop-blur-sm text-white px-3 py-2 rounded-lg border border-[#4BA146] shadow-lg">
+        <div className="flex flex-col items-start gap-1">
+          <div className="flex items-center gap-1">
+            <Clock size={14} className="text-[#4BA146] flex-shrink-0" />
+            <span className="text-xs font-semibold whitespace-nowrap">EVENTO COMIENZA EN:</span>
           </div>
-          <div className="flex items-center gap-1 sm:gap-2">
-            <div className="flex flex-col items-center bg-slate-800/90 px-2 py-1 rounded-md min-w-[40px] sm:min-w-[50px]">
-              <span className="text-lg sm:text-xl font-bold text-[#4BA146]">{timeLeft.days}</span>
-              <span className="text-[0.6rem] sm:text-xs uppercase tracking-wider">Días</span>
+          <div className="flex items-center gap-1">
+            <div className="flex flex-col items-center bg-slate-800/90 px-1 py-1 rounded-md min-w-[36px]">
+              <span className="text-base font-bold text-[#4BA146]">{timeLeft.days}</span>
+              <span className="text-[0.6rem] uppercase tracking-wider">Días</span>
             </div>
-            <div className="text-lg font-bold text-[#4BA146] hidden sm:block">:</div>
-            <div className="flex flex-col items-center bg-slate-800/90 px-2 py-1 rounded-md min-w-[40px] sm:min-w-[50px]">
-              <span className="text-lg sm:text-xl font-bold text-[#4BA146]">{timeLeft.hours}</span>
-              <span className="text-[0.6rem] sm:text-xs uppercase tracking-wider">Horas</span>
+            <span className="text-sm font-bold text-[#4BA146]">:</span>
+            <div className="flex flex-col items-center bg-slate-800/90 px-1 py-1 rounded-md min-w-[36px]">
+              <span className="text-base font-bold text-[#4BA146]">{timeLeft.hours}</span>
+              <span className="text-[0.6rem] uppercase tracking-wider">Horas</span>
             </div>
-            <div className="text-lg font-bold text-[#4BA146] hidden sm:block">:</div>
-            <div className="flex flex-col items-center bg-slate-800/90 px-2 py-1 rounded-md min-w-[40px] sm:min-w-[50px]">
-              <span className="text-lg sm:text-xl font-bold text-[#4BA146]">{timeLeft.minutes}</span>
-              <span className="text-[0.6rem] sm:text-xs uppercase tracking-wider">Min</span>
+            <span className="text-sm font-bold text-[#4BA146]">:</span>
+            <div className="flex flex-col items-center bg-slate-800/90 px-1 py-1 rounded-md min-w-[36px]">
+              <span className="text-base font-bold text-[#4BA146]">{timeLeft.minutes}</span>
+              <span className="text-[0.6rem] uppercase tracking-wider">Min</span>
             </div>
-            <div className="text-lg font-bold text-[#4BA146] hidden sm:block">:</div>
-            <div className="flex flex-col items-center bg-slate-800/90 px-2 py-1 rounded-md min-w-[40px] sm:min-w-[50px]">
-              <span className="text-lg sm:text-xl font-bold text-[#4BA146]">{timeLeft.seconds}</span>
-              <span className="text-[0.6rem] sm:text-xs uppercase tracking-wider">Seg</span>
+            <span className="text-sm font-bold text-[#4BA146]">:</span>
+            <div className="flex flex-col items-center bg-slate-800/90 px-1 py-1 rounded-md min-w-[36px]">
+              <span className="text-base font-bold text-[#4BA146]">{timeLeft.seconds}</span>
+              <span className="text-[0.6rem] uppercase tracking-wider">Seg</span>
             </div>
           </div>
         </div>
@@ -193,7 +193,7 @@ const EventoCarousel = () => {
                   {/* Botón CTA */}
                   <div className="mt-6 sm:mt-8">
                     <a 
-                      href="#"
+                      href="/_events/_crupe/inscripcion"
                       className={`
                         inline-block px-6 sm:px-8 py-2 sm:py-3
                         bg-[#4BA146] text-white border-2 border-[#4BA146] rounded-lg

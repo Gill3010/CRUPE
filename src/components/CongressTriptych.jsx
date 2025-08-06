@@ -40,13 +40,13 @@ const CongressTriptych = () => {
       title: "Ponencias",
       description: "Dirigidas a docentes e investigadores",
       icon: <BookOpen className="w-5 h-5 text-[#4BA146] group-hover:scale-110 transition-transform" />,
-      href: "#ponencias"
+      href: "/_events/_crupe/presentacion-ponencias"
     },
     {
       title: "Carteles científicos",
       description: "Dirigidos a estudiantes universitarios",
       icon: <Presentation className="w-5 h-5 text-[#4BA146] group-hover:scale-110 transition-transform" />,
-      href: "#carteles"
+      href: "/_events/_crupe/presentacion-cartel"
     }
   ];
 
@@ -60,27 +60,32 @@ const CongressTriptych = () => {
   return (
     <div className="min-h-screen bg-white py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
-        {/* Encabezado */}
-        <div className="text-center mb-12" data-aos="fade-up">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-[#4BA146] rounded-xl mb-6 shadow-lg transform transition-all hover:scale-105 duration-300">
-            <Presentation className="w-7 h-7 text-white" />
-          </div>
-          <h1 className="text-3xl md:text-4xl font-bold text-[#0077C8] mb-3">
-            Organización General del Congreso
-          </h1>
-          <p className="text-xl text-gray-700 font-medium mb-6">
-            Primer Congreso Científico Internacional CRUPE 2025
-          </p>
-          <div className="w-20 h-1.5 bg-[#F7941D] mx-auto rounded-full mb-8"></div>
-          
-          <div className="max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100">
-            <div className="bg-[#4BA146]/10 rounded-xl p-5 border border-[#4BA146]/30 hover:border-[#4BA146]/50 transition-colors duration-300">
-              <p className="text-gray-800 leading-relaxed text-center text-lg">
-                <span className="font-semibold text-[#0077C8]">Lema:</span> "Educación, investigación y gestión para el desarrollo: la estrategia de Panamá Este-Panamá"
-              </p>
-            </div>
-          </div>
-        </div>
+     {/* Encabezado */}
+<div className="text-center mb-12" data-aos="fade-up">
+  <div className="inline-flex items-center justify-center w-44 h-44 mb-6 transform transition-all hover:scale-105 duration-300">
+    <img 
+      src="/_events/_crupe/assets/logocrupe.png" 
+      alt="Logo CRUPE" 
+      className="w-full h-full object-contain"
+      style={{ backgroundColor: 'transparent' }}
+    />
+  </div>
+  <h1 className="text-3xl md:text-4xl font-bold text-[#0077C8] mb-3">
+    Organización General del Congreso
+  </h1>
+  <p className="text-xl text-gray-700 font-medium mb-6">
+    Primer Congreso Científico Internacional CRUPE 2025
+  </p>
+  <div className="w-20 h-1.5 bg-[#F7941D] mx-auto rounded-full mb-8"></div>
+
+  <div className="max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+    <div className="bg-[#4BA146]/10 rounded-xl p-5 border border-[#4BA146]/30 hover:border-[#4BA146]/50 transition-colors duration-300">
+      <p className="text-gray-800 leading-relaxed text-center text-lg">
+        <span className="font-semibold text-[#0077C8]">Lema:</span> "Educación, investigación y gestión para el desarrollo: la estrategia de Panamá Este-Panamá"
+      </p>
+    </div>
+  </div>
+</div>
 
         {/* Información principal */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">

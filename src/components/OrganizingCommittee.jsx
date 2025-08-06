@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { SiOrcid } from 'react-icons/si';
-import { Building2, Users, Mail, Phone, MapPin } from 'lucide-react';
+import { Building2,  Mail, Phone, MapPin } from 'lucide-react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -79,27 +79,34 @@ const OrganizingCommittee = () => {
   return (
     <section className="min-h-screen bg-white py-12 px-4 sm:px-6 relative border-t border-[#4BA146]">
       <div className="max-w-7xl mx-auto relative">
-        {/* Encabezado */}
-        <header className="text-center mb-12" data-aos="fade-up">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-[#0077C8] rounded-full mb-6 shadow-md animate-pulse">
-            <Users className="w-7 h-7 text-white" />
-          </div>
-          <h1 className="text-3xl md:text-4xl font-bold text-[#0077C8] mb-3">
-            Comité Organizador
-          </h1>
-          <p className="text-xl text-[#1a1a1a] font-medium mb-6">
-            Congreso Universitario de Sostenibilidad
-          </p>
-          <div className="w-20 h-1.5 bg-[#F7941D] mx-auto rounded-full mb-8"></div>
-          
-          <div className="max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100">
-            <div className="bg-white rounded-xl p-6 border-2 border-[#4BA146] shadow-lg">
-              <p className="text-[#1a1a1a] leading-relaxed text-center text-lg">
-                <span className="font-semibold text-[#0077C8]">Equipo comprometido</span> con la excelencia académica y la organización de eventos de alto nivel para nuestra comunidad universitaria.
-              </p>
-            </div>
-          </div>
-        </header>
+     {/* Encabezado */}
+<header className="text-center mb-12" data-aos="fade-up">
+ {/* Logo grande y sin efectos */}
+<div className="inline-flex items-center justify-center w-48 h-48 mb-6">
+  <img
+    src="/_events/_crupe/assets/logocrupe.png"
+    alt="Logo CRUPE"
+    className="w-full h-full object-contain"
+    style={{ backgroundColor: 'transparent' }}
+  />
+</div>
+
+  <h1 className="text-3xl md:text-4xl font-bold text-[#0077C8] mb-3">
+    Comité Organizador
+  </h1>
+  <p className="text-xl text-[#1a1a1a] font-medium mb-6">
+    Congreso Universitario de Sostenibilidad
+  </p>
+  <div className="w-20 h-1.5 bg-[#F7941D] mx-auto rounded-full mb-8"></div>
+
+  <div className="max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+    <div className="bg-white rounded-xl p-6 border-2 border-[#4BA146] shadow-lg">
+      <p className="text-[#1a1a1a] leading-relaxed text-center text-lg">
+        <span className="font-semibold text-[#0077C8]">Equipo comprometido</span> con la excelencia académica y la organización de eventos de alto nivel para nuestra comunidad universitaria.
+      </p>
+    </div>
+  </div>
+</header>
 
         {/* Miembros del comité */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">

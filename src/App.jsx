@@ -14,7 +14,8 @@ import OrganizingCommittee from './components/OrganizingCommittee';
 // import VideoGalleryEnterview from './components/VideoGalleryEnterview';
 import PosterGuidelines from './components/PosterGuidelines';
 import BookPresentationGuidelines from './components/BookPresentationGuidelines';
-import PresentationGuidelines from './components/Presentationguidelines';
+
+import PresentationFormat from './components/PresentationFormat';
 import AbstractSubmissionGuidelines from './components/AbstractSubmissionGuidelines';
 import InvestmentTable from './components/InvestmentTable';
 import ConferencePresentationGuidelines from './components/ConferencePresentationGuidelines';
@@ -23,7 +24,7 @@ import PanelRequirements from './components/PanelRequirements';
 import WorkshopRequirements from './components/WorkshopRequirements';
 import AssistantRegistrationForm from './components/AssistantRegistrationForm';
 import ParticipationSelector from './components/ParticipationSelector';
-import PaymentMethods from './components/PaymentMethods';
+// import PaymentMethods from './components/PaymentMethods';
 // import MetricsDashboard from './components/MetricsDashboard'; 
 
 const EventCalendar = lazy(() => import('./components/EventCalendar'));
@@ -63,7 +64,7 @@ const AppContent = () => {
     '/inscripcion',
     '/cronograma',
     '/comision-organizadora',
-    '/cartel-cientifico',
+    '/presentacion-cartel',
     '/presentacion-libros',
     '/presentacion-ponencias',
     '/presentacion-resumen',
@@ -90,7 +91,7 @@ const AppContent = () => {
         {location.pathname === '/inscripcion' && (
           <>
             <CongressForm />
-            <PaymentMethods />
+            {/* <PaymentMethods /> */}
           </>
         )}
 
@@ -102,14 +103,14 @@ const AppContent = () => {
 
         {isOrganizing && <OrganizingCommittee />}
 
-        {location.pathname === '/cartel-cientifico' && <PosterGuidelines />}
+        {location.pathname === '/presentacion-cartel' && <PosterGuidelines />}
         {location.pathname === '/presentacion-libros' && <BookPresentationGuidelines />}
-        {location.pathname === '/presentacion-ponencias' && <PresentationGuidelines />}
+        {location.pathname === '/presentacion-ponencias' && <PresentationFormat />}
         {location.pathname === '/presentacion-resumen' && <AbstractSubmissionGuidelines />}
         {location.pathname === '/inversion' && (
           <>
             <InvestmentTable />
-            <PaymentMethods />
+            {/* <PaymentMethods /> */}
           </>
         )}
 
@@ -120,13 +121,13 @@ const AppContent = () => {
         {location.pathname === '/asistencia' && (
           <>
             <AssistantRegistrationForm />
-            <PaymentMethods />
+            {/* <PaymentMethods /> */}
           </>
         )}
         {location.pathname === '/tipo-participacion' && (
           <>
             <ParticipationSelector />
-            <PaymentMethods />
+            {/* <PaymentMethods /> */}
           </>
         )}
       </section>

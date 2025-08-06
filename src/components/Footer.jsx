@@ -32,7 +32,7 @@ const Footer = () => {
                 <h2 className="text-2xl font-bold tracking-tight text-[#4BA146] leading-tight">
                   I Congreso Científico Internacional CRUPE 2025
                 </h2>
-                <div className="w-16 h-0.5 bg-[#0077C8]"></div>
+                <div className="w-16 h-0.5 bg-[#0077C8] animate-line"></div>
                 <p className="text-gray-300 text-sm leading-relaxed font-light">
                   Institución comprometida con la excelencia académica y el desarrollo regional en Panamá Este.
                 </p>
@@ -40,7 +40,7 @@ const Footer = () => {
 
               {/* Redes sociales */}
               <div className="space-y-3">
-                <h4 className="text-sm font-medium text-gray-200 uppercase tracking-wider">
+                <h4 className="text-sm font-medium text-[#25D366] uppercase tracking-wider">
                   Síguenos
                 </h4>
                 <div className="flex gap-4">
@@ -70,7 +70,7 @@ const Footer = () => {
             <div className="space-y-6">
               <div>
                 <h3 className="text-sm font-semibold text-[#4BA146] uppercase tracking-wider mb-4">Navegación</h3>
-                <div className="w-12 h-0.5 bg-[#0077C8] mb-6"></div>
+                <div className="w-16 h-0.5 bg-[#0077C8] animate-line"></div>
               </div>
               <nav>
                 <ul className="space-y-3">
@@ -93,9 +93,9 @@ const Footer = () => {
                     </a>
                   </li>
                   <li>
-                    <a href="/_events/tipo-participacion" className="flex items-center gap-3 text-gray-300 hover:text-[#0077C8] transition-colors duration-300 text-sm group">
+                    <a href="/_events/_crupe/inscripcion" className="flex items-center gap-3 text-gray-300 hover:text-[#0077C8] transition-colors duration-300 text-sm group">
                       <Rocket size={14} className="text-gray-400 group-hover:text-[#0077C8] transition-colors" />
-                      <span>Inscripciones</span>
+                      <span>Regístrate</span>
                     </a>
                   </li>
                 </ul>
@@ -106,18 +106,18 @@ const Footer = () => {
             <div className="space-y-6">
               <div>
                 <h3 className="text-sm font-semibold text-[#4BA146] uppercase tracking-wider mb-4">Ejes Temáticos</h3>
-                <div className="w-12 h-0.5 bg-[#0077C8] mb-6"></div>
+                <div className="w-16 h-0.5 bg-[#0077C8] animate-line"></div>
               </div>
               <nav>
                 <ul className="space-y-3">
                   <li>
-                    <a href="/_events/ejes-tematicos" className="flex items-start gap-3 text-gray-300 hover:text-[#0077C8] transition-colors duration-300 text-sm group">
+                    <a href="/_events/_crupe/ejes-tematicos" className="flex items-start gap-3 text-gray-300 hover:text-[#0077C8] transition-colors duration-300 text-sm group">
                       <LayoutList size={14} className="text-gray-400 group-hover:text-[#0077C8] transition-colors mt-0.5 flex-shrink-0" />
                       <span className="leading-5">Educación e investigación para el desarrollo sostenible</span>
                     </a>
                   </li>
                   <li>
-                    <a href="/_events/ejes-tematicos" className="flex items-start gap-3 text-gray-300 hover:text-[#0077C8] transition-colors duration-300 text-sm group">
+                    <a href="/_events/_crupe/ejes-tematicos" className="flex items-start gap-3 text-gray-300 hover:text-[#0077C8] transition-colors duration-300 text-sm group">
                       <FileText size={14} className="text-gray-400 group-hover:text-[#0077C8] transition-colors mt-0.5 flex-shrink-0" />
                       <span className="leading-5">Ciencias administrativas e investigación para la gestión sostenible</span>
                     </a>
@@ -130,7 +130,7 @@ const Footer = () => {
             <div className="space-y-6">
               <div>
                 <h3 className="text-sm font-semibold text-[#4BA146] uppercase tracking-wider mb-4">Contáctanos</h3>
-                <div className="w-12 h-0.5 bg-[#0077C8] mb-6"></div>
+               <div className="w-16 h-0.5 bg-[#0077C8] animate-line"></div>
               </div>
               <div className="space-y-4">
                 <div className="flex items-start gap-3">

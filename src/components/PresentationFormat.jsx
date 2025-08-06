@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
-import { Image, List, Layout, Palette, Mail, Download } from 'lucide-react';
+import { FileText, User, List, Book, Download } from 'lucide-react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
-const ScientificPosterFormat = () => {
+const PresentationFormat = () => {
   useEffect(() => {
     AOS.init({
       duration: 600,
@@ -15,36 +15,36 @@ const ScientificPosterFormat = () => {
   const sections = [
     {
       id: 1,
-      icon: <Layout className="w-5 h-5 text-[#0077C8]" />,
-      title: 'Dimensiones del cartel',
-      description: '90 cm (alto) x 60 cm (ancho). Vertical u horizontal. En formato digital (para la exposición virtual) y en físico si se participa presencialmente.'
+      icon: <FileText className="w-5 h-5 text-[#0077C8]" />,
+      title: 'Título del trabajo',
+      description: 'Mayúsculas sostenidas, centrado, negrita, sin subrayado. Máximo 20 palabras'
     },
     {
       id: 2,
-      icon: <List className="w-5 h-5 text-[#0077C8]" />,
-      title: 'Elementos obligatorios',
-      subtopics: [
-        'Título del cartel (breve, claro, conciso; en mayúsculas sostenidas y negrita)',
-        'Autor(es) (nombre completo y filiación institucional)',
-        'Resumen (máximo 150 palabras)',
-        'Introducción',
-        'Objetivos',
-        'Metodología',
-        'Resultados esperados/obtenidos',
-        'Conclusiones o reflexiones',
-        'Bibliografía (máximo 5 referencias, estilo APA 7.ª edición)',
-        'Código QR (opcional, para enlazar a un portafolio, video o sitio adicional)'
-      ]
+      icon: <User className="w-5 h-5 text-[#0077C8]" />,
+      title: 'Autor(es)',
+      description: 'Nombre completo, filiación institucional, correo electrónico. Si son varios autores, indicarlos en orden de aparición con nota al pie para la identificación institucional.'
     },
     {
       id: 3,
-      icon: <Palette className="w-5 h-5 text-[#0077C8]" />,
-      title: 'Diseño sugerido',
+      icon: <List className="w-5 h-5 text-[#0077C8]" />,
+      title: 'Resumen',
+      description: 'Máximo 300 palabras. Debe incluir de forma estructurada: objetivo, vacío que llena la investigación, metodología, resultados preliminares o finales, conclusiones y aporte, importancia o impacto al área de conocimiento y a la sociedad. Redactado en tercera persona, sin citas, en un solo párrafo.'
+    },
+    {
+      id: 4,
+      icon: <Book className="w-5 h-5 text-[#0077C8]" />,
+      title: 'Estructura sugerida del cuerpo del texto',
       subtopics: [
-        'Uso de colores institucionales o sobrios',
-        'Tipografía legible (sans serif para títulos, serif para cuerpo)',
-        'Uso equilibrado de texto e imágenes (gráficas, tablas, fotografías, esquemas)',
-        'Inserción del logotipo del congreso y de la Universidad de Panamá'
+        'Introducción',
+        'Problema de investigación',
+        'Objetivo general y específicos',
+        'Marco teórico (síntesis conceptual)',
+        'Metodología',
+        'Resultados o avances',
+        'Discusión',
+        'Conclusiones',
+        'Referencias (formato APA 7.ª edición)'
       ]
     }
   ];
@@ -64,23 +64,23 @@ const ScientificPosterFormat = () => {
           </div>
 
           <h1 className="text-3xl md:text-4xl font-bold text-[#0077C8] mb-3">
-            Formato para Carteles Científicos
+            Formato para la Presentación de Ponencias
           </h1>
           <p className="text-xl text-[#1a1a1a] font-medium mb-6">
-            (Estudiantes)
+            Requisitos y estructura del documento
           </p>
           <div className="w-20 h-1.5 bg-[#F7941D] mx-auto rounded-full mb-8"></div>
 
           <div className="max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100">
             <div className="bg-white rounded-xl p-6 border-2 border-[#4BA146] shadow-lg">
               <p className="text-[#1a1a1a] leading-relaxed text-center text-lg mb-6">
-                <span className="font-semibold text-[#0077C8]">Presentación visual</span> de investigaciones en formato gráfico para exposición académica.
+                <span className="font-semibold text-[#0077C8]">Formato estandarizado</span> para garantizar la uniformidad y calidad de las presentaciones académicas.
               </p>
               
               {/* Botones de descarga */}
               <div className="flex flex-col sm:flex-row justify-center gap-4 mt-6" data-aos="fade-up" data-aos-delay="150">
                 <a
-                  href="/_events/_crupe/pdfs/Requisitoscarteles.pdf"
+                  href="/_events/_crupe/pdfs/Requisitosponencias.pdf"
                   download
                   className="flex items-center justify-center gap-2 px-6 py-3 bg-[#0077C8] text-white rounded-lg hover:bg-[#005fa3] transition-colors duration-300 shadow-md hover:shadow-lg"
                 >
@@ -89,7 +89,7 @@ const ScientificPosterFormat = () => {
                 </a>
                 
                 <a
-                  href="/_events/_crupe/pdfs/Plantillacartel.pdf"
+                  href="/_events/_crupe/pdfs/Plantillaponencia.pdf"
                   download
                   className="flex items-center justify-center gap-2 px-6 py-3 bg-[#4BA146] text-white rounded-lg hover:bg-[#3a8138] transition-colors duration-300 shadow-md hover:shadow-lg"
                 >
@@ -101,7 +101,6 @@ const ScientificPosterFormat = () => {
           </div>
         </header>
 
-        {/* Resto del componente se mantiene igual */}
         {/* Secciones del formato */}
         <div className="space-y-8">
           {sections.map((section) => (
@@ -120,7 +119,7 @@ const ScientificPosterFormat = () => {
                   </div>
                   <div>
                     <h2 className="text-xl font-bold text-[#0077C8] mb-3">{section.title}</h2>
-                    {section.description && <p className="text-[#1a1a1a] text-base">{section.description}</p>}
+                    <p className="text-[#1a1a1a] text-base">{section.description}</p>
                   </div>
                 </div>
               </div>
@@ -129,7 +128,7 @@ const ScientificPosterFormat = () => {
                 <div className="border-t-2 border-[#4BA146]/20 bg-[#4BA146]/5 p-6 md:p-8">
                   <h3 className="text-lg font-semibold text-[#0077C8] mb-4 flex items-center gap-2">
                     <List className="w-5 h-5 text-[#F7941D]" />
-                    <span>Detalles:</span>
+                    <span>Elementos:</span>
                   </h3>
                   
                   <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -156,29 +155,12 @@ const ScientificPosterFormat = () => {
         {/* Nota final */}
         <footer className="text-center mt-12" data-aos="fade-up" data-aos-delay="200">
           <div className="bg-white rounded-lg p-6 border-2 border-[#4BA146] shadow-md inline-block max-w-2xl">
-            <div className="flex items-start gap-4 mb-4">
-              <div className="flex-shrink-0">
-                <div className="w-10 h-10 bg-[#4BA146]/10 rounded-lg flex items-center justify-center border-2 border-[#4BA146]/30">
-                  <Image className="w-5 h-5 text-[#0077C8]" />
-                </div>
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold text-[#0077C8] mb-2">Formato de entrega:</h3>
-                <p className="text-[#1a1a1a] text-base">Archivo PDF y PNG o JPEG (mínimo 200 dpi)</p>
-              </div>
-            </div>
-            
-            <div className="flex items-start gap-4">
-              <div className="flex-shrink-0">
-                <div className="w-10 h-10 bg-[#4BA146]/10 rounded-lg flex items-center justify-center border-2 border-[#4BA146]/30">
-                  <Mail className="w-5 h-5 text-[#0077C8]" />
-                </div>
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold text-[#0077C8] mb-2">Envío:</h3>
-                <p className="text-[#1a1a1a] text-base">Enviar a: icongresocrupe2025@gmail.com</p>
-              </div>
-            </div>
+            <p className="text-[#1a1a1a] text-lg mb-3">
+              <span className="text-[#0077C8] font-semibold">Formato del documento:</span> Fuente: Times New Roman, 12 pt | Interlineado: 1.5 | Márgenes: 2.5 cm (superior, inferior, izquierdo, derecho)
+            </p>
+            <p className="text-[#1a1a1a] text-lg">
+              <span className="text-[#0077C8] font-semibold">Extensión y formato:</span> Entre 6 y 8 páginas incluyendo referencias | Archivos: Word (.docx) y PDF
+            </p>
           </div>
         </footer>
       </div>
@@ -186,4 +168,4 @@ const ScientificPosterFormat = () => {
   );
 };
 
-export default ScientificPosterFormat;
+export default PresentationFormat;

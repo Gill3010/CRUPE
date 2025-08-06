@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { BookOpen, Building2, Users, Leaf } from 'lucide-react';
+import { BookOpen, Building2, Users } from 'lucide-react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -48,27 +48,33 @@ const CongressOverview = () => {
   return (
     <section className="min-h-screen bg-white py-12 px-4 sm:px-6 relative border-t border-[#4BA146]">
       <div className="max-w-6xl mx-auto relative">
-        {/* Encabezado */}
-        <header className="text-center mb-12" data-aos="fade-up">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-[#4BA146] rounded-full mb-6 shadow-md">
-            <Leaf className="w-7 h-7 text-white" />
-          </div>
-          <h1 className="text-3xl md:text-4xl font-bold text-[#0077C8] mb-3">
-            Ejes Temáticos Oficiales
-          </h1>
-          <p className="text-xl text-[#1a1a1a] font-medium mb-6">
-            Congreso Académico Regional
-          </p>
-          <div className="w-20 h-1.5 bg-[#F7941D] mx-auto rounded-full mb-8"></div>
-          
-          <div className="max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100">
-            <div className="bg-white rounded-xl p-6 border-2 border-[#4BA146] shadow-lg">
-              <p className="text-[#1a1a1a] leading-relaxed text-center text-lg">
-                <span className="font-semibold text-[#0077C8]">Enfoque integral</span> que articula educación, investigación y gestión para el desarrollo sostenible de nuestra región.
-              </p>
-            </div>
-          </div>
-        </header>
+      {/* Encabezado */}
+<header className="text-center mb-12" data-aos="fade-up">
+  <div className="flex justify-center mb-6">
+    <img
+      src="/_events/_crupe/assets/logocrupe.png"
+      alt="Logo CRUPE"
+      className="w-40 h-40 object-contain"
+      style={{ backgroundColor: 'transparent' }}
+    />
+  </div>
+
+  <h1 className="text-3xl md:text-4xl font-bold text-[#0077C8] mb-3">
+    Ejes Temáticos Oficiales
+  </h1>
+  <p className="text-xl text-[#1a1a1a] font-medium mb-6">
+    Congreso Académico Regional
+  </p>
+  <div className="w-20 h-1.5 bg-[#F7941D] mx-auto rounded-full mb-8"></div>
+
+  <div className="max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+    <div className="bg-white rounded-xl p-6 border-2 border-[#4BA146] shadow-lg">
+      <p className="text-[#1a1a1a] leading-relaxed text-center text-lg">
+        <span className="font-semibold text-[#0077C8]">Enfoque integral</span> que articula educación, investigación y gestión para el desarrollo sostenible de nuestra región.
+      </p>
+    </div>
+  </div>
+</header>
 
         {/* Ejes Temáticos */}
         <div className="space-y-8">

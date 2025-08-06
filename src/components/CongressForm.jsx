@@ -1,527 +1,613 @@
-import { useState, useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
-import { FileText, Upload, User, Mail, MapPin, CreditCard } from 'lucide-react';
-
-const InputField = ({ name, label, type = 'text', required = false, placeholder, icon: Icon, children, formData, handleInputChange, errors, showAnimations }) => (
-  <div className="space-y-2" {...(showAnimations && { 'data-aos': 'fade-up', 'data-aos-delay': '100' })}>
-    <label className="flex items-center space-x-2 text-sm font-medium text-white">
-      {Icon && <Icon className="w-4 h-4 text-[#00BCD4]" />}
-      <span>{label}</span>
-      {required && <span className="text-pink-400">*</span>}
-    </label>
-    {children || (
-      <input
-        type={type}
-        name={name}
-        value={formData[name] || ''}
-        onChange={handleInputChange}
-        placeholder={placeholder}
-        className={`w-full bg-[#0a2d4d] text-white placeholder-white rounded-xl p-3 border transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#00BCD4] focus:border-[#00BCD4] ${
-          errors[name] ? 'border-red-400' : 'border-[#00BCD4] hover:border-white'
-        }`}
-      />
-    )}
-    {errors[name] && (
-      <p className="text-red-400 text-xs">{errors[name]}</p>
-    )}
-  </div>
-);
-
-InputField.propTypes = {
-  name: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
-  type: PropTypes.string,
-  required: PropTypes.bool,
-  placeholder: PropTypes.string,
-  icon: PropTypes.elementType,
-  children: PropTypes.node,
-  formData: PropTypes.object.isRequired,
-  handleInputChange: PropTypes.func.isRequired,
-  errors: PropTypes.object.isRequired,
-  showAnimations: PropTypes.bool.isRequired,
-};
-
-const SelectField = ({ name, label, options, required = false, icon: Icon, formData, handleInputChange, errors, showAnimations }) => (
-  <div className="space-y-2" {...(showAnimations && { 'data-aos': 'fade-up', 'data-aos-delay': '200' })}>
-    <label className="flex items-center space-x-2 text-sm font-medium text-white">
-      {Icon && <Icon className="w-4 h-4 text-[#00BCD4]" />}
-      <span>{label}</span>
-      {required && <span className="text-pink-400">*</span>}
-    </label>
-    <select
-      name={name}
-      value={formData[name] || ''}
-      onChange={handleInputChange}
-      className={`w-full bg-[#0a2d4d] text-white rounded-xl p-3 border transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#00BCD4] focus:border-[#00BCD4] ${
-        errors[name] ? 'border-red-400' : 'border-[#00BCD4] hover:border-white'
-      }`}
-    >
-      <option value="" className="bg-[#0a2d4d]">Seleccionar...</option>
-      {options.map(option => (
-        <option key={option} value={option} className="bg-[#0a2d4d]">{option}</option>
-      ))}
-    </select>
-    {errors[name] && (
-      <p className="text-red-400 text-xs">{errors[name]}</p>
-    )}
-  </div>
-);
-
-SelectField.propTypes = {
-  name: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
-  options: PropTypes.arrayOf(PropTypes.string).isRequired,
-  required: PropTypes.bool,
-  icon: PropTypes.elementType,
-  formData: PropTypes.object.isRequired,
-  handleInputChange: PropTypes.func.isRequired,
-  errors: PropTypes.object.isRequired,
-  showAnimations: PropTypes.bool.isRequired,
-};
-
-const FileField = ({ name, label, required = false, accept, icon: Icon, formData, handleFileChange, errors, showAnimations }) => (
-  <div className="space-y-2" {...(showAnimations && { 'data-aos': 'fade-up', 'data-aos-delay': '300' })}>
-    <label className="flex items-center space-x-2 text-sm font-medium text-white">
-      {Icon && <Icon className="w-4 h-4 text-[#00BCD4]" />}
-      <span>{label}</span>
-      {required && <span className="text-pink-400">*</span>}
-    </label>
-    <div className="relative">
-      <input
-        type="file"
-        name={name}
-        onChange={handleFileChange}
-        accept={accept}
-        className="hidden"
-        id={name}
-      />
-      <label
-        htmlFor={name}
-        className={`w-full bg-[#0a2d4d] text-white rounded-xl p-3 border transition-all duration-300 hover:bg-[#0a2d4d]/90 cursor-pointer flex items-center justify-center space-x-2 ${
-          errors[name] ? 'border-red-400' : 'border-[#00BCD4] hover:border-white'
-        }`}
-      >
-        <Upload className="w-4 h-4 text-[#00BCD4]" />
-        <span>{formData[name] ? formData[name].name : 'Seleccionar archivo'}</span>
-      </label>
-    </div>
-    {errors[name] && (
-      <p className="text-red-400 text-xs">{errors[name]}</p>
-    )}
-  </div>
-);
-
-FileField.propTypes = {
-  name: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
-  required: PropTypes.bool,
-  accept: PropTypes.string,
-  icon: PropTypes.elementType,
-  formData: PropTypes.object.isRequired,
-  handleFileChange: PropTypes.func.isRequired,
-  errors: PropTypes.object.isRequired,
-  showAnimations: PropTypes.bool.isRequired,
-};
+import { useEffect, useState, useRef } from 'react';
+import { Mail, IdCard, User, ClipboardList, FileText } from 'lucide-react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const CongressForm = () => {
+  const formRef = useRef(null);
+  const submitButtonRef = useRef(null);
+  const toastRef = useRef(null);
+  
+  useEffect(() => {
+    AOS.init({
+      duration: 600,
+      easing: 'ease-out-quad',
+      once: false,
+      offset: 120
+    });
+  }, []);
+
   const [formData, setFormData] = useState({
     email: '',
-    pais: '',
-    cedula: '',
-    pasaporte: '',
-    primerNombre: '',
-    segundoNombre: '',
-    primerApellido: '',
-    segundoApellido: '',
-    celular : '',
-    areaConocimiento: '',
-    tipoParticipacion: '',
-    tema: '',
-    resumenCientifico: null,
-    comprobantePago: null
+    country: '',
+    dni: '',
+    passport: '',
+    firstName: '',
+    middleName: '',
+    lastName: '',
+    secondLastName: '',
+    phone: '',
+    area: '',
+    participationType: '',
+    topic: '',
+    abstractFile: null,
+    paymentFile: null
   });
 
   const [errors, setErrors] = useState({});
-  const [loading, setLoading] = useState(false);
-  const [showAnimations, setShowAnimations] = useState(true);
-  const aosInitialized = useRef(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState({ success: false, message: '' });
+  const [showToast, setShowToast] = useState(false);
 
   useEffect(() => {
-    const initAOS = () => {
-      if (typeof window !== 'undefined' && !aosInitialized.current) {
-        const script = document.createElement('script');
-        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js';
-        script.onload = () => {
-          setTimeout(() => {
-            window.AOS.init({ 
-              duration: 1000, 
-              once: true,
-              offset: 100
-            });
-            
-            setTimeout(() => {
-              setShowAnimations(false);
-              window.removeEventListener('scroll', window.AOS.refresh);
-              window.removeEventListener('resize', window.AOS.refresh);
-              window.AOS.refresh = () => {};
-              window.AOS.refreshHard = () => {};
-              window.AOS.init = () => {};
-              if (window.AOS.observer) {
-                window.AOS.observer.disconnect();
-              }
-            }, 1500);
-            
-            aosInitialized.current = true;
-          }, 100);
-        };
-        document.head.appendChild(script);
+    if (submitStatus.message) {
+      setShowToast(true);
+      const timer = setTimeout(() => {
+        setShowToast(false);
+      }, 5000);
 
-        const link = document.createElement('link');
-        link.rel = 'stylesheet';
-        link.href = 'https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css';
-        document.head.appendChild(link);
-      }
-    };
+      scrollToFeedback();
 
-    initAOS();
-  }, []);
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-
-    if (errors[name]) {
-      setErrors(prev => ({
-        ...prev,
-        [name]: ''
-      }));
+      return () => clearTimeout(timer);
     }
+  }, [submitStatus]);
+
+  const scrollToFeedback = () => {
+    setTimeout(() => {
+      if (Object.keys(errors).length > 0) {
+        const firstErrorKey = Object.keys(errors)[0];
+        const firstErrorElement = document.getElementById(firstErrorKey);
+        if (firstErrorElement) {
+          firstErrorElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          return;
+        }
+      }
+      
+      if (submitButtonRef.current) {
+        submitButtonRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }, 100);
   };
 
-  const handleFileChange = (e) => {
-    const { name, files } = e.target;
+  const handleChange = (e) => {
+    const { name, value, files } = e.target;
     setFormData(prev => ({
       ...prev,
-      [name]: files[0] || null
+      [name]: files ? files[0] : value
     }));
-
-    if (errors[name]) {
-      setErrors(prev => ({
-        ...prev,
-        [name]: ''
-      }));
-    }
   };
 
   const validateForm = () => {
     const newErrors = {};
-    const requiredFields = [
-      'email', 'pais', 'cedula', 'primerNombre', 'primerApellido', 'celular',
-      'areaConocimiento', 'tipoParticipacion', 'tema'
-    ];
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    requiredFields.forEach(field => {
-      if (!formData[field]) {
-        newErrors[field] = 'Este campo es requerido';
-      }
-    });
+    if (!formData.email) newErrors.email = 'Este campo es requerido';
+    else if (!emailRegex.test(formData.email)) newErrors.email = 'Email inválido';
 
-    if (formData.email && !/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Email inválido';
-    }
-
-    if (!formData.resumenCientifico) {
-      newErrors.resumenCientifico = 'El resumen científico es requerido';
-    }
+    if (!formData.country) newErrors.country = 'Este campo es requerido';
+    if (!formData.dni) newErrors.dni = 'Este campo es requerido';
+    if (!formData.firstName) newErrors.firstName = 'Este campo es requerido';
+    if (!formData.lastName) newErrors.lastName = 'Este campo es requerido';
+    if (!formData.phone) newErrors.phone = 'Este campo es requerido';
+    if (!formData.area) newErrors.area = 'Este campo es requerido';
+    if (!formData.participationType) newErrors.participationType = 'Este campo es requerido';
+    if (!formData.topic) newErrors.topic = 'Este campo es requerido';
+    if (!formData.abstractFile) newErrors.abstractFile = 'El resumen científico es requerido';
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = async () => {
-    if (!validateForm()) return;
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    if (!validateForm()) {
+      setSubmitStatus({ 
+        success: false, 
+        message: 'Por favor completa todos los campos requeridos' 
+      });
+      return;
+    }
 
-    setLoading(true);
+    setIsSubmitting(true);
+    setSubmitStatus({ success: false, message: '' });
 
     try {
-      const data = new FormData();
-      Object.entries(formData).forEach(([key, value]) => {
-        if(value !== null) {
-          data.append(key, value);
-        }
-      });
+      // 1. Subir archivos primero
+      let abstractFileName = '';
+      let paymentFileName = '';
 
-      const response = await fetch('https://relaticpanama.org/_events/api/submit_inscriptions.php', {
-        method: 'POST',
-        body: data
-      });
-
-      const result = await response.json();
-
-      if (result.success) {
-        alert('¡Inscripción enviada exitosamente!');
-        setFormData({
-          email: '',
-          pais: '',
-          cedula: '',
-          pasaporte: '',
-          primerNombre: '',
-          segundoNombre: '',
-          primerApellido: '',
-          segundoApellido: '',
-          celular : '',
-          areaConocimiento: '',
-          tipoParticipacion: '',
-          tema: '',
-          resumenCientifico: null,
-          comprobantePago: null
+      if (formData.abstractFile) {
+        const formDataUpload = new FormData();
+        formDataUpload.append('file', formData.abstractFile);
+        
+        const uploadResponse = await fetch('https://relaticpanama.org/_events/_crupe/api/upload.php', {
+          method: 'POST',
+          body: formDataUpload
         });
-        setErrors({});
-      } else {
-        alert('❌ Error: ' + result.message);
+        
+        const uploadData = await uploadResponse.json();
+        if (!uploadResponse.ok) {
+          throw new Error(uploadData.error || 'Error al subir el resumen científico');
+        }
+        abstractFileName = uploadData.file_name;
       }
+
+      if (formData.paymentFile) {
+        const formDataUpload = new FormData();
+        formDataUpload.append('file', formData.paymentFile);
+        
+        const uploadResponse = await fetch('https://relaticpanama.org/_events/_crupe/api/upload.php', {
+          method: 'POST',
+          body: formDataUpload
+        });
+        
+        const uploadData = await uploadResponse.json();
+        if (!uploadResponse.ok) {
+          throw new Error(uploadData.error || 'Error al subir el comprobante de pago');
+        }
+        paymentFileName = uploadData.file_name;
+      }
+
+      // 2. Preparar datos para el endpoint principal con nombres consistentes
+      const submissionData = {
+        university_id: 1,
+        email: formData.email,
+        country: formData.country,
+        dni: formData.dni,
+        passport: formData.passport || null,
+        first_name: formData.firstName,
+        middle_name: formData.middleName || null,
+        last_name: formData.lastName,
+        second_last_name: formData.secondLastName || null,
+        phone: formData.phone,
+        area: formData.area.normalize("NFD").replace(/[\u0300-\u036f]/g, ""),
+        participation_type: formData.participationType,
+        topic: formData.topic,
+        abstract_file: abstractFileName,
+        payment_file: paymentFileName || null
+      };
+
+      // 3. Enviar datos al endpoint principal
+      const response = await fetch('https://relaticpanama.org/_events/_crupe/api/submit.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8',
+        },
+        body: JSON.stringify(submissionData)
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        const errorMsg = data.error || 
+                       (data.missing_fields ? `Faltan campos: ${data.missing_fields.join(', ')}` : 'Error al enviar el formulario');
+        throw new Error(errorMsg);
+      }
+
+      // Éxito - resetear formulario
+      setSubmitStatus({ 
+        success: true, 
+        message: data.message || 'Inscripción enviada con éxito' 
+      });
+      
+      setFormData({
+        email: '',
+        country: '',
+        dni: '',
+        passport: '',
+        firstName: '',
+        middleName: '',
+        lastName: '',
+        secondLastName: '',
+        phone: '',
+        area: '',
+        participationType: '',
+        topic: '',
+        abstractFile: null,
+        paymentFile: null
+      });
+
     } catch (error) {
-      alert('❌ Ocurrió un error al enviar la inscripción.');
-      console.error(error);
+      console.error('Error completo:', error);
+      setSubmitStatus({ 
+        success: false, 
+        message: error.message || 'Ocurrió un error al enviar el formulario' 
+      });
     } finally {
-      setLoading(false);
+      setIsSubmitting(false);
     }
   };
 
   return (
-    <div className="min-h-screen bg-[#0a2d4d] relative overflow-hidden">
-      <div className="relative z-10 container mx-auto px-4 py-12 max-w-4xl">
-        <div className="text-center mb-16" {...(showAnimations && { 'data-aos': 'fade-down' })}>
-          <h1 className="text-5xl font-bold text-white mb-4">
-            III Congreso de Investigaciones Cualitativas
-          </h1>
-          <p className="text-xl text-white max-w-2xl mx-auto">
-            Completa tu inscripción para participar en este evento académico de alto nivel
-          </p>
-        </div>
-
-        <div className="space-y-8">
-          {/* Contacto */}
-          <section className="bg-[#0a2d4d] rounded-2xl p-6 border border-[#00BCD4] hover:border-white transition-colors duration-300" {...(showAnimations && { 'data-aos': 'zoom-in' })}>
-            <h2 className="text-lg font-bold text-white mb-6 flex items-center space-x-2">
-              <Mail className="w-5 h-5 text-[#00BCD4]" />
-              <span>Información de Contacto</span>
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <InputField
-                name="email"
-                label="Email"
-                type="email"
-                required
-                placeholder="tu@email.com"
-                icon={Mail}
-                formData={formData}
-                handleInputChange={handleInputChange}
-                errors={errors}
-                showAnimations={showAnimations}
-              />
-              <SelectField
-                name="pais"
-                label="País"
-                required
-                options={['Panamá', 'Perú', 'Colombia', 'Argentina', 'Chile', 'España', 'Estados Unidos', 'Cuba', 'Brasil']}
-                icon={MapPin}
-                formData={formData}
-                handleInputChange={handleInputChange}
-                errors={errors}
-                showAnimations={showAnimations}
-              />
+    <div className="min-h-screen bg-white py-12 px-4 sm:px-6 lg:px-8">
+      {/* Toast Notification */}
+      {showToast && (
+        <div 
+          ref={toastRef}
+          className={`fixed bottom-4 right-4 z-50 p-4 rounded-lg shadow-lg max-w-md transform transition-all duration-300 ${
+            submitStatus.success 
+              ? 'bg-green-100 text-green-800 border-l-4 border-green-500' 
+              : 'bg-red-100 text-red-800 border-l-4 border-red-500'
+          }`}
+          data-aos="fade-left"
+        >
+          <div className="flex items-start">
+            <div className="flex-shrink-0">
+              {submitStatus.success ? (
+                <svg className="h-5 w-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+              ) : (
+                <svg className="h-5 w-5 text-red-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                </svg>
+              )}
             </div>
-          </section>
-
-          {/* Identificación */}
-          <section className="bg-[#0a2d4d] rounded-2xl p-6 border border-[#00BCD4] hover:border-white transition-colors duration-300" {...(showAnimations && { 'data-aos': 'zoom-in', 'data-aos-delay': '100' })}>
-            <h2 className="text-lg font-bold text-white mb-6 flex items-center space-x-2">
-              <FileText className="w-5 h-5 text-[#00BCD4]" />
-              <span>Identificación</span>
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <InputField
-                name="cedula"
-                label="Cédula / DNI"
-                required
-                placeholder="8-123-456"
-                icon={FileText}
-                formData={formData}
-                handleInputChange={handleInputChange}
-                errors={errors}
-                showAnimations={showAnimations}
-              />
-              <InputField
-                name="pasaporte"
-                label="Pasaporte / DNI"
-                placeholder="A1234567"
-                icon={FileText}
-                formData={formData}
-                handleInputChange={handleInputChange}
-                errors={errors}
-                showAnimations={showAnimations}
-              />
+            <div className="ml-3">
+              <p className="text-sm font-medium">{submitStatus.message}</p>
             </div>
-          </section>
-
-          {/* Información Personal */}
-          <section className="bg-[#0a2d4d] rounded-2xl p-6 border border-[#00BCD4] hover:border-white transition-colors duration-300" {...(showAnimations && { 'data-aos': 'zoom-in', 'data-aos-delay': '200' })}>
-            <h2 className="text-lg font-bold text-white mb-6 flex items-center space-x-2">
-              <User className="w-5 h-5 text-[#00BCD4]" />
-              <span>Información Personal</span>
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <InputField
-                name="primerNombre"
-                label="Primer Nombre"
-                required
-                placeholder="Juan"
-                icon={User}
-                formData={formData}
-                handleInputChange={handleInputChange}
-                errors={errors}
-                showAnimations={showAnimations}
-              />
-              <InputField
-                name="segundoNombre"
-                label="Segundo Nombre"
-                placeholder="Carlos"
-                icon={User}
-                formData={formData}
-                handleInputChange={handleInputChange}
-                errors={errors}
-                showAnimations={showAnimations}
-              />
-              <InputField
-                name="primerApellido"
-                label="Primer Apellido"
-                required
-                placeholder="Pérez"
-                icon={User}
-                formData={formData}
-                handleInputChange={handleInputChange}
-                errors={errors}
-                showAnimations={showAnimations}
-              />
-              <InputField
-                name="segundoApellido"
-                label="Segundo Apellido"
-                placeholder="González"
-                icon={User}
-                formData={formData}
-                handleInputChange={handleInputChange}
-                errors={errors}
-                showAnimations={showAnimations}
-              />
-              <InputField
-                name="celular"
-                label="Celular"
-                type="tel"
-                required
-                placeholder="(+507) 6000-0000"
-                icon={User}
-                formData={formData}
-                handleInputChange={handleInputChange}
-                errors={errors}
-                showAnimations={showAnimations}
-              />
+            <div className="ml-auto pl-3">
+              <button 
+                onClick={() => setShowToast(false)}
+                className="text-gray-500 hover:text-gray-700 focus:outline-none"
+              >
+                <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
+              </button>
             </div>
-            <div className="mt-6">
-              <InputField
-                name="areaConocimiento"
-                label="Área de Conocimiento o Trabajo"
-                required
-                placeholder="Educación, Psicología, Sociología, etc."
-                icon={User}
-                formData={formData}
-                handleInputChange={handleInputChange}
-                errors={errors}
-                showAnimations={showAnimations}
-              />
-            </div>
-          </section>
-
-          {/* Tipo de participación */}
-          <section className="bg-[#0a2d4d] rounded-2xl p-6 border border-[#00BCD4] hover:border-white transition-colors duration-300" {...(showAnimations && { 'data-aos': 'zoom-in', 'data-aos-delay': '300' })}>
-            <h2 className="text-lg font-bold text-white mb-6 flex items-center space-x-2">
-              <FileText className="w-5 h-5 text-[#00BCD4]" />
-              <span>Participación</span>
-            </h2>
-            <div className="space-y-6">
-              <SelectField
-                name="tipoParticipacion"
-                label="Tipo de Participación"
-                required
-                options={['Ponencia', 'Conferencia', 'Carteles Digitales', 'Panelista', 'Facilitador de Taller', 'Libros']}
-                icon={FileText}
-                formData={formData}
-                handleInputChange={handleInputChange}
-                errors={errors}
-                showAnimations={showAnimations}
-              />
-              <InputField
-                name="tema"
-                label="Tema"
-                required
-                placeholder="Ingresa el tema de tu participación"
-                icon={FileText}
-                formData={formData}
-                handleInputChange={handleInputChange}
-                errors={errors}
-                showAnimations={showAnimations}
-              />
-            </div>
-          </section>
-
-          {/* Archivos */}
-          <section className="bg-[#0a2d4d] rounded-2xl p-6 border border-[#00BCD4] hover:border-white transition-colors duration-300" {...(showAnimations && { 'data-aos': 'zoom-in', 'data-aos-delay': '400' })}>
-            <h2 className="text-lg font-bold text-white mb-6 flex items-center space-x-2">
-              <Upload className="w-5 h-5 text-[#00BCD4]" />
-              <span>Documentos</span>
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <FileField
-                name="resumenCientifico"
-                label="Resumen Científico (Formato Word o PDF)"
-                required
-                accept=".doc,.docx,.pdf"
-                icon={FileText}
-                formData={formData}
-                handleFileChange={handleFileChange}
-                errors={errors}
-                showAnimations={showAnimations}
-              />
-              <FileField
-                name="comprobantePago"
-                label="Comprobante de Pago"
-                accept="image/*,.pdf"
-                icon={CreditCard}
-                formData={formData}
-                handleFileChange={handleFileChange}
-                errors={errors}
-                showAnimations={showAnimations}
-              />
-            </div>
-          </section>
-
-          {/* Enviar */}
-          <div className="text-center" {...(showAnimations && { 'data-aos': 'fade-up', 'data-aos-delay': '500' })}>
-            <button
-              type="button"
-              onClick={handleSubmit}
-              disabled={loading}
-              className={`bg-[#00BCD4] rounded-full px-8 py-4 text-[#0a2d4d] text-lg font-semibold transition-transform duration-300 focus:outline-none focus:ring-2 focus:ring-[#00BCD4] ${
-                loading ? 'cursor-not-allowed opacity-50' : 'hover:scale-110 active:scale-95'
-              }`}
-            >
-              {loading ? 'Enviando...' : '🚀 Enviar Inscripción'}
-            </button>
           </div>
         </div>
+      )}
+
+      <div className="max-w-6xl mx-auto">
+        {/* Encabezado */}
+        <div className="text-center mb-12" data-aos="fade-up">
+          <div className="inline-flex items-center justify-center w-44 h-44 mb-6 transform transition-all hover:scale-105 duration-300">
+            <img 
+              src="/_events/_crupe/assets/logocrupe.png" 
+              alt="Logo Congreso" 
+              className="w-full h-full object-contain"
+              style={{ backgroundColor: 'transparent' }}
+            />
+          </div>
+          <h1 className="text-3xl md:text-4xl font-bold text-[#0077C8] mb-3">
+            I Congreso Científico Internacional CRUPE 2025
+          </h1>
+          <p className="text-xl text-gray-700 font-medium mb-6">
+            Completa tu inscripción para participar en el congreso
+          </p>
+          <div className="w-20 h-1.5 bg-[#F7941D] mx-auto rounded-full mb-8"></div>
+        </div>
+
+        <form onSubmit={handleSubmit} className="space-y-6" ref={formRef}>
+          {/* Sección 1: Información de Contacto */}
+          <div 
+            className="bg-white rounded-xl p-6 border border-[#4BA146]/30 hover:border-[#4BA146]/50 shadow-sm transition-all duration-300"
+            data-aos="fade-up" 
+            data-aos-delay="100"
+          >
+            <h2 className="text-xl font-bold text-[#0077C8] mb-4 flex items-center gap-2">
+              <Mail className="w-5 h-5 text-[#4BA146]" />
+              <span>Información de Contacto</span>
+            </h2>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                  Email <span className="text-[#F7941D]">*</span>
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className={`w-full px-4 py-2 border ${errors.email ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-[#4BA146] focus:border-[#4BA146] bg-[#4BA146]/5`}
+                  placeholder="tu@email.com"
+                />
+                {errors.email && <p className="text-sm text-red-500">{errors.email}</p>}
+              </div>
+              
+              <div className="space-y-2">
+                <label htmlFor="country" className="block text-sm font-medium text-gray-700">
+                  País <span className="text-[#F7941D]">*</span>
+                </label>
+                <select
+                  id="country"
+                  name="country"
+                  value={formData.country}
+                  onChange={handleChange}
+                  className={`w-full px-4 py-2 border ${errors.country ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-[#4BA146] focus:border-[#4BA146] bg-[#4BA146]/5`}
+                >
+                  <option value="">Selecciona tu país</option>
+                  <option value="Panamá">Panamá</option>
+                  <option value="Perú">Perú</option>
+                  <option value="Colombia">Colombia</option>
+                  <option value="Argentina">Argentina</option>
+                  <option value="Chile">Chile</option>
+                  <option value="España">España</option>
+                  <option value="Estados Unidos">Estados Unidos</option>
+                  <option value="Cuba">Cuba</option>
+                  <option value="Brasil">Brasil</option>
+                </select>
+                {errors.country && <p className="text-sm text-red-500">{errors.country}</p>}
+              </div>
+            </div>
+          </div>
+
+          {/* Sección 2: Identificación */}
+          <div 
+            className="bg-white rounded-xl p-6 border border-[#0077C8]/30 hover:border-[#0077C8]/50 shadow-sm transition-all duration-300"
+            data-aos="fade-up" 
+            data-aos-delay="150"
+          >
+            <h2 className="text-xl font-bold text-[#0077C8] mb-4 flex items-center gap-2">
+              <IdCard className="w-5 h-5 text-[#4BA146]" />
+              <span>Identificación</span>
+            </h2>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <label htmlFor="dni" className="block text-sm font-medium text-gray-700">
+                  Cédula / DNI <span className="text-[#F7941D]">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="dni"
+                  name="dni"
+                  value={formData.dni}
+                  onChange={handleChange}
+                  className={`w-full px-4 py-2 border ${errors.dni ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-[#4BA146] focus:border-[#4BA146] bg-[#4BA146]/5`}
+                  placeholder="8-123-456"
+                />
+                {errors.dni && <p className="text-sm text-red-500">{errors.dni}</p>}
+              </div>
+              
+              <div className="space-y-2">
+                <label htmlFor="passport" className="block text-sm font-medium text-gray-700">
+                  Pasaporte / DNI
+                </label>
+                <input
+                  type="text"
+                  id="passport"
+                  name="passport"
+                  value={formData.passport}
+                  onChange={handleChange}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-[#4BA146] focus:border-[#4BA146] bg-[#4BA146]/5"
+                  placeholder="A1234567"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Sección 3: Información Personal */}
+          <div 
+            className="bg-white rounded-xl p-6 border border-[#F7941D]/30 hover:border-[#F7941D]/50 shadow-sm transition-all duration-300"
+            data-aos="fade-up" 
+            data-aos-delay="200"
+          >
+            <h2 className="text-xl font-bold text-[#0077C8] mb-4 flex items-center gap-2">
+              <User className="w-5 h-5 text-[#4BA146]" />
+              <span>Información Personal</span>
+            </h2>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <label htmlFor="firstName" className="block text-sm font-medium text-gray-700">
+                  Primer Nombre <span className="text-[#F7941D]">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="firstName"
+                  name="firstName"
+                  value={formData.firstName}
+                  onChange={handleChange}
+                  className={`w-full px-4 py-2 border ${errors.firstName ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-[#4BA146] focus:border-[#4BA146] bg-[#4BA146]/5`}
+                  placeholder="Juan"
+                />
+                {errors.firstName && <p className="text-sm text-red-500">{errors.firstName}</p>}
+              </div>
+              
+              <div className="space-y-2">
+                <label htmlFor="middleName" className="block text-sm font-medium text-gray-700">
+                  Segundo Nombre
+                </label>
+                <input
+                  type="text"
+                  id="middleName"
+                  name="middleName"
+                  value={formData.middleName}
+                  onChange={handleChange}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-[#4BA146] focus:border-[#4BA146] bg-[#4BA146]/5"
+                  placeholder="Carlos"
+                />
+              </div>
+              
+              <div className="space-y-2">
+                <label htmlFor="lastName" className="block text-sm font-medium text-gray-700">
+                  Primer Apellido <span className="text-[#F7941D]">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="lastName"
+                  name="lastName"
+                  value={formData.lastName}
+                  onChange={handleChange}
+                  className={`w-full px-4 py-2 border ${errors.lastName ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-[#4BA146] focus:border-[#4BA146] bg-[#4BA146]/5`}
+                  placeholder="Pérez"
+                />
+                {errors.lastName && <p className="text-sm text-red-500">{errors.lastName}</p>}
+              </div>
+              
+              <div className="space-y-2">
+                <label htmlFor="secondLastName" className="block text-sm font-medium text-gray-700">
+                  Segundo Apellido
+                </label>
+                <input
+                  type="text"
+                  id="secondLastName"
+                  name="secondLastName"
+                  value={formData.secondLastName}
+                  onChange={handleChange}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-[#4BA146] focus:border-[#4BA146] bg-[#4BA146]/5"
+                  placeholder="González"
+                />
+              </div>
+              
+              <div className="space-y-2">
+                <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
+                  Celular <span className="text-[#F7941D]">*</span>
+                </label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className={`w-full px-4 py-2 border ${errors.phone ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-[#4BA146] focus:border-[#4BA146] bg-[#4BA146]/5`}
+                  placeholder="(+507) 6000-0000"
+                />
+                {errors.phone && <p className="text-sm text-red-500">{errors.phone}</p>}
+              </div>
+              
+              <div className="space-y-2">
+                <label htmlFor="area" className="block text-sm font-medium text-gray-700">
+                  Área de Conocimiento o Trabajo <span className="text-[#F7941D]">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="area"
+                  name="area"
+                  value={formData.area}
+                  onChange={handleChange}
+                  className={`w-full px-4 py-2 border ${errors.area ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-[#4BA146] focus:border-[#4BA146] bg-[#4BA146]/5`}
+                  placeholder="Educación, Psicología, Sociología, etc."
+                />
+                {errors.area && <p className="text-sm text-red-500">{errors.area}</p>}
+              </div>
+            </div>
+          </div>
+
+          {/* Sección 4: Participación */}
+          <div 
+            className="bg-white rounded-xl p-6 border border-[#0077C8]/30 hover:border-[#0077C8]/50 shadow-sm transition-all duration-300"
+            data-aos="fade-up" 
+            data-aos-delay="250"
+          >
+            <h2 className="text-xl font-bold text-[#0077C8] mb-4 flex items-center gap-2">
+              <ClipboardList className="w-5 h-5 text-[#4BA146]" />
+              <span>Participación</span>
+            </h2>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <label htmlFor="participationType" className="block text-sm font-medium text-gray-700">
+                  Tipo de Participación <span className="text-[#F7941D]">*</span>
+                </label>
+                <select
+                  id="participationType"
+                  name="participationType"
+                  value={formData.participationType}
+                  onChange={handleChange}
+                  className={`w-full px-4 py-2 border ${errors.participationType ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-[#4BA146] focus:border-[#4BA146] bg-[#4BA146]/5`}
+                >
+                  <option value="">Selecciona una opción</option>
+                  <option value="Ponencia">Ponencia</option>
+                  <option value="Carteles Digitales">Carteles Digitales</option>
+                  <option value="Asistente">Asistente</option>
+                </select>
+                {errors.participationType && <p className="text-sm text-red-500">{errors.participationType}</p>}
+              </div>
+              
+              <div className="space-y-2">
+                <label htmlFor="topic" className="block text-sm font-medium text-gray-700">
+                  Tema <span className="text-[#F7941D]">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="topic"
+                  name="topic"
+                  value={formData.topic}
+                  onChange={handleChange}
+                  className={`w-full px-4 py-2 border ${errors.topic ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-[#4BA146] focus:border-[#4BA146] bg-[#4BA146]/5`}
+                  placeholder="Ingresa el tema de tu participación"
+                />
+                {errors.topic && <p className="text-sm text-red-500">{errors.topic}</p>}
+              </div>
+            </div>
+          </div>
+
+          {/* Sección 5: Documentos */}
+          <div 
+            className="bg-white rounded-xl p-6 border border-[#4BA146]/30 hover:border-[#4BA146]/50 shadow-sm transition-all duration-300"
+            data-aos="fade-up" 
+            data-aos-delay="300"
+          >
+            <h2 className="text-xl font-bold text-[#0077C8] mb-4 flex items-center gap-2">
+              <FileText className="w-5 h-5 text-[#4BA146]" />
+              <span>Documentos</span>
+            </h2>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <label htmlFor="abstractFile" className="block text-sm font-medium text-gray-700">
+                  Resumen Científico <span className="text-[#F7941D]">*</span>
+                </label>
+                <input
+                  type="file"
+                  id="abstractFile"
+                  name="abstractFile"
+                  onChange={handleChange}
+                  className={`w-full px-4 py-2 border ${errors.abstractFile ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-[#4BA146] focus:border-[#4BA146] bg-[#4BA146]/5 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-[#4BA146]/20 file:text-[#4BA146] hover:file:bg-[#4BA146]/30`}
+                  accept=".doc,.docx,.pdf"
+                />
+                <p className="text-xs text-gray-500 mt-1">Formatos aceptados: .doc, .docx, .pdf</p>
+                {errors.abstractFile && <p className="text-sm text-red-500">{errors.abstractFile}</p>}
+              </div>
+              
+              <div className="space-y-2">
+                <label htmlFor="paymentFile" className="block text-sm font-medium text-gray-700">
+                  Comprobante de Pago
+                </label>
+                <input
+                  type="file"
+                  id="paymentFile"
+                  name="paymentFile"
+                  onChange={handleChange}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-[#4BA146] focus:border-[#4BA146] bg-[#4BA146]/5 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-[#4BA146]/20 file:text-[#4BA146] hover:file:bg-[#4BA146]/30"
+                  accept="image/*,.pdf"
+                />
+                <p className="text-xs text-gray-500 mt-1">Formatos aceptados: imágenes o PDF</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Botón de envío */}
+          <div className="text-center" data-aos="fade-up" data-aos-delay="350" ref={submitButtonRef}>
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg shadow-sm text-white bg-[#4BA146] hover:bg-[#3d8a39] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#4BA146] transition-all duration-300"
+            >
+              {isSubmitting ? 'Enviando...' : '🚀 Enviar Inscripción'}
+            </button>
+            
+            {/* Mensaje de estado debajo del botón */}
+            {submitStatus.message && (
+              <div 
+                className={`mt-4 p-3 rounded-lg ${
+                  submitStatus.success 
+                    ? 'bg-green-100 text-green-800 border border-green-200' 
+                    : 'bg-red-100 text-red-800 border border-red-200'
+                }`}
+              >
+                {submitStatus.message}
+              </div>
+            )}
+          </div>
+        </form>
       </div>
     </div>
   );

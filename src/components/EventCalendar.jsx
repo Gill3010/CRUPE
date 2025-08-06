@@ -4,7 +4,7 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import Papa from "papaparse";
-import { RefreshCw, Calendar as CalendarIcon, Users } from 'lucide-react';
+import { RefreshCw, Calendar as  Users } from 'lucide-react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -211,9 +211,14 @@ export default function AcademicCalendar() {
     <div className="min-h-[60vh] bg-white p-2 sm:p-4 rounded-xl border border-[#4BA146] shadow-md overflow-hidden transition-all duration-300">
       <div className="relative z-10">
         <div className="text-center mb-4 sm:mb-6 px-2" data-aos="fade-up">
-          <div className="inline-flex items-center justify-center bg-[#0077C8] p-2 rounded-full mb-2 sm:mb-3 border border-white mx-auto animate-pulse">
-            <CalendarIcon className="w-5 h-5 text-white" />
-          </div>
+        <div className="flex justify-center mb-2 sm:mb-3" data-aos="fade-up">
+  <img
+    src="/_events/_crupe/assets/logocrupe.png"
+    alt="Logo del Congreso"
+    className="h-14 sm:h-14 md:h-16 object-contain"
+    style={{ maxHeight: '80px' }}
+  />
+</div>
           <h2 className="text-xl sm:text-2xl font-bold text-[#0077C8] mb-1 sm:mb-2 px-2">
             Calendario Académico
           </h2>

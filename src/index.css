@@ -1,5 +1,31 @@
-/* src/index.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Animación de línea suave, tipo pulso deslizante */
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+    opacity: 0.7;
+  }
+  25% {
+    transform: translateX(3px);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(6px);
+    opacity: 0.7;
+  }
+  75% {
+    transform: translateX(3px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 0.7;
+  }
+}
+
+.animate-line {
+  animation: slide 2.5s infinite ease-in-out;
+}

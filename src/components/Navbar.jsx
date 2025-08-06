@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Building2 } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -48,24 +48,34 @@ const Navbar = () => {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <a 
-            href="/_events/_crupe" 
-            className="flex items-center space-x-2 md:space-x-3 group"
-          >
-            <div className={`flex items-center justify-center w-9 h-9 md:w-10 md:h-10 rounded-md transition-all duration-300 ${
-              isScrolled ? 'bg-[#4BA146]' : 'bg-[#4BA146]/90 backdrop-blur-sm group-hover:bg-[#4BA146]'
-            }`}>
-              <Building2 className="w-5 h-5 md:w-6 md:h-6 text-white group-hover:scale-110 transition-transform duration-300" />
-            </div>
-            <div className="text-[#0077C8] group-hover:text-[#4BA146] transition-all duration-300">
-              <h1 className="text-sm md:text-lg font-bold leading-tight">
-                I Congreso Científico 
-              </h1>
-              <p className="text-[0.65rem] md:text-xs tracking-wider text-[#F7941D] group-hover:text-[#0077C8] transition-colors duration-300">
-                Internacional CRUPE 2025
-              </p>
-            </div>
-          </a>
+      <a 
+  href="/_events/_crupe" 
+  className="flex items-center space-x-2 md:space-x-4 group"
+>
+  {/* Logo más grande y responsive */}
+  <img 
+    src="/_events/_crupe/assets/logocrupe.png" 
+    alt="Logo CRUPE" 
+    className="w-28 h-28 md:w-32 md:h-32 object-contain flex-shrink-0"
+  />
+
+  {/* Barra vertical estilizada */}
+  <div className="text-[#4BA146] text-2xl md:text-3xl font-extrabold px-2 select-none">
+    |
+  </div>
+
+  {/* Texto del congreso */}
+  <div className="text-[#0077C8] group-hover:text-[#4BA146] transition-all duration-300">
+    <h1 className="text-base md:text-xl font-bold leading-tight">
+      I Congreso Científico 
+    </h1>
+    <p className="text-sm md:text-base tracking-wider text-[#F7941D] group-hover:text-[#0077C8] transition-colors duration-300">
+      Internacional CRUPE 2025
+    </p>
+  </div>
+</a>
+
+
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-1 lg:space-x-3">
@@ -93,7 +103,7 @@ const Navbar = () => {
 
             <div className="relative group">
               <a
-                href="#"
+                href="/_events/_crupe/inscripcion"
                 className={`px-3 lg:px-4 py-2 rounded-md font-medium text-sm lg:text-base transition-all duration-200 relative z-10 ${
                   isScrolled 
                     ? 'text-[#F7941D] hover:text-[#4BA146]' 
@@ -156,7 +166,7 @@ const Navbar = () => {
               <div className="pt-2 mt-1 border-t border-[#4BA146]/30">
                 <div className="relative group">
                   <a
-                    href="#"
+                    href="/_events/_crupe/inscripcion"
                     className="block px-4 py-3 text-center text-[#F7941D] hover:text-[#0077C8] rounded-md font-medium text-sm transition-all duration-200"
                     onClick={() => setIsOpen(false)}
                   >
