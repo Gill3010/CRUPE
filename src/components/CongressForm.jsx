@@ -516,6 +516,7 @@ const CongressForm = () => {
                   <option value="">Selecciona una opción</option>
                   <option value="Ponencia">Ponencia</option>
                   <option value="Carteles Digitales">Carteles Digitales</option>
+                   <option value="Carteles Impresos">Carteles Impresos</option>
                   <option value="Asistente">Asistente</option>
                 </select>
                 {errors.participationType && <p className="text-sm text-red-500">{errors.participationType}</p>}

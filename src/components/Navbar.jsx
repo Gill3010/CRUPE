@@ -36,7 +36,7 @@ const Navbar = () => {
     { name: 'Cronograma', url: '/_events/_crupe/cronograma' },
     { name: 'Comité Organizador', url: '/_events/_crupe/comision-organizadora' },
     { name: 'Ejes Temáticos', url: '/_events/_crupe/ejes-tematicos' },
-    { name: 'Contacto', url: '/contacto' }
+    { name: 'Costos', url: '/_events/_crupe/costos' }
   ];
 
   return (

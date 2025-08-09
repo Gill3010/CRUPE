@@ -10,14 +10,14 @@ const organizingTeam = [
     name: 'Mgtr. Yecenia Brandao',
     role: 'Coordinadora General',
     institution: 'Centro Regional Universitario Panamá Este',
-    image: '/assets/Farnum.jpeg',
+    image: '/_events/_crupe/assets/YeceniaBrandao.jpeg',
     orcid: '#',
   },
   {
     name: 'Dr. Francisco Farnum',
     role: 'Enlace y representación VIP',
     institution: 'Centro Regional Universitario Panamá Este',
-    image: '/assets/Farnum.jpeg',
+    image: '/_events/_crupe/assets/FF.png',
     orcid: '#',
   },
   {
@@ -38,7 +38,7 @@ const organizingTeam = [
     name: 'Prof. Roberto Carrizo',
     role: 'Comité de Logística',
     institution: 'Gestión de espacios, tecnología, transporte e insumos',
-    image: '/assets/Farnum.jpeg',
+    image: '/_events/_crupe/assets/RobertoCarrizo.jpeg',
     orcid: '#',
   },
   {

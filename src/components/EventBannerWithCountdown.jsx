@@ -12,8 +12,8 @@ const EventoCarousel = () => {
     seconds: 0
   });
 
-  // Configurar fecha del evento (21 de octubre de 2025, 9:00 AM Panamá)
-  const eventDate = new Date('2025-10-21T09:00:00-05:00');
+  // Configurar fecha del evento (23 de octubre de 2025, 9:00 AM Panamá)
+  const eventDate = new Date('2025-10-23T09:00:00-05:00');
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -44,26 +44,26 @@ const EventoCarousel = () => {
   }, [eventDate]);
 
   const slides = [
-    {
-      id: 1,
-      title: "I Congreso Científico Internacional CRUPE 2025",
-      subtitle: "Innovación educativa en Panamá Este",
-      description: "Educación investigación y gestión para el desarrollo: la estrategia de Panamá Este",
-      textColor: "text-white",
-      thumbnail: "https://images.unsplash.com/photo-1662702933459-eeb71db82f85?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aSUyMGNvbmdyZXNvJTIwY2llbnQlQzMlQURmaWNvJTIwaW50ZXJuYWNpb25hbHxlbnwwfHwwfHx8MA%3D%3D",
-      bullets: [
-        "📅 21 al 23 de octubre de 2025",
-        "🏛️ Centro Regional Universitario Panamá Este",
-        "💻👥 Modalidad híbrida (presencial - virtual)"
-      ],
-      isMainSlide: true
-    },
+     {
+    id: 1,
+    title: "I Congreso Científico Internacional CRUPE 2025",
+    subtitle: "Innovación educativa en Panamá Este",
+    description: "Educación investigación y gestión para el desarrollo: la estrategia de Panamá Este",
+    textColor: "text-white",
+    thumbnail: "/_events/_crupe//assets/Slide1.jpeg",  // Cambiado aquí
+    bullets: [
+      "📅 23 al 25 de octubre de 2025",
+      "🏛️ Centro Regional Universitario Panamá Este",
+      "💻👥 Modalidad híbrida (presencial - virtual)"
+    ],
+    isMainSlide: true
+  },
     {
       id: 2,
       title: "Eje temático",
       subtitle: "Educación e investigación para el desarrollo sostenible",
       textColor: "text-white",
-      thumbnail: "https://plus.unsplash.com/premium_photo-1679469727132-b64600e60b47?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGRlc2Fycm9sbG8lMjBzb3N0ZW5pYmxlfGVufDB8fDB8fHww",
+      thumbnail: "/_events/_crupe//assets/Slide2.jpeg",
       bullets: [
         "Prácticas pedagógicas para el desarrollo sostenible",
         "Investigación educativa y políticas públicas en educación",
@@ -76,7 +76,7 @@ const EventoCarousel = () => {
       title: "Eje temático",
       subtitle: "Ciencias administrativas e investigación para la gestión sostenible",
       textColor: "text-white",
-      thumbnail: "https://images.unsplash.com/photo-1705595531929-dc6b916728ab?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGNpZW5jaWFzJTIwYWRtaW5pc3RyYXRpdmFzJTIwZSUyMGludmVzdGlnYWNpJUMzJUIzbiUyMHBhcmElMjBsYSUyMGdlc3RpJUMzJUIzbiUyMHNvc3RlbmlibGV8ZW58MHx8MHx8fDA%3D",
+      thumbnail: "/_events/_crupe//assets/Slide3.jpeg",
       bullets: [
         "Planificación y sostenibilidad territorial en Panamá Este",
         "Tecnologías emergentes y medioambiente: gestión de la innovación sostenible",
@@ -284,7 +284,7 @@ const EventoCarousel = () => {
           <Calendar size={14} className="mt-0.5 flex-shrink-0 text-[#4BA146]" />
           <div>
             <h3 className="text-[0.6rem] sm:text-xs uppercase tracking-wider text-[#4BA146] font-bold">Fecha</h3>
-            <p className="text-xs sm:text-sm">21-23 Oct 2025</p>
+            <p className="text-xs sm:text-sm">23-25 Oct 2025</p>
           </div>
         </div>
       </div>

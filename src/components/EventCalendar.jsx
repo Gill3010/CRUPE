@@ -4,19 +4,23 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import Papa from "papaparse";
-import { RefreshCw, Calendar as  Users } from 'lucide-react';
+import { RefreshCw, Calendar as Users } from 'lucide-react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
-const BASE_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vS7l-YW6UPNLNR-CPDUud2okXKJJ93iJ6_ZwjqJlhAWYvLC6dAydAZMmuQkCjojONxkT7v3kX_LF5X7/pub?gid=2070773446&single=true&output=csv";
+// URL de tu hoja de cálculo pública en formato CSV
+const BASE_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ2LA8dY9-kYqQl8T66hH4tXW3VPiQYCkhQ8VgxjH-nU5hbGtaQ1Ylunv6bYHFotYbc6OrpTHE4AooF/pub?output=csv";
 
 const normalizeTime = (timeStr) => {
   if (!timeStr) return null;
-  const parts = timeStr.trim().split(":");
+  
+  // Manejar formatos como "7:00" o "19:00"
+  const parts = timeStr.toString().trim().split(":");
   if (parts.length < 2) return null;
-  let [h, m] = parts;
-  if (h.length === 1) h = "0" + h;
-  if (m.length === 1) m = "0" + m;
+  
+  let [h, m] = parts.map(part => part.padStart(2, '0'));
+  
+  // Asegurar que las horas y minutos tengan 2 dígitos
   return `${h}:${m}`;
 };
 
@@ -52,35 +56,35 @@ export default function AcademicCalendar() {
 
       const formattedEvents = [];
 
-      const validRows = parsed.data.filter(
-        (row) => row.HORA?.trim() && row.DÍA?.trim()
-      );
+      // Procesar cada fila del CSV
+      parsed.data.forEach((row) => {
+        // Verificar que tenga los campos mínimos requeridos
+        if (!row['DÍA']?.trim() || !row['HORA']?.trim()) return;
 
-      validRows.forEach((row) => {
-        const time = normalizeTime(row.HORA);
-        const day = row.DÍA.trim();
+        const time = normalizeTime(row['HORA']);
+        const day = row['DÍA'].trim();
+        
         if (!time || !day) return;
 
-        const locations = ["AUDITORIO_PRINCIPAL", "SALA_CONFERENCIAS", "LABORATORIO"];
+        // Obtener los datos de las columnas (ajustar según los nombres exactos de tus columnas)
+        const eventTitle = row['AUDITORIO']?.trim() || row['SALA ALTERNA']?.trim();
+        const location = row['SALA ALTERNA'] ? 'SALA ALTERNA' : 'AUDITORIO';
 
-        locations.forEach((location) => {
-          const title = row[location]?.trim();
-          if (title) {
-            const start = new Date(`${day}T${time}:00`);
-            const end = new Date(start.getTime() + 60 * 60 * 1000);
+        if (eventTitle) {
+          const start = new Date(`${day}T${time}:00`);
+          const end = new Date(start.getTime() + 60 * 60 * 1000); // Duración de 1 hora por defecto
 
-            formattedEvents.push({
-              title: `${windowWidth < 640 ? title.substring(0, 15) + (title.length > 15 ? '...' : '') : title}`,
-              start,
-              end,
-              extendedProps: { 
-                location,
-                type: location === "AUDITORIO_PRINCIPAL" ? "conferencia" : "taller",
-                fullTitle: title
-              },
-            });
-          }
-        });
+          formattedEvents.push({
+            title: `${windowWidth < 640 ? eventTitle.substring(0, 15) + (eventTitle.length > 15 ? '...' : '') : eventTitle}`,
+            start,
+            end,
+            extendedProps: { 
+              location: location === 'AUDITORIO' ? 'AUDITORIO PRINCIPAL' : 'SALA DE CONFERENCIAS',
+              type: location === 'AUDITORIO' ? "conferencia" : "taller",
+              fullTitle: eventTitle
+            },
+          });
+        }
       });
 
       setEvents(formattedEvents);
@@ -95,6 +99,7 @@ export default function AcademicCalendar() {
     fetchCSV();
   }, [windowWidth]);
 
+  // ... (resto del código permanece igual, incluyendo handleEventClick, calendarOptions y el JSX de retorno)
   const handleEventClick = (info) => {
     info.jsEvent.preventDefault();
     
@@ -191,7 +196,7 @@ export default function AcademicCalendar() {
     headerToolbarClassNames: "bg-white text-[#1a1a1a] border-b border-[#4BA146]",
     buttonClassNames: "bg-white hover:bg-[#4BA146] hover:text-white text-[#1a1a1a] border border-[#4BA146] rounded px-2 py-0.5 text-xs transition-colors duration-200",
     dayMaxEvents: windowWidth < 640 ? 1 : 2,
-    slotMinTime: "08:00:00",
+    slotMinTime: "07:00:00", // Ajustado para mostrar eventos desde las 7:00 AM
     slotMaxTime: "20:00:00",
     allDaySlot: false,
     locale: "es",

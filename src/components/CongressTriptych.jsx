@@ -17,7 +17,7 @@ const CongressTriptych = () => {
   const importantDates = [
     {
       title: "Congreso principal",
-      date: "21 al 23 de octubre de 2025",
+      date: "23 al 25 de octubre de 2025",
       description: null
     },
     {

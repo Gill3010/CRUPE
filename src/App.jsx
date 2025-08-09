@@ -24,7 +24,7 @@ import PanelRequirements from './components/PanelRequirements';
 import WorkshopRequirements from './components/WorkshopRequirements';
 import AssistantRegistrationForm from './components/AssistantRegistrationForm';
 import ParticipationSelector from './components/ParticipationSelector';
-// import PaymentMethods from './components/PaymentMethods';
+ import PaymentMethods from './components/PaymentMethods';
 // import MetricsDashboard from './components/MetricsDashboard'; 
 
 const EventCalendar = lazy(() => import('./components/EventCalendar'));
@@ -68,7 +68,7 @@ const AppContent = () => {
     '/presentacion-libros',
     '/presentacion-ponencias',
     '/presentacion-resumen',
-    '/inversion',
+    '/costos',
     '/conferencias',
     '/ejes-tematicos',
     '/presentacion-panelistas',
@@ -91,7 +91,7 @@ const AppContent = () => {
         {location.pathname === '/inscripcion' && (
           <>
             <CongressForm />
-            {/* <PaymentMethods /> */}
+             <PaymentMethods /> 
           </>
         )}
 
@@ -107,10 +107,10 @@ const AppContent = () => {
         {location.pathname === '/presentacion-libros' && <BookPresentationGuidelines />}
         {location.pathname === '/presentacion-ponencias' && <PresentationFormat />}
         {location.pathname === '/presentacion-resumen' && <AbstractSubmissionGuidelines />}
-        {location.pathname === '/inversion' && (
+        {location.pathname === '/costos' && (
           <>
             <InvestmentTable />
-            {/* <PaymentMethods /> */}
+             <PaymentMethods />
           </>
         )}
 
